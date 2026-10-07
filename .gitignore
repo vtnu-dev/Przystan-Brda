@@ -37,3 +37,6 @@ wp-cli.local.yml
 !web/app/plugins/przystan-core/
 web/app/database/
 node_modules/
+_robocze/
+# Pakiety językowe WordPressa instaluje WP-CLI (wp language core install)
+web/app/languages/

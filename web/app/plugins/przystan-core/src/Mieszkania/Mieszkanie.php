@@ -28,7 +28,7 @@ final class Mieszkanie
         $cena = (int) $meta('cena');
         $rzut = (int) $meta('rzut');
 
-        return [
+        $m = [
             'id' => $post->ID,
             'numer' => (string) ($meta('numer') ?: $post->post_title),
             'pietro' => (int) $meta('pietro'),
@@ -42,9 +42,20 @@ final class Mieszkanie
             'cena_tekst' => self::tekstCeny($cena, $status),
             'status' => $status,
             'status_etykieta' => self::etykietaStatusu($status),
-            'url' => get_permalink($post),
+            'url' => (string) get_permalink($post),
+            'rzut_id' => $rzut,
             'rzut' => $rzut ? (string) wp_get_attachment_url($rzut) : '',
         ];
+
+        // Gotowe teksty w języku strony, żeby JavaScript nie musiał niczego formatować ani tłumaczyć.
+        $m['pietro_tekst'] = self::nazwaPietra($m['pietro']);
+        $m['metraz_tekst'] = self::formatMetrazu($m['metraz']);
+        $m['balkon_tekst'] = $m['balkon_m2'] > 0 ? self::formatMetrazu($m['balkon_m2']) : '-';
+        /* translators: %d: liczba pokoi */
+        $m['pokoje_tekst'] = sprintf(_n('%d pokój', '%d pokoje', $m['pokoje'], 'przystan'), $m['pokoje']);
+        $m['opis'] = self::opisDostepny($m);
+
+        return $m;
     }
 
     public static function etykietaStatusu(string $status): string
@@ -66,13 +77,24 @@ final class Mieszkanie
         }
 
         /* translators: %s: cena w złotych, np. 612 000 */
-        return sprintf(__('%s zł', 'przystan'), number_format_i18n($cena));
+        return sprintf(__('%s zł', 'przystan'), self::liczba($cena));
     }
 
     public static function formatMetrazu(float $metraz): string
     {
         /* translators: %s: powierzchnia, np. 62,4 */
-        return sprintf(__('%s m²', 'przystan'), number_format_i18n($metraz, 1));
+        return sprintf(__('%s m²', 'przystan'), self::liczba($metraz, 1));
+    }
+
+    /**
+     * Liczba w formacie języka strony: PL „670 000” i „62,7”, EN „670,000” i „62.7”.
+     * Nie polegamy na number_format_i18n(), bo zależy od kompletności pakietu językowego WordPressa.
+     */
+    public static function liczba(float|int $liczba, int $miejsca = 0): string
+    {
+        $pl = \Przystan\Polylang\Integracja::jezyk() === 'pl';
+
+        return number_format((float) $liczba, $miejsca, $pl ? ',' : '.', $pl ? "\u{00A0}" : ',');
     }
 
     public static function nazwaPietra(int $pietro): string

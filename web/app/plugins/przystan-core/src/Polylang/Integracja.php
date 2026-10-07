@@ -12,7 +12,7 @@ use Przystan\Ustawienia\Ustawienia;
 final class Integracja
 {
     /** Pola wspólne dla wszystkich wersji językowych mieszkania. */
-    public const POLA_WSPOLNE = ['numer', 'pietro', 'pozycja', 'pokoje', 'metraz', 'cena', 'status', 'balkon_m2', 'ogrodek', 'widok_na_rzeke', 'rzut'];
+    public const POLA_WSPOLNE = ['numer', 'pietro', 'pozycja', 'pokoje', 'metraz', 'cena', 'status', 'balkon_m2', 'ogrodek', 'widok_na_rzeke'];
 
     public static function rejestruj(): void
     {
@@ -38,15 +38,18 @@ final class Integracja
      */
     public static function metaDoKopii(array $metas, bool $sync, int $from): array
     {
+        // Strony i wpisy: teksty z pól ACF są inne w każdym języku, więc kopiujemy tylko obrazek i szablon.
         if (get_post_type($from) !== TypTresci::TYP) {
-            return $metas;
-        }
-        foreach (self::POLA_WSPOLNE as $pole) {
-            $metas[] = $pole;
-            $metas[] = '_' . $pole;
+            return array_values(array_intersect($metas, ['_thumbnail_id', '_wp_page_template']));
         }
 
-        return array_values(array_unique($metas));
+        $wspolne = [];
+        foreach (self::POLA_WSPOLNE as $pole) {
+            $wspolne[] = $pole;
+            $wspolne[] = '_' . $pole;
+        }
+
+        return $wspolne;
     }
 
     /** Teksty z ustawień do przetłumaczenia w Języki → Tłumaczenia ciągów. */

@@ -1,4 +1,390 @@
 @import "tailwindcss" theme(static);
+@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource-variable/newsreader/wght.css";
+@import "@fontsource-variable/newsreader/wght-italic.css";
+
 @source "../../app/**/*.php";
 @source "../**/*.blade.php";
 @source "../**/*.js";
+@source "../../../../plugins/przystan-core/src/**/*.php";
+
+/*
+ * Przystań Brda - system wizualny.
+ * Granat i morska zieleń na piaskowym tle; szeryf Newsreader do nagłówków, Inter do tekstu.
+ * Kontrast par tekst/tło sprawdzony dla WCAG AA (min. 4,5:1).
+ */
+@theme {
+  --color-granat: #0f2a3a;
+  --color-granat-2: #1b3b4f;
+  --color-morze: #1f6f78;
+  --color-morze-ciemne: #175860;
+  --color-morze-jasne: #6fb3b3;
+  --color-piasek: #e8dfc9;
+  --color-piasek-ciemny: #d8cfb8;
+  --color-tlo: #f6f3ec;
+  --color-bursztyn: #8a5a12;
+  --color-bursztyn-jasny: #e9c88f;
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader Variable", ui-serif, Georgia, serif;
+
+  --text-hero: clamp(2.6rem, 1.6rem + 4.6vw, 5.2rem);
+  --text-h2: clamp(2rem, 1.5rem + 2vw, 3.1rem);
+  --text-h3: clamp(1.35rem, 1.2rem + 0.6vw, 1.7rem);
+
+  --radius-fala: 3.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-tlo font-sans text-granat antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-granat;
+    font-weight: 450;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    @apply text-morze underline decoration-1 underline-offset-4;
+  }
+  a:hover {
+    @apply text-morze-ciemne decoration-2;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-morze);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    @apply bg-morze text-white;
+  }
+
+  img {
+    height: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .kontener {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .skip-link {
+    @apply absolute left-4 top-4 z-50 -translate-y-24 rounded bg-granat px-4 py-3 font-semibold text-white no-underline transition-transform;
+  }
+  .skip-link:focus {
+    @apply translate-y-0 text-white;
+  }
+
+  .nadtytul {
+    @apply mb-4 inline-flex items-center gap-3 font-sans text-sm font-semibold uppercase tracking-[0.14em] text-morze;
+  }
+  .nadtytul::before {
+    content: "";
+    @apply block h-px w-8 bg-current;
+  }
+
+  .h2 {
+    font-size: var(--text-h2);
+  }
+
+  .przycisk {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-granat px-6 py-3 font-sans text-base font-semibold text-tlo no-underline transition-colors;
+  }
+  .przycisk:hover {
+    @apply bg-morze text-white no-underline;
+  }
+  .przycisk--jasny {
+    @apply bg-tlo text-granat;
+  }
+  .przycisk--jasny:hover {
+    @apply bg-piasek text-granat;
+  }
+  .przycisk--obrys {
+    @apply border-2 border-current bg-transparent text-granat;
+  }
+  .przycisk--obrys:hover {
+    @apply border-morze bg-transparent text-morze;
+  }
+
+  .tresc > * + * {
+    margin-top: 1.1em;
+  }
+  .tresc h2 {
+    @apply mt-12 text-3xl;
+  }
+  .tresc h3 {
+    @apply mt-8 text-2xl;
+  }
+  .tresc ul {
+    @apply list-disc pl-6;
+  }
+  .tresc ol {
+    @apply list-decimal pl-6;
+  }
+  .tresc img,
+  .tresc figure {
+    @apply rounded-lg;
+  }
+  .tresc figcaption {
+    @apply mt-2 text-sm text-granat/75;
+  }
+
+  /* Linie wody: motyw przewodni (separator sekcji, dno elewacji). */
+  .linie-wody {
+    @apply pointer-events-none block w-full text-morze;
+  }
+  .linie-wody path {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 2;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .linie-wody--ruch path {
+      animation: fala 9s ease-in-out infinite alternate;
+    }
+    .linie-wody--ruch path:nth-child(2) {
+      animation-duration: 11s;
+    }
+    .linie-wody--ruch path:nth-child(3) {
+      animation-duration: 13s;
+    }
+  }
+  @keyframes fala {
+    to {
+      transform: translateX(-3%);
+    }
+  }
+
+  /* Pola formularzy */
+  .pole label,
+  .pole legend {
+    @apply mb-1.5 block text-sm font-semibold;
+  }
+  .pole input:not([type="checkbox"]):not([type="radio"]),
+  .pole select,
+  .pole textarea {
+    @apply block min-h-12 w-full rounded-md border border-granat/40 bg-white px-3.5 py-2.5 text-base text-granat;
+  }
+  .pole input:focus-visible,
+  .pole select:focus-visible,
+  .pole textarea:focus-visible {
+    outline-offset: 0;
+    @apply border-morze;
+  }
+  .pole [aria-invalid="true"] {
+    @apply border-2 border-red-700;
+  }
+  .pole .blad {
+    @apply mt-1.5 text-sm font-semibold text-red-800;
+  }
+  .pole .podpowiedz {
+    @apply mt-1 text-sm text-granat/75;
+  }
+
+  .chip {
+    @apply relative inline-flex;
+  }
+  .chip input {
+    @apply absolute inset-0 cursor-pointer opacity-0;
+  }
+  .chip span {
+    @apply inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-granat/50 bg-white px-4 text-sm font-semibold;
+  }
+  .chip input:checked + span {
+    @apply border-granat bg-granat text-tlo;
+  }
+  .chip input:focus-visible + span {
+    outline: 3px solid var(--color-morze);
+    outline-offset: 2px;
+  }
+
+  /* Status mieszkania: zawsze kolor + tekst (nie sam kolor). */
+  .status {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold;
+  }
+  .status::before {
+    content: "";
+    @apply inline-block size-2.5 rounded-full bg-current;
+  }
+  .status--wolne {
+    @apply text-morze;
+  }
+  .status--rezerwacja {
+    @apply text-bursztyn;
+  }
+  .status--rezerwacja::before {
+    @apply rounded-none;
+    transform: rotate(45deg);
+  }
+  .status--sprzedane {
+    @apply text-granat/70 line-through;
+  }
+  .status--sprzedane::before {
+    @apply rounded-none bg-transparent;
+    border: 2px solid currentColor;
+  }
+
+  /* Elewacja (SVG generowane z danych mieszkań) */
+  .elewacja {
+    @apply relative;
+  }
+  .elewacja svg {
+    @apply block h-auto w-full;
+  }
+  .elewacja .lokal rect.okno {
+    transition: fill 0.2s, opacity 0.2s;
+  }
+  .elewacja .lokal--wolne rect.okno {
+    fill: var(--color-morze);
+  }
+  .elewacja .lokal--rezerwacja rect.okno {
+    fill: url(#wzor-rezerwacja);
+  }
+  .elewacja .lokal--sprzedane rect.okno {
+    fill: url(#wzor-sprzedane);
+  }
+  .elewacja .lokal text {
+    @apply font-sans;
+    font-size: 17px;
+    font-weight: 600;
+    pointer-events: none;
+  }
+  .elewacja .lokal--wolne text {
+    fill: #fff;
+  }
+  .elewacja .lokal--rezerwacja text,
+  .elewacja .lokal--sprzedane text {
+    fill: var(--color-granat);
+  }
+  .elewacja .lokal:hover rect.okno,
+  .elewacja .lokal:focus-visible rect.okno,
+  .elewacja .lokal.aktywny rect.okno {
+    stroke: var(--color-granat);
+    stroke-width: 5;
+  }
+  .elewacja .lokal--wolne:hover rect.okno,
+  .elewacja .lokal--wolne:focus-visible rect.okno {
+    fill: var(--color-morze-ciemne);
+  }
+  .elewacja .lokal:focus-visible {
+    outline: none;
+  }
+  .elewacja .lokal:focus-visible rect.okno {
+    stroke: var(--color-bursztyn);
+    stroke-width: 6;
+  }
+  .elewacja .lokal.przygaszony {
+    opacity: 0.22;
+  }
+  .elewacja-dymek {
+    @apply pointer-events-none absolute z-10 w-max max-w-64 -translate-x-1/2 -translate-y-full rounded-lg bg-granat px-4 py-3 text-sm text-tlo shadow-lg;
+  }
+  .elewacja-dymek[hidden] {
+    display: none;
+  }
+  .elewacja-dymek::after {
+    content: "";
+    @apply absolute left-1/2 top-full -translate-x-1/2 border-8 border-transparent border-t-granat;
+  }
+
+  /* Tabela mieszkań: na telefonie wiersze jako karty */
+  .tabela-mieszkan {
+    @apply w-full border-collapse text-left;
+  }
+  .tabela-mieszkan th {
+    @apply border-b-2 border-granat px-3 py-3 text-xs font-semibold uppercase tracking-wider;
+  }
+  .tabela-mieszkan td {
+    @apply border-b border-piasek-ciemny px-3 py-3 align-middle;
+  }
+  .tabela-mieszkan tbody tr:hover {
+    @apply bg-white;
+  }
+  @media (max-width: 47.99rem) {
+    .tabela-mieszkan thead {
+      @apply sr-only;
+    }
+    .tabela-mieszkan tbody tr {
+      @apply mb-3 grid grid-cols-2 gap-x-4 gap-y-1 rounded-lg border border-piasek-ciemny bg-white p-4;
+    }
+    .tabela-mieszkan td {
+      @apply border-0 p-0;
+    }
+    .tabela-mieszkan td::before {
+      content: attr(data-etykieta);
+      @apply block text-xs font-semibold uppercase tracking-wider text-granat/70;
+    }
+    .tabela-mieszkan td.td-numer,
+    .tabela-mieszkan td.td-link {
+      @apply col-span-2;
+    }
+    .tabela-mieszkan td.td-numer::before,
+    .tabela-mieszkan td.td-link::before {
+      content: none;
+    }
+  }
+}
+
+@layer components {
+  .menu-glowne a {
+    @apply flex min-h-11 items-center rounded-full px-4 font-semibold text-tlo no-underline;
+  }
+  .menu-glowne a:hover {
+    @apply bg-granat-2 text-tlo;
+  }
+  .menu-glowne a[aria-current="page"] {
+    @apply text-morze-jasne underline decoration-2 underline-offset-8;
+  }
+  .menu-stopka a {
+    @apply inline-flex min-h-8 items-center text-tlo/90 no-underline;
+  }
+  .menu-stopka a:hover {
+    @apply text-tlo underline;
+  }
+  .nav-links {
+    @apply flex justify-between gap-4 font-semibold;
+  }
+  @media (max-width: 47.99rem) {
+    .elewacja .lokal text,
+    .elewacja .pietro-etykieta {
+      display: none;
+    }
+  }
+}
+
+@layer components {
+  .elewacja a,
+  .elewacja a:hover {
+    text-decoration: none;
+  }
+}

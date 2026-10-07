@@ -1,0 +1,13 @@
+{
+  "name": "przystan-brda-skrypty",
+  "private": true,
+  "type": "module",
+  "description": "Skrypty pomocnicze: rzuty mieszkań (SVG -> WebP) i obróbka zdjęć do seeda. Motyw ma własny package.json.",
+  "scripts": {
+    "rzuty": "node scripts/rzuty.mjs",
+    "obrazy": "node scripts/obrazy.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.0"
+  }
+}
