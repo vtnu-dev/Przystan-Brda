@@ -111,13 +111,15 @@
         <h2 id="atuty-tytul" class="h2 max-w-2xl">{{ __('Spokojne mieszkania z widokiem, którego nikt nie zabuduje', 'przystan') }}</h2>
         <div class="mt-12 grid gap-10 md:grid-cols-3">
           @foreach ($atuty as $atut)
-            <article class="relative rounded-[1.25rem] p-3 -m-3" data-karta data-karta-bez-cienia style="--opoznienie: {{ $loop->index * 90 }}ms">
+            <article class="relative" data-karta data-karta-bez-cienia style="--opoznienie: {{ $loop->index * 90 }}ms">
               @if ($atut['zdjecie'])
+                <div class="overflow-hidden {{ $loop->first ? 'rounded-[var(--radius-fala)]' : 'rounded-lg' }}">
                 {!! wp_get_attachment_image($atut['zdjecie'], 'karta', false, [
-                  'class' => 'aspect-[4/3] w-full object-cover ' . ($loop->first ? 'rounded-[var(--radius-fala)]' : 'rounded-lg'),
+                  'class' => 'aspect-[4/3] w-full object-cover',
                   'sizes' => '(min-width: 768px) 30vw, 100vw',
                   'loading' => 'lazy',
                 ]) !!}
+                </div>
               @endif
               <h3 class="mt-6" style="font-size: var(--text-h3)">{{ $atut['tytul'] }}</h3>
               <p class="mt-3 text-granat/85">{{ $atut['opis'] }}</p>
