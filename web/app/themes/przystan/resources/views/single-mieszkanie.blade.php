@@ -54,11 +54,11 @@
               @endif
             </p>
           @endif
-          @if ($m['cena'] > 0)
-            @include('partials.kalkulator', ['cena' => $m['cena']])
-          @endif
           @if ($m['status'] !== 'sprzedane')
             <a href="#formularz" class="przycisk przycisk--jasny mt-6 w-full">{{ __('Zapytaj o to mieszkanie', 'przystan') }}</a>
+          @endif
+          @if ($m['cena'] > 0)
+            @include('partials.kalkulator', ['cena' => $m['cena']])
           @endif
         </div>
       </aside>

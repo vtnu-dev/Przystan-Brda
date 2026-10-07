@@ -39,7 +39,8 @@ function odswiez() {
 
   document.querySelectorAll('[data-ulubione]').forEach((b) => {
     const wlaczone = lista.includes(Number(b.dataset.ulubione));
-    b.hidden = false;
+    b.classList.remove('invisible');
+    b.removeAttribute('tabindex');
     b.setAttribute('aria-pressed', String(wlaczone));
     b.setAttribute('aria-label', wlaczone ? b.dataset.usun : b.dataset.dodaj);
   });

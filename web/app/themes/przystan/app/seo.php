@@ -7,6 +7,7 @@
 
 namespace App;
 
+use Przystan\Inwestycje\Inwestycja;
 use Przystan\Mieszkania\Mieszkanie;
 use Przystan\Ustawienia\Ustawienia;
 
@@ -131,7 +132,6 @@ add_action('wp_head', function () {
         return;
     }
     $u = Ustawienia::wszystkie();
-    $glowna = Strony::strefaGlowna();
     $organizacja = [
         '@type' => 'Organization',
         '@id' => home_url('/#organizacja'),
@@ -140,27 +140,33 @@ add_action('wp_head', function () {
         'telephone' => $u['telefon'],
         'email' => $u['email'],
     ];
-    $adres = [
-        '@type' => 'PostalAddress',
-        'streetAddress' => 'ul. Przykładowa 4',
-        'postalCode' => '85-000',
-        'addressLocality' => 'Bydgoszcz',
-        'addressCountry' => 'PL',
-    ];
     $graf = [$organizacja];
 
-    if (is_front_page()) {
-        $graf[] = [
+    // Inwestycja jako ApartmentComplex: na swojej stronie pełny opis, w karcie mieszkania jako „containedInPlace”.
+    $kompleks = static function (int $id, bool $pelny): array {
+        $inw = Inwestycja::zId($id);
+        $dane = [
             '@type' => 'ApartmentComplex',
-            '@id' => $glowna . '#inwestycja',
-            'name' => get_bloginfo('name'),
-            'description' => opis(),
-            'url' => $glowna,
-            'address' => $adres,
-            'numberOfAccommodationUnits' => 36,
-            'petsAllowed' => true,
-            'image' => obrazUdostepniania()['url'] ?? null,
+            '@id' => $inw['url'] . '#inwestycja',
+            'name' => $inw['nazwa'],
+            'url' => $inw['url'],
+            'address' => ['@type' => 'PostalAddress', 'addressLocality' => $inw['lokalizacja'], 'addressCountry' => 'PL'],
         ];
+        if ($pelny) {
+            $dane += [
+                'description' => $inw['zajawka'],
+                'numberOfAccommodationUnits' => $inw['mieszkan'] ?: null,
+                'numberOfAvailableAccommodationUnits' => $inw['mieszkan'] ? $inw['wolnych'] : null,
+                'image' => $inw['zdjecie'] ? wp_get_attachment_image_url($inw['zdjecie'], 'szeroki') : null,
+            ];
+        }
+
+        return array_filter($dane, fn($v) => $v !== null);
+    };
+
+    if (is_singular('inwestycja')) {
+        $graf[] = $kompleks(get_queried_object_id(), true);
+        $graf[] = okruszkiLd([[__('Inwestycje', 'przystan'), (string) get_post_type_archive_link('inwestycja')], [get_the_title(), (string) get_permalink()]]);
     }
 
     if (is_singular('mieszkanie')) {
@@ -173,7 +179,7 @@ add_action('wp_head', function () {
             'numberOfRooms' => $m['pokoje'],
             'floorLevel' => (string) $m['pietro'],
             'floorSize' => ['@type' => 'QuantitativeValue', 'value' => $m['metraz'], 'unitCode' => 'MTK'],
-            'containedInPlace' => ['@id' => $glowna . '#inwestycja', '@type' => 'ApartmentComplex', 'name' => get_bloginfo('name'), 'address' => $adres],
+            'containedInPlace' => $m['inwestycja'] ? $kompleks($m['inwestycja'], false) : null,
         ];
         if ($m['rzut']) {
             $mieszkanie['image'] = $m['rzut'];
@@ -188,7 +194,7 @@ add_action('wp_head', function () {
             'price' => $m['cena'] ?: null,
             'seller' => ['@id' => home_url('/#organizacja')],
         ];
-        $graf[] = okruszkiLd([[__('Mieszkania', 'przystan'), Strony::url(Strony::MIESZKANIA)], [$m['numer'], $m['url']]]);
+        $graf[] = okruszkiLd([[$m['inwestycja_nazwa'] ?: __('Mieszkania', 'przystan'), $m['inwestycja'] ? (string) get_permalink($m['inwestycja']) : Strony::url(Strony::MIESZKANIA)], [$m['numer'], $m['url']]]);
     }
 
     if (is_singular('post')) {
