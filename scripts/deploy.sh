@@ -65,7 +65,7 @@ if wp core is-installed 2>/dev/null; then
   wp cache flush --quiet
   wp rewrite flush --quiet
 fi
-echo "› Gotowe: \$(git -C . log -1 --format=%h 2>/dev/null || echo wydanie)"
+echo "› Serwer gotowy"
 SKRYPT
 
 "${SSH[@]}" "sudo rm -f /tmp/przystan-wydanie.tar.gz"
