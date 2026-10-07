@@ -1,0 +1,601 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Przystań Brda\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: przystan\n"
+
+msgid "%d pokój"
+msgid_plural "%d pokoje"
+msgstr[0] "%d room"
+msgstr[1] "%d rooms"
+
+msgid "rezerwacja"
+msgstr "reserved"
+
+msgid "sprzedane"
+msgstr "sold"
+
+msgid "wolne"
+msgstr "available"
+
+msgid "cena na zapytanie"
+msgstr "price on request"
+
+msgid "%s zł"
+msgstr "PLN %s"
+
+msgid "%s m²"
+msgstr "%s m²"
+
+msgid "parter"
+msgstr "ground floor"
+
+msgid "piętro %d"
+msgstr "floor %d"
+
+msgid "Mieszkanie %1$s, %2$s, %3$s, %4$s, %5$s"
+msgstr "Apartment %1$s, %2$s, %3$s, %4$s, %5$s"
+
+msgid "Dane mieszkania"
+msgstr "Apartment details"
+
+msgid "Numer lokalu"
+msgstr "Unit number"
+
+msgid "Piętro"
+msgstr "Floor"
+
+msgid "0 = parter"
+msgstr "0 = ground floor"
+
+msgid "Pozycja na elewacji"
+msgstr "Position on the facade"
+
+msgid "1-6, od lewej"
+msgstr "1-6, from the left"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Pokoje"
+msgstr "Rooms"
+
+msgid "Metraż (m²)"
+msgstr "Floor area (m²)"
+
+msgid "Cena (zł)"
+msgstr "Price (PLN)"
+
+msgid "Puste = „cena na zapytanie”"
+msgstr "Empty = \"price on request\""
+
+msgid "Balkon / taras (m²)"
+msgstr "Balcony / terrace (m²)"
+
+msgid "Ogródek"
+msgstr "Garden"
+
+msgid "Widok na rzekę"
+msgstr "River view"
+
+msgid "Rzut mieszkania"
+msgstr "Floor plan"
+
+msgid "Mieszkania"
+msgstr "Apartments"
+
+msgid "Mieszkanie"
+msgstr "Apartment"
+
+msgid "Dodaj mieszkanie"
+msgstr "Add apartment"
+
+msgid "Edytuj mieszkanie"
+msgstr "Edit apartment"
+
+msgid "Wszystkie mieszkania"
+msgstr "All apartments"
+
+msgid "Szukaj mieszkań"
+msgstr "Search apartments"
+
+msgid "Brak mieszkań"
+msgstr "No apartments found"
+
+msgid "Metraż"
+msgstr "Area"
+
+msgid "Cena"
+msgstr "Price"
+
+msgid "SEO"
+msgstr "SEO"
+
+msgid "Opis w wynikach wyszukiwania"
+msgstr "Search result description"
+
+msgid "Do 160 znaków. Puste = zajawka lub początek treści."
+msgstr "Up to 160 characters. Empty = excerpt or start of content."
+
+msgid "Hero"
+msgstr "Hero"
+
+msgid "Nadtytuł"
+msgstr "Eyebrow"
+
+msgid "Nagłówek"
+msgstr "Heading"
+
+msgid "Nowa linia = łamanie wiersza."
+msgstr "New line = line break."
+
+msgid "Wstęp"
+msgstr "Intro"
+
+msgid "Zdjęcie"
+msgstr "Photo"
+
+msgid "Liczby"
+msgstr "Numbers"
+
+msgid "Liczba %d: wartość"
+msgstr "Number %d: value"
+
+msgid "Liczba %d: opis"
+msgstr "Number %d: label"
+
+msgid "Atuty"
+msgstr "Highlights"
+
+msgid "Atut %d: tytuł"
+msgstr "Highlight %d: title"
+
+msgid "Atut %d: opis"
+msgstr "Highlight %d: text"
+
+msgid "Atut %d: zdjęcie"
+msgstr "Highlight %d: photo"
+
+msgid "Okolica"
+msgstr "Neighbourhood"
+
+msgid "Strona główna"
+msgstr "Home"
+
+msgid "Punkty w okolicy"
+msgstr "Nearby places"
+
+msgid "Punkt %d: nazwa"
+msgstr "Place %d: name"
+
+msgid "Punkt %d: minuty"
+msgstr "Place %d: minutes"
+
+msgid "Punkt %d: jak"
+msgstr "Place %d: how"
+
+msgid "pieszo"
+msgstr "on foot"
+
+msgid "rowerem"
+msgstr "by bike"
+
+msgid "tramwajem"
+msgstr "by tram"
+
+msgid "Standard"
+msgstr "Finish"
+
+msgid "Lista (jedna pozycja w wierszu)"
+msgstr "List (one item per line)"
+
+msgid "Zdjęcie %d"
+msgstr "Photo %d"
+
+msgid "Okolica i standard"
+msgstr "Neighbourhood and finish"
+
+msgid "Kontakt"
+msgstr "Contact"
+
+msgid "Godziny biura sprzedaży (jedna pozycja w wierszu)"
+msgstr "Sales office hours (one item per line)"
+
+msgid "Przystań Brda"
+msgstr "Przystań Brda"
+
+msgid "Biuro sprzedaży"
+msgstr "Sales office"
+
+msgid "Telefon"
+msgstr "Phone"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Adres"
+msgstr "Address"
+
+msgid "Termin oddania"
+msgstr "Completion date"
+
+msgid "Np. „IV kwartał 2027”. Tłumaczenie: Języki → Tłumaczenia ciągów."
+msgstr "E.g. \"Q4 2027\". Translation: Languages → Translations."
+
+msgid "Webhook zapytań"
+msgstr "Enquiry webhook"
+
+msgid "Adres odbiorcy"
+msgstr "Receiver URL"
+
+msgid "Puste = zapytania tylko zapisują się w panelu."
+msgstr "Empty = enquiries are only saved in the admin."
+
+msgid "Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Przystan-Signature zawiera HMAC-SHA256 z „X-Przystan-Timestamp.treść” liczony tym kluczem."
+msgstr "Every new enquiry is sent as JSON (event zapytanie.utworzone). The X-Przystan-Signature header holds an HMAC-SHA256 of \"X-Przystan-Timestamp.body\" computed with this key."
+
+msgid "brak klucza"
+msgstr "no key"
+
+msgid "Wygeneruj nowy klucz"
+msgstr "Generate a new key"
+
+msgid "Adres webhooka musi zaczynać się od https://."
+msgstr "The webhook URL must start with https://."
+
+msgid "Brak uprawnień."
+msgstr "You are not allowed to do this."
+
+msgid "Wygenerowano nowy klucz. Przekaż go odbiorcy webhooka."
+msgstr "A new key has been generated. Pass it on to the webhook receiver."
+
+msgid "wysłano"
+msgstr "sent"
+
+msgid "ponowienie zaplanowane"
+msgstr "retry scheduled"
+
+msgid "błąd"
+msgstr "failed"
+
+msgid "webhook wyłączony"
+msgstr "webhook disabled"
+
+msgid "oczekuje"
+msgstr "pending"
+
+msgid "Podaj imię."
+msgstr "Please enter your name."
+
+msgid "Imię jest za krótkie."
+msgstr "The name is too short."
+
+msgid "Imię jest za długie."
+msgstr "The name is too long."
+
+msgid "Podaj adres e-mail."
+msgstr "Please enter your e-mail address."
+
+msgid "Sprawdź adres e-mail, np. jan@przyklad.pl."
+msgstr "Check the e-mail address, e.g. jan@example.com."
+
+msgid "Numer telefonu może zawierać tylko cyfry, spacje, +, - i nawiasy."
+msgstr "The phone number may contain only digits, spaces, +, - and brackets."
+
+msgid "Wiadomość może mieć najwyżej 2000 znaków."
+msgstr "The message can be up to 2000 characters long."
+
+msgid "Potrzebujemy zgody, żeby odpowiedzieć na zapytanie."
+msgstr "We need your consent to reply to your enquiry."
+
+msgid "Sprawdź to pole."
+msgstr "Please check this field."
+
+msgid "Dziękujemy! Odpowiemy w ciągu jednego dnia roboczego."
+msgstr "Thank you! We will reply within one working day."
+
+msgid "Formularz wygasł albo został wysłany zbyt szybko. Odśwież stronę i spróbuj ponownie."
+msgstr "The form has expired or was sent too quickly. Refresh the page and try again."
+
+msgid "Popraw zaznaczone pola."
+msgstr "Please correct the marked fields."
+
+msgid "Wysłano już kilka zapytań. Spróbuj ponownie za kilka minut albo zadzwoń."
+msgstr "Several enquiries have already been sent. Try again in a few minutes or give us a call."
+
+msgid "Nie udało się zapisać zapytania. Zadzwoń do nas, proszę."
+msgstr "We could not save your enquiry. Please give us a call."
+
+msgid "Ogólne"
+msgstr "General"
+
+msgid "Zapytania"
+msgstr "Enquiries"
+
+msgid "Zapytanie"
+msgstr "Enquiry"
+
+msgid "Wszystkie zapytania"
+msgstr "All enquiries"
+
+msgid "Brak zapytań"
+msgstr "No enquiries"
+
+msgid "Webhook"
+msgstr "Webhook"
+
+msgid "Data"
+msgstr "Date"
+
+msgid "prób: %1$d, ostatni kod: %2$s"
+msgstr "attempts: %1$d, last code: %2$s"
+
+msgid "Wyślij ponownie"
+msgstr "Send again"
+
+msgid "Webhook zaplanowany do ponownej wysyłki."
+msgstr "Webhook scheduled to be sent again."
+
+msgid "Treść zapytania"
+msgstr "Enquiry details"
+
+msgid "Imię"
+msgstr "Name"
+
+msgid "Język"
+msgstr "Language"
+
+msgid "Zgoda RODO"
+msgstr "GDPR consent"
+
+msgid "Wiadomość"
+msgstr "Message"
+
+msgctxt "skrót: parter na elewacji"
+msgid "P"
+msgstr "G"
+
+msgid "Menu główne"
+msgstr "Main menu"
+
+msgid "Menu w stopce"
+msgstr "Footer menu"
+
+msgid "Błąd 404"
+msgstr "Error 404"
+
+msgid "Tej strony nie ma. Rzeka płynie dalej."
+msgstr "This page is gone. The river flows on."
+
+msgid "Adres mógł się zmienić albo mieszkanie zostało usunięte z oferty. Zacznij od wyszukiwarki albo strony głównej."
+msgstr "The address may have changed or the apartment was removed from the offer. Start with the search or the home page."
+
+msgid "Znajdź mieszkanie"
+msgstr "Find an apartment"
+
+msgid "Elewacja budynku od strony rzeki. Wybierz mieszkanie, żeby zobaczyć szczegóły."
+msgstr "River-side facade of the building. Choose an apartment to see the details."
+
+msgid "Brda"
+msgstr "Brda"
+
+msgid "Legenda"
+msgstr "Legend"
+
+msgid "balkon lub taras"
+msgstr "balcony or terrace"
+
+msgid "ogródek"
+msgstr "garden"
+
+msgid "%d wolne"
+msgid_plural "%d wolnych"
+msgstr[0] "%d available"
+msgstr[1] "%d available"
+
+msgid "Termin oddania:"
+msgstr "Completion:"
+
+msgid "Inwestycja w liczbach"
+msgstr "The development in numbers"
+
+msgid "Wskaż okno, które Ci się podoba"
+msgstr "Point to the window you like"
+
+msgid "Każdy prostokąt to jedno mieszkanie. Kolor pokazuje, czy jest wolne. Kliknij, żeby zobaczyć rzut, metraż i cenę."
+msgstr "Each rectangle is one apartment. The colour shows whether it is available. Click to see the floor plan, area and price."
+
+msgid "Wyszukiwarka z filtrami"
+msgstr "Search with filters"
+
+msgid "Dlaczego tutaj"
+msgstr "Why here"
+
+msgid "Spokojne mieszkania z widokiem, którego nikt nie zabuduje"
+msgstr "Calm apartments with a view no one can build over"
+
+msgid "Okolica i standard wykończenia"
+msgstr "Neighbourhood and finish"
+
+msgid "Dziennik budowy"
+msgstr "Construction diary"
+
+msgid "Co nowego na placu budowy"
+msgstr "News from the construction site"
+
+msgid "Wszystkie wpisy"
+msgstr "All posts"
+
+msgid "Na bieżąco"
+msgstr "Latest news"
+
+msgid "Postęp prac co kilka tygodni: zdjęcia z placu budowy i najważniejsze etapy."
+msgstr "Progress every few weeks: photos from the site and the key milestones."
+
+msgid "Starsze wpisy"
+msgstr "Older posts"
+
+msgid "Nowsze wpisy"
+msgstr "Newer posts"
+
+msgid "Nie ma jeszcze wpisów."
+msgstr "No posts yet."
+
+msgid "Przejdź do treści"
+msgstr "Skip to content"
+
+msgid "Porozmawiajmy o mieszkaniu"
+msgstr "Let's talk about your apartment"
+
+msgid "Pokażemy rzuty, wyliczymy ratę i umówimy spacer po bulwarze. Odpowiadamy w ciągu jednego dnia roboczego."
+msgstr "We will show you the floor plans, work out the instalments and arrange a walk along the boulevard. We reply within one working day."
+
+msgid "Napisz do nas"
+msgstr "Write to us"
+
+msgid "Imię i nazwisko"
+msgstr "Full name"
+
+msgid "Nie wypełniaj tego pola"
+msgstr "Leave this field empty"
+
+msgid "opcjonalnie"
+msgstr "optional"
+
+msgid "Zgadzam się na przetwarzanie moich danych w celu odpowiedzi na zapytanie."
+msgstr "I agree to the processing of my data in order to reply to my enquiry."
+
+msgid "Polityka prywatności"
+msgstr "Privacy policy"
+
+msgid "Wyślij zapytanie"
+msgstr "Send enquiry"
+
+msgid "Jesteś tutaj"
+msgstr "You are here"
+
+msgid "Zobacz"
+msgstr "View"
+
+msgid "Lista mieszkań spełniających filtry"
+msgstr "Apartments matching the filters"
+
+msgid "Lokal"
+msgstr "Unit"
+
+msgid "Balkon"
+msgstr "Balcony"
+
+msgid "Szczegóły"
+msgstr "Details"
+
+msgid "Żadne mieszkanie nie spełnia tych warunków. Zmień filtry albo napisz do nas: często mamy lokale przed publikacją."
+msgstr "No apartment matches these filters. Change the filters or write to us: we often have units before they are published."
+
+msgid "Na stronie"
+msgstr "On this site"
+
+msgid "Strona demonstracyjna."
+msgstr "Demo website."
+
+msgid "Przystań Brda to fikcyjna inwestycja: mieszkania, ceny i dane kontaktowe są przykładowe."
+msgstr "Przystań Brda is a fictional development: apartments, prices and contact details are examples."
+
+msgid "Projekt i wdrożenie:"
+msgstr "Design and build:"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Mieszkanie %s"
+msgstr "Apartment %s"
+
+msgid "Rzut mieszkania %1$s: %2$s, %3$s"
+msgstr "Floor plan of apartment %1$s: %2$s, %3$s"
+
+msgid "Rzut poglądowy. Dokładne wymiary w karcie lokalu od doradcy."
+msgstr "Indicative plan. Exact dimensions in the unit sheet from your advisor."
+
+msgid "Parametry"
+msgstr "Details"
+
+msgid "Balkon / taras"
+msgstr "Balcony / terrace"
+
+msgid "tak"
+msgstr "yes"
+
+msgid "nie"
+msgstr "no"
+
+msgid "%s zł/m²"
+msgstr "PLN %s/m²"
+
+msgid "Zapytaj o to mieszkanie"
+msgstr "Ask about this apartment"
+
+msgid "Położenie w budynku"
+msgstr "Location in the building"
+
+msgid "Inne mieszkania na tym piętrze"
+msgstr "Other apartments on this floor"
+
+msgid "Zapytaj o mieszkanie %s"
+msgstr "Ask about apartment %s"
+
+msgid "Doradca odpowie w ciągu jednego dnia roboczego: prześle kartę lokalu, harmonogram płatności i zaproponuje termin spotkania."
+msgstr "An advisor will reply within one working day with the unit sheet, the payment schedule and a proposed meeting date."
+
+msgid "Godziny otwarcia"
+msgstr "Opening hours"
+
+msgid "%d mieszkanie"
+msgid_plural "%d mieszkań"
+msgstr[0] "%d apartment"
+msgstr[1] "%d apartments"
+
+msgid "Filtry"
+msgstr "Filters"
+
+msgid "pokój"
+msgid_plural "pokoje"
+msgstr[0] "room"
+msgstr[1] "rooms"
+
+msgid "dowolne"
+msgstr "any"
+
+msgid "od"
+msgstr "from"
+
+msgid "do"
+msgstr "to"
+
+msgid "wszystkie"
+msgstr "all"
+
+msgid "widok na rzekę"
+msgstr "river view"
+
+msgid "Pokaż mieszkania"
+msgstr "Show apartments"
+
+msgid "Wyczyść filtry"
+msgstr "Clear filters"
+
+msgid "Pasujące mieszkania: %d"
+msgstr "Matching apartments: %d"
+
+msgid "Okole, Bydgoszcz"
+msgstr "Okole, Bydgoszcz"
+
+msgid "Czas dojścia"
+msgstr "Travel time"
+
+msgid "min"
+msgstr "min"
+

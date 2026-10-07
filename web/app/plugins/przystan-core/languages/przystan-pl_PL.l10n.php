@@ -1,0 +1,2 @@
+<?php
+return ['domain'=>'przystan','plural-forms'=>'nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);','language'=>'pl_PL','project-id-version'=>'Przystań Brda','pot-creation-date'=>'2026-10-07T10:37:01+00:00','po-revision-date'=>'2026-10-07T10:37:01+00:00','messages'=>['%d pokój'=>'%d pokój' . "\0" . '%d pokoje' . "\0" . '%d pokoi','%d wolne'=>'%d wolne' . "\0" . '%d wolne' . "\0" . '%d wolnych','%d mieszkanie'=>'%d mieszkanie' . "\0" . '%d mieszkania' . "\0" . '%d mieszkań','pokój'=>'pokój' . "\0" . 'pokoje' . "\0" . 'pokoi']];

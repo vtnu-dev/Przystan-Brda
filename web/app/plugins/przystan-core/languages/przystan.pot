@@ -1,0 +1,905 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Przystań Brda\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-07T10:37:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: przystan\n"
+
+#. translators: %d: liczba pokoi
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:55
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:115
+#, php-format
+msgid "%d pokój"
+msgid_plural "%d pokoje"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:64
+#: plugins/przystan-core/src/Mieszkania/Pola.php:40
+#: themes/przystan/resources/views/components/elewacja.blade.php:77
+msgid "rezerwacja"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:65
+#: plugins/przystan-core/src/Mieszkania/Pola.php:41
+#: themes/przystan/resources/views/components/elewacja.blade.php:78
+msgid "sprzedane"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:66
+#: plugins/przystan-core/src/Mieszkania/Pola.php:39
+#: themes/przystan/resources/views/components/elewacja.blade.php:76
+msgid "wolne"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:76
+msgid "cena na zapytanie"
+msgstr ""
+
+#. translators: %s: cena w złotych, np. 612 000
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:80
+#, php-format
+msgid "%s zł"
+msgstr ""
+
+#. translators: %s: powierzchnia, np. 62,4
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:86
+#, php-format
+msgid "%s m²"
+msgstr ""
+
+#. translators: %d: numer piętra
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:103
+msgid "parter"
+msgstr ""
+
+#. translators: %d: numer piętra
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:103
+#, php-format
+msgid "piętro %d"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:113
+#, php-format
+msgid "Mieszkanie %1$s, %2$s, %3$s, %4$s, %5$s"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:30
+msgid "Dane mieszkania"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:35
+msgid "Numer lokalu"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:36
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:82
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:8
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:22
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:41
+#: themes/przystan/resources/views/template-mieszkania.blade.php:40
+msgid "Piętro"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:36
+msgid "0 = parter"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:37
+msgid "Pozycja na elewacji"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:37
+msgid "1-6, od lewej"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:38
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:86
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:13
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:27
+#: themes/przystan/resources/views/template-mieszkania.blade.php:64
+msgid "Status"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:43
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:83
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:9
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:23
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:40
+#: themes/przystan/resources/views/template-mieszkania.blade.php:27
+msgid "Pokoje"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:44
+#: themes/przystan/resources/views/template-mieszkania.blade.php:50
+msgid "Metraż (m²)"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:45
+msgid "Cena (zł)"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:45
+msgid "Puste = „cena na zapytanie”"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:46
+msgid "Balkon / taras (m²)"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:47
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:44
+msgid "Ogródek"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:48
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:43
+msgid "Widok na rzekę"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/Pola.php:49
+msgid "Rzut mieszkania"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:35
+#: themes/przystan/resources/views/front-page.blade.php:66
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:6
+msgid "Mieszkania"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:36
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:139
+msgid "Mieszkanie"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:37
+msgid "Dodaj mieszkanie"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:38
+msgid "Edytuj mieszkanie"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:39
+msgid "Wszystkie mieszkania"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:40
+msgid "Szukaj mieszkań"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:41
+msgid "Brak mieszkań"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:84
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:10
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:24
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:39
+msgid "Metraż"
+msgstr ""
+
+#: plugins/przystan-core/src/Mieszkania/TypTresci.php:85
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:12
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:26
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:48
+msgid "Cena"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:59
+msgid "SEO"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:64
+msgid "Opis w wynikach wyszukiwania"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:67
+msgid "Do 160 znaków. Puste = zajawka lub początek treści."
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:77
+msgid "Hero"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:78
+msgid "Nadtytuł"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:79
+#: plugins/przystan-core/src/Strony/Pola.php:95
+#: plugins/przystan-core/src/Strony/Pola.php:125
+msgid "Nagłówek"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:79
+msgid "Nowa linia = łamanie wiersza."
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:80
+#: plugins/przystan-core/src/Strony/Pola.php:96
+#: plugins/przystan-core/src/Strony/Pola.php:112
+#: plugins/przystan-core/src/Strony/Pola.php:147
+msgid "Wstęp"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:81
+#: plugins/przystan-core/src/Strony/Pola.php:97
+msgid "Zdjęcie"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:82
+msgid "Liczby"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:85
+#, php-format
+msgid "Liczba %d: wartość"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:86
+#, php-format
+msgid "Liczba %d: opis"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:88
+msgid "Atuty"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:90
+#, php-format
+msgid "Atut %d: tytuł"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:91
+#, php-format
+msgid "Atut %d: opis"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:92
+#, php-format
+msgid "Atut %d: zdjęcie"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:94
+#: themes/przystan/resources/views/front-page.blade.php:114
+msgid "Okolica"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:101
+#: themes/przystan/resources/views/404.blade.php:10
+#: themes/przystan/resources/views/partials/okruszki.blade.php:4
+msgid "Strona główna"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:113
+msgid "Punkty w okolicy"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:116
+#, php-format
+msgid "Punkt %d: nazwa"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:117
+#, php-format
+msgid "Punkt %d: minuty"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:118
+#, php-format
+msgid "Punkt %d: jak"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:119
+#: themes/przystan/resources/views/template-okolica.blade.php:16
+msgid "pieszo"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:120
+#: themes/przystan/resources/views/template-okolica.blade.php:16
+msgid "rowerem"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:121
+#: themes/przystan/resources/views/template-okolica.blade.php:16
+msgid "tramwajem"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:124
+#: themes/przystan/resources/views/template-okolica.blade.php:61
+msgid "Standard"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:126
+msgid "Lista (jedna pozycja w wierszu)"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:128
+#, php-format
+msgid "Zdjęcie %d"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:133
+#: themes/przystan/resources/views/front-page.blade.php:39
+msgid "Okolica i standard"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:144
+msgid "Kontakt"
+msgstr ""
+
+#: plugins/przystan-core/src/Strony/Pola.php:148
+msgid "Godziny biura sprzedaży (jedna pozycja w wierszu)"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:22
+#: plugins/przystan-core/src/Ustawienia/Strona.php:23
+msgid "Przystań Brda"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:38
+#: themes/przystan/resources/views/sections/footer.blade.php:16
+#: themes/przystan/resources/views/template-kontakt.blade.php:16
+msgid "Biuro sprzedaży"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:39
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:56
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:138
+#: themes/przystan/resources/views/partials/formularz.blade.php:20
+#: themes/przystan/resources/views/template-kontakt.blade.php:24
+msgid "Telefon"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:40
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:55
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:137
+#: themes/przystan/resources/views/partials/formularz.blade.php:19
+#: themes/przystan/resources/views/template-kontakt.blade.php:28
+msgid "E-mail"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:41
+#: themes/przystan/resources/views/template-kontakt.blade.php:32
+msgid "Adres"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:42
+msgid "Termin oddania"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:42
+msgid "Np. „IV kwartał 2027”. Tłumaczenie: Języki → Tłumaczenia ciągów."
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:44
+msgid "Webhook zapytań"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:45
+msgid "Adres odbiorcy"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:45
+msgid "Puste = zapytania tylko zapisują się w panelu."
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:67
+msgid "Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Przystan-Signature zawiera HMAC-SHA256 z „X-Przystan-Timestamp.treść” liczony tym kluczem."
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:70
+msgid "brak klucza"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:72
+msgid "Wygeneruj nowy klucz"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:88
+msgid "Adres webhooka musi zaczynać się od https://."
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:106
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:109
+msgid "Brak uprawnień."
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:125
+msgid "Wygenerowano nowy klucz. Przekaż go odbiorcy webhooka."
+msgstr ""
+
+#: plugins/przystan-core/src/Webhook/Wysylka.php:141
+msgid "wysłano"
+msgstr ""
+
+#: plugins/przystan-core/src/Webhook/Wysylka.php:142
+msgid "ponowienie zaplanowane"
+msgstr ""
+
+#: plugins/przystan-core/src/Webhook/Wysylka.php:143
+msgid "błąd"
+msgstr ""
+
+#: plugins/przystan-core/src/Webhook/Wysylka.php:144
+msgid "webhook wyłączony"
+msgstr ""
+
+#: plugins/przystan-core/src/Webhook/Wysylka.php:145
+msgid "oczekuje"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:13
+msgid "Podaj imię."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:14
+msgid "Imię jest za krótkie."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:15
+msgid "Imię jest za długie."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:16
+msgid "Podaj adres e-mail."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:17
+msgid "Sprawdź adres e-mail, np. jan@przyklad.pl."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:18
+msgid "Numer telefonu może zawierać tylko cyfry, spacje, +, - i nawiasy."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:19
+msgid "Wiadomość może mieć najwyżej 2000 znaków."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:20
+msgid "Potrzebujemy zgody, żeby odpowiedzieć na zapytanie."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Komunikaty.php:21
+msgid "Sprawdź to pole."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Obsluga.php:26
+msgid "Dziękujemy! Odpowiemy w ciągu jednego dnia roboczego."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Obsluga.php:35
+msgid "Formularz wygasł albo został wysłany zbyt szybko. Odśwież stronę i spróbuj ponownie."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Obsluga.php:40
+msgid "Popraw zaznaczone pola."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Obsluga.php:44
+msgid "Wysłano już kilka zapytań. Spróbuj ponownie za kilka minut albo zadzwoń."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Obsluga.php:49
+msgid "Nie udało się zapisać zapytania. Zadzwoń do nas, proszę."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/Obsluga.php:63
+msgid "Ogólne"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:31
+msgid "Zapytania"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:32
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:33
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:54
+msgid "Zapytanie"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:34
+msgid "Wszystkie zapytania"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:35
+msgid "Brak zapytań"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:57
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:143
+msgid "Webhook"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:58
+msgid "Data"
+msgstr ""
+
+#. translators: 1: liczba prób, 2: kod HTTP
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:79
+#, php-format
+msgid "prób: %1$d, ostatni kod: %2$s"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:98
+msgid "Wyślij ponownie"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:122
+msgid "Webhook zaplanowany do ponownej wysyłki."
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:128
+msgid "Treść zapytania"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:136
+msgid "Imię"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:140
+#: themes/przystan/resources/views/sections/header.blade.php:30
+msgid "Język"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:141
+msgid "Zgoda RODO"
+msgstr ""
+
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:142
+#: themes/przystan/resources/views/partials/formularz.blade.php:54
+msgid "Wiadomość"
+msgstr ""
+
+#: themes/przystan/app/Elewacja.php:67
+msgctxt "skrót: parter na elewacji"
+msgid "P"
+msgstr ""
+
+#: themes/przystan/app/setup.php:59
+#: themes/przystan/resources/views/sections/header.blade.php:15
+msgid "Menu główne"
+msgstr ""
+
+#: themes/przystan/app/setup.php:60
+#: themes/przystan/resources/views/sections/footer.blade.php:29
+msgid "Menu w stopce"
+msgstr ""
+
+#: themes/przystan/resources/views/404.blade.php:5
+msgid "Błąd 404"
+msgstr ""
+
+#: themes/przystan/resources/views/404.blade.php:6
+msgid "Tej strony nie ma. Rzeka płynie dalej."
+msgstr ""
+
+#: themes/przystan/resources/views/404.blade.php:7
+msgid "Adres mógł się zmienić albo mieszkanie zostało usunięte z oferty. Zacznij od wyszukiwarki albo strony głównej."
+msgstr ""
+
+#: themes/przystan/resources/views/404.blade.php:9
+#: themes/przystan/resources/views/front-page.blade.php:35
+#: themes/przystan/resources/views/sections/header.blade.php:43
+msgid "Znajdź mieszkanie"
+msgstr ""
+
+#: themes/przystan/resources/views/components/elewacja.blade.php:16
+msgid "Elewacja budynku od strony rzeki. Wybierz mieszkanie, żeby zobaczyć szczegóły."
+msgstr ""
+
+#: themes/przystan/resources/views/components/elewacja.blade.php:70
+msgid "Brda"
+msgstr ""
+
+#: themes/przystan/resources/views/components/elewacja.blade.php:75
+msgid "Legenda"
+msgstr ""
+
+#: themes/przystan/resources/views/components/elewacja.blade.php:79
+#: themes/przystan/resources/views/template-mieszkania.blade.php:82
+msgid "balkon lub taras"
+msgstr ""
+
+#: themes/przystan/resources/views/components/elewacja.blade.php:80
+msgid "ogródek"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:37
+#, php-format
+msgid "%d wolne"
+msgid_plural "%d wolnych"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/przystan/resources/views/front-page.blade.php:42
+#: themes/przystan/resources/views/sections/footer.blade.php:11
+msgid "Termin oddania:"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:49
+msgid "Inwestycja w liczbach"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:67
+msgid "Wskaż okno, które Ci się podoba"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:68
+msgid "Każdy prostokąt to jedno mieszkanie. Kolor pokazuje, czy jest wolne. Kliknij, żeby zobaczyć rzut, metraż i cenę."
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:69
+msgid "Wyszukiwarka z filtrami"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:79
+msgid "Dlaczego tutaj"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:80
+msgid "Spokojne mieszkania z widokiem, którego nikt nie zabuduje"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:117
+msgid "Okolica i standard wykończenia"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:128
+msgid "Dziennik budowy"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:129
+msgid "Co nowego na placu budowy"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:132
+msgid "Wszystkie wpisy"
+msgstr ""
+
+#: themes/przystan/resources/views/index.blade.php:7
+msgid "Na bieżąco"
+msgstr ""
+
+#: themes/przystan/resources/views/index.blade.php:9
+msgid "Postęp prac co kilka tygodni: zdjęcia z placu budowy i najważniejsze etapy."
+msgstr ""
+
+#: themes/przystan/resources/views/index.blade.php:22
+msgid "Starsze wpisy"
+msgstr ""
+
+#: themes/przystan/resources/views/index.blade.php:22
+msgid "Nowsze wpisy"
+msgstr ""
+
+#: themes/przystan/resources/views/index.blade.php:26
+msgid "Nie ma jeszcze wpisów."
+msgstr ""
+
+#: themes/przystan/resources/views/layouts/app.blade.php:16
+msgid "Przejdź do treści"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/cta-kontakt.blade.php:4
+msgid "Porozmawiajmy o mieszkaniu"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/cta-kontakt.blade.php:5
+msgid "Pokażemy rzuty, wyliczymy ratę i umówimy spacer po bulwarze. Odpowiadamy w ciągu jednego dnia roboczego."
+msgstr ""
+
+#: themes/przystan/resources/views/partials/cta-kontakt.blade.php:8
+#: themes/przystan/resources/views/template-kontakt.blade.php:44
+msgid "Napisz do nas"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/formularz.blade.php:18
+msgid "Imię i nazwisko"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/formularz.blade.php:32
+msgid "Nie wypełniaj tego pola"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/formularz.blade.php:45
+#: themes/przystan/resources/views/partials/formularz.blade.php:54
+msgid "opcjonalnie"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/formularz.blade.php:65
+msgid "Zgadzam się na przetwarzanie moich danych w celu odpowiedzi na zapytanie."
+msgstr ""
+
+#: themes/przystan/resources/views/partials/formularz.blade.php:68
+msgid "Polityka prywatności"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/formularz.blade.php:76
+msgid "Wyślij zapytanie"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/okruszki.blade.php:2
+msgid "Jesteś tutaj"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:3
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:28
+msgid "Zobacz"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:4
+msgid "Lista mieszkań spełniających filtry"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:7
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:21
+msgid "Lokal"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:11
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:25
+msgid "Balkon"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:14
+msgid "Szczegóły"
+msgstr ""
+
+#: themes/przystan/resources/views/partials/tabela-mieszkan.blade.php:34
+msgid "Żadne mieszkanie nie spełnia tych warunków. Zmień filtry albo napisz do nas: często mamy lokale przed publikacją."
+msgstr ""
+
+#: themes/przystan/resources/views/sections/footer.blade.php:30
+msgid "Na stronie"
+msgstr ""
+
+#: themes/przystan/resources/views/sections/footer.blade.php:46
+msgid "Strona demonstracyjna."
+msgstr ""
+
+#: themes/przystan/resources/views/sections/footer.blade.php:47
+msgid "Przystań Brda to fikcyjna inwestycja: mieszkania, ceny i dane kontaktowe są przykładowe."
+msgstr ""
+
+#: themes/przystan/resources/views/sections/footer.blade.php:51
+msgid "Projekt i wdrożenie:"
+msgstr ""
+
+#: themes/przystan/resources/views/sections/header.blade.php:12
+msgid "Menu"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:13
+#, php-format
+msgid "Mieszkanie %s"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:23
+#, php-format
+msgid "Rzut mieszkania %1$s: %2$s, %3$s"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:26
+msgid "Rzut poglądowy. Dokładne wymiary w karcie lokalu od doradcy."
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:37
+msgid "Parametry"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:42
+msgid "Balkon / taras"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:43
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:44
+msgid "tak"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:43
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:44
+msgid "nie"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:51
+#, php-format
+msgid "%s zł/m²"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:56
+msgid "Zapytaj o to mieszkanie"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:63
+msgid "Położenie w budynku"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:71
+msgid "Inne mieszkania na tym piętrze"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:87
+#, php-format
+msgid "Zapytaj o mieszkanie %s"
+msgstr ""
+
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:88
+msgid "Doradca odpowie w ciągu jednego dnia roboczego: prześle kartę lokalu, harmonogram płatności i zaproponuje termin spotkania."
+msgstr ""
+
+#: themes/przystan/resources/views/template-kontakt.blade.php:36
+msgid "Godziny otwarcia"
+msgstr ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:11
+#, php-format
+msgid "%d mieszkanie"
+msgid_plural "%d mieszkań"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:24
+msgid "Filtry"
+msgstr ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:33
+msgid "pokój"
+msgid_plural "pokoje"
+msgstr[0] ""
+msgstr[1] ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:42
+msgid "dowolne"
+msgstr ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:53
+msgid "od"
+msgstr ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:57
+msgid "do"
+msgstr ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:66
+msgid "wszystkie"
+msgstr ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:77
+msgid "widok na rzekę"
+msgstr ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:88
+msgid "Pokaż mieszkania"
+msgstr ""
+
+#: themes/przystan/resources/views/template-mieszkania.blade.php:89
+msgid "Wyczyść filtry"
+msgstr ""
+
+#. translators: %d: liczba znalezionych mieszkań
+#: themes/przystan/resources/views/template-mieszkania.blade.php:98
+#, php-format
+msgid "Pasujące mieszkania: %d"
+msgstr ""
+
+#: themes/przystan/resources/views/template-okolica.blade.php:24
+msgid "Okole, Bydgoszcz"
+msgstr ""
+
+#: themes/przystan/resources/views/template-okolica.blade.php:35
+msgid "Czas dojścia"
+msgstr ""
+
+#: themes/przystan/resources/views/template-okolica.blade.php:43
+msgid "min"
+msgstr ""

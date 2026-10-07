@@ -90,7 +90,8 @@
       @include('components.elewacja', ['mieszkania' => $wszystkie, 'pasujace' => $pasujace, 'id' => 'elewacja'])
 
       <h2 class="mt-12 font-sans text-xl font-semibold" aria-live="polite" data-licznik>
-        {{ sprintf(_n('Znaleziono %d mieszkanie', 'Znaleziono %d mieszkań', count($wynik), 'przystan'), count($wynik)) }}
+        {{-- translators: %d: liczba znalezionych mieszkań --}}
+        {{ sprintf(__('Pasujące mieszkania: %d', 'przystan'), count($wynik)) }}
       </h2>
 
       @include('partials.tabela-mieszkan', ['mieszkania' => $wynik])

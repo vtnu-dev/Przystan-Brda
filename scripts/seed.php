@@ -116,7 +116,7 @@ $opcje->set('hide_default', true);  // polski bez /pl/ w adresie
 $opcje->set('force_lang', 1);       // język z katalogu: /en/...
 $opcje->set('rewrite', true);       // bez /language/ w adresie
 $opcje->set('browser', false);      // bez przekierowania wg języka przeglądarki (lepiej dla SEO i testów)
-$opcje->set('redirect_lang', false);
+$opcje->set('redirect_lang', true); // strona główna EN pod /en/, nie /en/home/
 $opcje->set('media_support', false); // obrazy wspólne dla obu języków
 $opcje->set('post_types', [Mieszkania::TYP]);
 $opcje->set('sync', ['taxonomies', 'post_meta', '_thumbnail_id', 'menu_order', '_wp_page_template']);
@@ -150,7 +150,7 @@ update_option(Ustawienia::OPCJA, array_merge($ustawienia, [
 $mo = new PLL_MO();
 $en = PLL()->model->get_language('en');
 $mo->import_from_db($en);
-foreach (['IV kwartał 2027' => 'Q4 2027', "Biuro sprzedaży Przystań Brda\nul. Przykładowa 4\n85-000 Bydgoszcz" => "Przystań Brda sales office\nul. Przykładowa 4\n85-000 Bydgoszcz, Poland"] as $pl => $tlumaczenie) {
+foreach ([$tresci['opis_strony']['pl'] => $tresci['opis_strony']['en'], 'IV kwartał 2027' => 'Q4 2027', "Biuro sprzedaży Przystań Brda\nul. Przykładowa 4\n85-000 Bydgoszcz" => "Przystań Brda sales office\nul. Przykładowa 4\n85-000 Bydgoszcz, Poland"] as $pl => $tlumaczenie) {
     $mo->add_entry($mo->make_entry($pl, $tlumaczenie));
 }
 $mo->export_to_db($en);
@@ -375,6 +375,9 @@ set_theme_mod('nav_menu_locations', ['glowne' => $lokalizacje['glowne']['pl'], '
 /* ------------------------------------------------------------------ porządki */
 
 update_option('permalink_structure', '/%postname%/');
+// Polylang trzyma stronę główną każdego języka w pamięci podręcznej listy języków.
+PLL()->model->clean_languages_cache();
 flush_rewrite_rules(true);
+WP_CLI::log('Pamiętaj: po seedzie uruchom osobno `wp rewrite flush` (reguły Polylang z nowymi ustawieniami).');
 
 WP_CLI::success(sprintf('Gotowe: %d stron, %d mieszkań, %d wpisów (na język).', count($strony), 36, count($tresci['wpisy'])));
