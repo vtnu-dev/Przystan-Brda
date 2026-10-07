@@ -2,6 +2,7 @@
 @import "@fontsource-variable/inter/wght.css";
 @import "@fontsource-variable/newsreader/wght.css";
 @import "@fontsource-variable/newsreader/wght-italic.css";
+@import "./ruch.css";
 
 @source "../../app/**/*.php";
 @source "../**/*.blade.php";

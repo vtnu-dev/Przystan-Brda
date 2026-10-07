@@ -46,6 +46,8 @@ zawiera /mieszkania/m-35/ 'property="og:image"' 'Open Graph'
 zawiera /en/ '<html lang="en-GB"' 'lang="en-GB" na wersji EN'
 zawiera /en/contact/ 'Sales office' 'tłumaczenia wtyczki i motywu na EN'
 zawiera /mieszkania/ '2 inwestycje' 'polskie formy liczby mnogiej'
+zawiera /kontakt/ 'poniedziałek-piątek' 'polskie znaki w polach wielowierszowych (preg_split z /u)'
+zawiera /okolica/ 'podwyższoną izolacją' 'polskie znaki na liście standardu'
 
 echo "REST API"
 zawiera '/wp-json/przystan/v1/mieszkania?status=wolne&pokoje[]=3' '"liczba":' 'wyszukiwarka zwraca JSON'
