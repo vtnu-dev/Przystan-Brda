@@ -20,7 +20,10 @@ final class FormularzBezJs
     public static function obsluz(): void
     {
         $raw = wp_unslash($_POST);
-        $wynik = Obsluga::przyjmij(is_array($raw) ? $raw : [], Obsluga::ipKlienta());
+        $raw = is_array($raw) ? $raw : [];
+        $jezyk = \Przystan\Rest\Jezyk::z($raw['lang'] ?? null);
+        \Przystan\Rest\Jezyk::przelacz($jezyk);
+        $wynik = Obsluga::przyjmij($raw, Obsluga::ipKlienta(), $jezyk);
 
         $token = bin2hex(random_bytes(8));
         set_transient('przystan_form_' . $token, [

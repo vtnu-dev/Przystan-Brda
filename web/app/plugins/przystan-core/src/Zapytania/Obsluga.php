@@ -3,7 +3,6 @@
 namespace Przystan\Zapytania;
 
 use Przystan\Mieszkania\TypTresci as Mieszkania;
-use Przystan\Polylang\Integracja;
 use Przystan\Ustawienia\Ustawienia;
 use Przystan\Webhook\Wysylka;
 
@@ -20,7 +19,7 @@ final class Obsluga
      * @param  array<string, mixed>  $raw
      * @return array{ok: bool, kod: int, komunikat: string, bledy: array<string, string>, dane: array<string, mixed>, id: int}
      */
-    public static function przyjmij(array $raw, string $ip): array
+    public static function przyjmij(array $raw, string $ip, string $jezyk = 'pl'): array
     {
         $wynik = static fn(bool $ok, int $kod, string $komunikat, array $bledy = [], array $dane = [], int $id = 0) => compact('ok', 'kod', 'komunikat', 'bledy', 'dane', 'id');
         $sukces = __('Dziękujemy! Odpowiemy w ciągu jednego dnia roboczego.', 'przystan');
@@ -44,7 +43,7 @@ final class Obsluga
             return $wynik(false, 429, __('Wysłano już kilka zapytań. Spróbuj ponownie za kilka minut albo zadzwoń.', 'przystan'), [], $sprawdzenie['dane']);
         }
 
-        $id = self::zapisz($sprawdzenie['dane']);
+        $id = self::zapisz($sprawdzenie['dane'], $jezyk);
         if ($id === 0) {
             return $wynik(false, 500, __('Nie udało się zapisać zapytania. Zadzwoń do nas, proszę.', 'przystan'), [], $sprawdzenie['dane']);
         }
@@ -55,7 +54,7 @@ final class Obsluga
     }
 
     /** @param array<string, mixed> $dane */
-    private static function zapisz(array $dane): int
+    private static function zapisz(array $dane, string $jezyk): int
     {
         $mieszkanie = $dane['mieszkanie'] > 0 && get_post_type($dane['mieszkanie']) === Mieszkania::TYP ? $dane['mieszkanie'] : 0;
         $tytul = $mieszkanie
@@ -72,7 +71,7 @@ final class Obsluga
                 'email' => $dane['email'],
                 'telefon' => $dane['telefon'],
                 'mieszkanie' => $mieszkanie,
-                'jezyk' => Integracja::jezyk(),
+                'jezyk' => $jezyk,
                 'zgoda_czas' => gmdate('c'),
                 Wysylka::META_STAN => Wysylka::STAN_OCZEKUJE,
                 Wysylka::META_PROBY => 0,

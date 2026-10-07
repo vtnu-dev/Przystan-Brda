@@ -25,6 +25,7 @@
       data-formularz data-rest="{{ rest_url('przystan/v1/zapytania') }}">
   <input type="hidden" name="action" value="{{ FormularzBezJs::AKCJA }}">
   <input type="hidden" name="mieszkanie" value="{{ (int) $mieszkanieId }}">
+  <input type="hidden" name="lang" value="{{ $jezyk }}">
   <input type="hidden" name="{{ Antyspam::POLE_CZAS }}" value="{{ Antyspam::znacznik(time(), Ustawienia::kluczAntyspamu()) }}">
 
   {{-- Pułapka na boty: ukryta dla ludzi i czytników ekranu. --}}

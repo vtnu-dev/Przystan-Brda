@@ -28,7 +28,9 @@ final class ZapytaniaController
 
     public static function utworz(\WP_REST_Request $zadanie): \WP_REST_Response
     {
-        $wynik = Obsluga::przyjmij($zadanie->get_params(), Obsluga::ipKlienta());
+        $jezyk = Jezyk::z($zadanie->get_param('lang'));
+        Jezyk::przelacz($jezyk);
+        $wynik = Obsluga::przyjmij($zadanie->get_params(), Obsluga::ipKlienta(), $jezyk);
 
         return new \WP_REST_Response([
             'ok' => $wynik['ok'],
