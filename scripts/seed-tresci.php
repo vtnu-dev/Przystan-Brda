@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Treści demo (PL i EN) dla scripts/seed.php. Firma i inwestycja są fikcyjne.
  */
 
-$akapity = static fn (string ...$p) => implode("\n\n", array_map(static fn ($a) => "<!-- wp:paragraph -->\n<p>{$a}</p>\n<!-- /wp:paragraph -->", $p));
+$akapity = static fn(string ...$p) => implode("\n\n", array_map(static fn($a) => "<!-- wp:paragraph -->\n<p>{$a}</p>\n<!-- /wp:paragraph -->", $p));
 
 return [
     'opis_strony' => [
@@ -52,11 +53,11 @@ return [
             'tresc' => [
                 'pl' => $akapity(
                     'Okole to jedna z najstarszych części Bydgoszczy. Rzeka płynie tu wolno, a nowy bulwar łączy osiedle z centrum. Rano biegają tu ludzie z psami, wieczorem siedzi się na schodach nad wodą.',
-                    'Wszystko, czego potrzebujesz na co dzień, masz w zasięgu spaceru: sklepy, przychodnię, szkołę i przystanek tramwajowy. Do pracy w centrum dojedziesz rowerem ścieżką wzdłuż rzeki.'
+                    'Wszystko, czego potrzebujesz na co dzień, masz w zasięgu spaceru: sklepy, przychodnię, szkołę i przystanek tramwajowy. Do pracy w centrum dojedziesz rowerem ścieżką wzdłuż rzeki.',
                 ),
                 'en' => $akapity(
                     'Okole is one of the oldest parts of Bydgoszcz. The river flows slowly here and a new boulevard links the area with the city centre. In the morning people walk their dogs here, in the evening they sit on the steps by the water.',
-                    'Everything you need every day is within walking distance: shops, a clinic, a school and a tram stop. You can cycle to work in the centre along the riverside path.'
+                    'Everything you need every day is within walking distance: shops, a clinic, a school and a tram stop. You can cycle to work in the centre along the riverside path.',
                 ),
             ],
         ],
@@ -82,13 +83,13 @@ return [
                     '<strong>To jest strona demonstracyjna.</strong> Przystań Brda to fikcyjna inwestycja, a formularz służy do pokazania działania strony. Nie wpisuj w nim prawdziwych danych.',
                     'Dane z formularza (imię, e-mail, telefon, treść wiadomości) zapisujemy w panelu strony, żeby odpowiedzieć na zapytanie. Mogą też trafić do systemu obsługi klienta przez zabezpieczone połączenie (webhook). Przechowujemy je do 12 miesięcy od ostatniego kontaktu.',
                     'Strona nie używa ciasteczek reklamowych ani narzędzi śledzących. Nie wczytuje czcionek ani skryptów z zewnętrznych serwerów.',
-                    'Masz prawo wglądu do swoich danych, ich poprawienia i usunięcia. W sprawach danych napisz na adres podany na stronie Kontakt.'
+                    'Masz prawo wglądu do swoich danych, ich poprawienia i usunięcia. W sprawach danych napisz na adres podany na stronie Kontakt.',
                 ),
                 'en' => $akapity(
                     '<strong>This is a demo website.</strong> Przystań Brda is a fictional development and the form is here to show how the site works. Please do not enter real data.',
                     'Form data (name, e-mail, phone, message) is stored in the site admin so we can reply. It may also be sent to a customer service system over a secured connection (webhook). We keep it for up to 12 months after the last contact.',
                     'The site uses no advertising cookies or tracking tools. It does not load fonts or scripts from external servers.',
-                    'You have the right to access, correct and delete your data. For data questions, write to the address on the Contact page.'
+                    'You have the right to access, correct and delete your data. For data questions, write to the address on the Contact page.',
                 ),
             ],
         ],

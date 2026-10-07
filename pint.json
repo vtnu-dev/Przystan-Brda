@@ -3,7 +3,18 @@
   "exclude": [
     "web/wp",
     "web/app/mu-plugins/bedrock-disallow-indexing",
-    "web/app/plugins",
-    "web/app/themes/twentytwentyfive"
+    "web/app/plugins/advanced-custom-fields",
+    "web/app/plugins/polylang",
+    "web/app/plugins/sqlite-database-integration",
+    "web/app/themes/przystan/vendor",
+    "web/app/themes/przystan/node_modules",
+    "web/app/themes/przystan/resources",
+    "web/app/plugins/przystan-core/languages",
+    "web/app/cache",
+    "web/app/languages",
+    "web/app/database",
+    "web/app/uploads",
+    "node_modules",
+    "_robocze"
   ]
 }

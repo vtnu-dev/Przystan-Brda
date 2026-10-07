@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Lokalny odbiornik do testu webhooka: sprawdza podpis i zapisuje żądanie do pliku.
  * Uruchomienie: PRZYSTAN_KLUCZ=<klucz z ustawień> php -S localhost:8899 scripts/odbiornik-webhooka.php

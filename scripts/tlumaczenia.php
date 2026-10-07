@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Buduje pliki tłumaczeń domeny „przystan” z przystan.pot:
  *  - en_GB.po: pełne tłumaczenie angielskie,
@@ -98,8 +99,8 @@ $plMnoga = [
 // Wpisy z .pot: [kontekst, msgid, msgid_plural]
 preg_match_all('/^(?:msgctxt "(.*)"\n)?msgid "(.*)"\n(?:msgid_plural "(.*)"\n)?msgstr/m', $pot, $wpisy, PREG_SET_ORDER);
 
-$esc = static fn (string $s) => addcslashes($s, "\"\\\n");
-$naglowek = static fn (string $jezyk, string $formy) => "msgid \"\"\nmsgstr \"\"\n\"Project-Id-Version: Przystań Brda\\n\"\n\"Language: {$jezyk}\\n\"\n\"MIME-Version: 1.0\\n\"\n\"Content-Type: text/plain; charset=UTF-8\\n\"\n\"Content-Transfer-Encoding: 8bit\\n\"\n\"Plural-Forms: {$formy};\\n\"\n\"X-Domain: przystan\\n\"\n\n";
+$esc = static fn(string $s) => addcslashes($s, "\"\\\n");
+$naglowek = static fn(string $jezyk, string $formy) => "msgid \"\"\nmsgstr \"\"\n\"Project-Id-Version: Przystań Brda\\n\"\n\"Language: {$jezyk}\\n\"\n\"MIME-Version: 1.0\\n\"\n\"Content-Type: text/plain; charset=UTF-8\\n\"\n\"Content-Transfer-Encoding: 8bit\\n\"\n\"Plural-Forms: {$formy};\\n\"\n\"X-Domain: przystan\\n\"\n\n";
 
 $poEn = $naglowek('en_GB', 'nplurals=2; plural=(n != 1)');
 $poPl = $naglowek('pl_PL', 'nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)');

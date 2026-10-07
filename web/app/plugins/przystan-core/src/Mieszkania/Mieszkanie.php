@@ -19,7 +19,7 @@ final class Mieszkanie
     /** @return array<string, mixed> */
     public static function zPosta(\WP_Post $post): array
     {
-        $meta = static fn (string $klucz) => get_post_meta($post->ID, $klucz, true);
+        $meta = static fn(string $klucz) => get_post_meta($post->ID, $klucz, true);
 
         $status = (string) $meta('status');
         if (! in_array($status, Filtry::STATUSY, true)) {
@@ -115,7 +115,7 @@ final class Mieszkanie
             sprintf(_n('%d pokój', '%d pokoje', $m['pokoje'], 'przystan'), $m['pokoje']),
             self::formatMetrazu($m['metraz']),
             self::nazwaPietra($m['pietro']),
-            $m['status_etykieta']
+            $m['status_etykieta'],
         );
     }
 }

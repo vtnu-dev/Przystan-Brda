@@ -54,7 +54,7 @@ class App extends Composer
         }
         $lista = pll_the_languages(['raw' => 1, 'hide_if_no_translation' => 0, 'hide_if_empty' => 0]);
 
-        return array_values(array_map(fn ($j) => [
+        return array_values(array_map(fn($j) => [
             'kod' => strtoupper((string) $j['slug']),
             'nazwa' => (string) $j['name'],
             'url' => (string) $j['url'],

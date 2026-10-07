@@ -9,9 +9,8 @@ namespace App;
 
 use Przystan\Mieszkania\Mieszkanie;
 use Przystan\Ustawienia\Ustawienia;
-use Przystan\Polylang\Integracja;
 
-add_filter('document_title_separator', fn () => '|');
+add_filter('document_title_separator', fn() => '|');
 
 /**
  * Tytuł karty mieszkania z najważniejszymi parametrami (lepszy wynik w Google niż samo „M-35”).
@@ -208,7 +207,7 @@ add_action('wp_head', function () {
         $graf[] = okruszkiLd([[get_the_title($blog), (string) get_permalink($blog)], [get_the_title(), (string) get_permalink()]]);
     }
 
-    $dane = ['@context' => 'https://schema.org', '@graph' => array_values(array_map(fn ($w) => array_filter($w, fn ($v) => $v !== null && $v !== ''), $graf))];
+    $dane = ['@context' => 'https://schema.org', '@graph' => array_values(array_map(fn($w) => array_filter($w, fn($v) => $v !== null && $v !== ''), $graf))];
     echo '<script type="application/ld+json">' . wp_json_encode($dane, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "</script>\n";
 }, 3);
 
@@ -219,11 +218,11 @@ function okruszkiLd(array $sciezka): array
 
     return [
         '@type' => 'BreadcrumbList',
-        'itemListElement' => array_map(fn ($el, $i) => ['@type' => 'ListItem', 'position' => $i + 1, 'name' => $el[0], 'item' => $el[1]], $sciezka, array_keys($sciezka)),
+        'itemListElement' => array_map(fn($el, $i) => ['@type' => 'ListItem', 'position' => $i + 1, 'name' => $el[0], 'item' => $el[1]], $sciezka, array_keys($sciezka)),
     ];
 }
 
 /**
  * Mapa strony: bez użytkowników (w mu-pluginie) i bez kategorii (jedna kategoria = zbędny duplikat listy wpisów).
  */
-add_filter('wp_sitemaps_taxonomies', fn () => []);
+add_filter('wp_sitemaps_taxonomies', fn() => []);

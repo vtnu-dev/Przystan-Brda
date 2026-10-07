@@ -22,7 +22,7 @@ final class Obsluga
      */
     public static function przyjmij(array $raw, string $ip): array
     {
-        $wynik = static fn (bool $ok, int $kod, string $komunikat, array $bledy = [], array $dane = [], int $id = 0) => compact('ok', 'kod', 'komunikat', 'bledy', 'dane', 'id');
+        $wynik = static fn(bool $ok, int $kod, string $komunikat, array $bledy = [], array $dane = [], int $id = 0) => compact('ok', 'kod', 'komunikat', 'bledy', 'dane', 'id');
         $sukces = __('Dziękujemy! Odpowiemy w ciągu jednego dnia roboczego.', 'przystan');
 
         // Bot wypełnił ukryte pole: udajemy sukces, nic nie zapisujemy.

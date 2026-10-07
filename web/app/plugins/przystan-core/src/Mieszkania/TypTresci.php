@@ -56,7 +56,7 @@ final class TypTresci
         add_rewrite_rule(
             '^en/' . self::BAZA_URL['en'] . '/([^/]+)/?$',
             'index.php?post_type=' . self::TYP . '&name=$matches[1]&lang=en',
-            'top'
+            'top',
         );
     }
 

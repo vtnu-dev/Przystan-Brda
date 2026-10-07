@@ -43,7 +43,7 @@ final class Wysylka
     public static function tresc(int $zapytanieId): array
     {
         $post = get_post($zapytanieId);
-        $meta = static fn (string $k) => (string) get_post_meta($zapytanieId, $k, true);
+        $meta = static fn(string $k) => (string) get_post_meta($zapytanieId, $k, true);
         $mieszkanieId = (int) $meta('mieszkanie');
         $mieszkanie = $mieszkanieId ? Mieszkanie::zId($mieszkanieId) : null;
 

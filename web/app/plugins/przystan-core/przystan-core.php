@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:       Przystań Brda - rdzeń
  * Description:       Dane i logika inwestycji: mieszkania, wyszukiwarka (REST), zapytania z webhookiem, ustawienia.

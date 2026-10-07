@@ -15,7 +15,7 @@ class Glowna extends Composer
 
     public function with(): array
     {
-        $pole = fn (string $nazwa) => function_exists('get_field') ? get_field($nazwa) : null;
+        $pole = fn(string $nazwa) => function_exists('get_field') ? get_field($nazwa) : null;
 
         $liczby = [];
         for ($i = 1; $i <= 4; $i++) {
@@ -48,7 +48,7 @@ class Glowna extends Composer
                 'zdjecie' => (int) $pole('okolica_zdjecie'),
             ],
             'mieszkania' => $mieszkania,
-            'wolnych' => count(array_filter($mieszkania, fn ($m) => $m['status'] === 'wolne')),
+            'wolnych' => count(array_filter($mieszkania, fn($m) => $m['status'] === 'wolne')),
             'wpisy' => get_posts([
                 'post_type' => 'post',
                 'posts_per_page' => 3,

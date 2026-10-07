@@ -81,8 +81,8 @@ add_filter('image_editor_output_format', function (array $formaty) {
         'image/png' => 'image/webp',
     ];
 });
-add_filter('wp_editor_set_quality', fn () => 78);
-add_filter('big_image_size_threshold', fn () => 2000);
+add_filter('wp_editor_set_quality', fn() => 78);
+add_filter('big_image_size_threshold', fn() => 2000);
 
 /**
  * Bez zbędnych skryptów i stylów na froncie: emoji, oEmbed, style bloków poza wpisami.
@@ -113,5 +113,5 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 add_filter('wp_resource_hints', function (array $adresy, string $typ) {
-    return $typ === 'dns-prefetch' ? array_filter($adresy, fn ($a) => ! str_contains((string) (is_array($a) ? ($a['href'] ?? '') : $a), 's.w.org')) : $adresy;
+    return $typ === 'dns-prefetch' ? array_filter($adresy, fn($a) => ! str_contains((string) (is_array($a) ? ($a['href'] ?? '') : $a), 's.w.org')) : $adresy;
 }, 10, 2);

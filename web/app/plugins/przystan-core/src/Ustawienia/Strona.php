@@ -23,7 +23,7 @@ final class Strona
             __('Przystań Brda', 'przystan'),
             'manage_options',
             self::SLUG,
-            [self::class, 'widok']
+            [self::class, 'widok'],
         );
     }
 
@@ -69,7 +69,7 @@ final class Strona
             '<p><code>%1$s</code> <a class="button" href="%2$s">%3$s</a></p>',
             esc_html($klucz !== '' ? substr($klucz, 0, 8) . '…' . substr($klucz, -4) : __('brak klucza', 'przystan')),
             esc_url(wp_nonce_url(admin_url('admin-post.php?action=przystan_nowy_klucz'), 'przystan_nowy_klucz')),
-            esc_html__('Wygeneruj nowy klucz', 'przystan')
+            esc_html__('Wygeneruj nowy klucz', 'przystan'),
         );
     }
 

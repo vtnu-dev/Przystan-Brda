@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Seed treści „Przystań Brda”: języki, strony PL/EN, 36 mieszkań w każdym języku, dziennik budowy,
  * menu, ustawienia i obrazy. Idempotentny: każdy obiekt ma meta _przystan_seed i przy ponownym

@@ -18,7 +18,7 @@ final class Pola
             return;
         }
 
-        $pole = static fn (string $nazwa, string $etykieta, string $typ, array $dodatkowe = []) => array_merge([
+        $pole = static fn(string $nazwa, string $etykieta, string $typ, array $dodatkowe = []) => array_merge([
             'key' => 'field_przystan_m_' . $nazwa,
             'name' => $nazwa,
             'label' => $etykieta,

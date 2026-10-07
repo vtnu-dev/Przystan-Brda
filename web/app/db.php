@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Lokalnie (DB_ENGINE=sqlite w .env) WordPress działa na SQLite przez oficjalną wtyczkę
  * sqlite-database-integration (zależność tylko dev). Na produkcji ten plik nic nie robi

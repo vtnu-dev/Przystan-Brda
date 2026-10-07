@@ -21,7 +21,7 @@ class Mieszkanie extends Composer
 
         $naPietrze = array_values(array_filter(
             $wszystkie,
-            fn ($inne) => $inne['pietro'] === $m['pietro'] && $inne['id'] !== $m['id'] && $inne['status'] !== 'sprzedane'
+            fn($inne) => $inne['pietro'] === $m['pietro'] && $inne['id'] !== $m['id'] && $inne['status'] !== 'sprzedane',
         ));
 
         return [

@@ -6,8 +6,8 @@
 
 namespace App;
 
-add_filter('excerpt_more', fn () => '…');
-add_filter('excerpt_length', fn () => 24);
+add_filter('excerpt_more', fn() => '…');
+add_filter('excerpt_length', fn() => 24);
 
 /**
  * Menu: klasa aktywnej pozycji jako aria-current (czytniki ekranu ogłaszają bieżącą stronę).

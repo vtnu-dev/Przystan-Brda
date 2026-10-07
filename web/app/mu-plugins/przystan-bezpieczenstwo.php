@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Przystań Brda - bezpieczeństwo
  * Description: Hardening: bez XML-RPC, bez listy użytkowników w REST, bez wyliczania autorów, nagłówki bezpieczeństwa.
@@ -44,10 +45,10 @@ add_action('template_redirect', static function (): void {
         exit;
     }
 });
-add_filter('wp_sitemaps_add_provider', static fn ($dostawca, string $nazwa) => $nazwa === 'users' ? false : $dostawca, 10, 2);
+add_filter('wp_sitemaps_add_provider', static fn($dostawca, string $nazwa) => $nazwa === 'users' ? false : $dostawca, 10, 2);
 
 // Ogólny komunikat przy błędnym logowaniu (bez podpowiedzi, czy istnieje login).
-add_filter('login_errors', static fn () => __('Nieprawidłowe dane logowania.', 'przystan'));
+add_filter('login_errors', static fn() => __('Nieprawidłowe dane logowania.', 'przystan'));
 
 // Nagłówki bezpieczeństwa na froncie. CSP tylko dla niezalogowanych na produkcji
 // (pasek admina i podgląd Vite w dev używają skryptów spoza tej listy).

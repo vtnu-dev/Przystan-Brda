@@ -93,7 +93,7 @@ final class TypTresci
         if (current_user_can('edit_post', $post->ID)) {
             $url = wp_nonce_url(
                 admin_url('admin-post.php?action=' . self::AKCJA_PONOW . '&id=' . $post->ID),
-                self::AKCJA_PONOW . '_' . $post->ID
+                self::AKCJA_PONOW . '_' . $post->ID,
             );
             $akcje['ponow'] = sprintf('<a href="%s">%s</a>', esc_url($url), esc_html__('Wyślij ponownie', 'przystan'));
         }
@@ -130,7 +130,7 @@ final class TypTresci
 
     public static function widokSkrzynki(\WP_Post $post): void
     {
-        $meta = static fn (string $k) => (string) get_post_meta($post->ID, $k, true);
+        $meta = static fn(string $k) => (string) get_post_meta($post->ID, $k, true);
         $mieszkanie = (int) $meta('mieszkanie');
         $wiersze = [
             __('Imię', 'przystan') => esc_html($meta('imie')),
