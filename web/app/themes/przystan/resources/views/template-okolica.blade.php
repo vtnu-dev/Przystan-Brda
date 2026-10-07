@@ -11,7 +11,7 @@
       $punkty[] = ['nazwa' => $pole("punkt_{$i}_nazwa"), 'minuty' => (int) $pole("punkt_{$i}_minuty"), 'jak' => $pole("punkt_{$i}_jak")];
     }
   }
-  $standard = array_filter(array_map('trim', preg_split('/\R/', (string) $pole('standard_lista'))));
+  $standard = array_filter(array_map('trim', preg_split('/\R/u', (string) $pole('standard_lista'))));
   $zdjecia = array_filter([(int) $pole('zdjecie_1'), (int) $pole('zdjecie_2'), (int) $pole('zdjecie_3')]);
   $jak = ['pieszo' => __('pieszo', 'przystan'), 'rowerem' => __('rowerem', 'przystan'), 'tramwajem' => __('tramwajem', 'przystan')];
 @endphp

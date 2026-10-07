@@ -13,7 +13,7 @@
     </button>
 
     <nav id="menu-glowne" aria-label="{{ __('Menu główne', 'przystan') }}"
-         class="absolute inset-x-0 top-full hidden border-t border-tlo/15 bg-granat pb-6 lg:static lg:block lg:border-0 lg:pb-0" data-menu>
+         class="absolute inset-x-0 top-full hidden border-t border-tlo/15 bg-granat pb-6 lg:static lg:block lg:border-0 lg:bg-transparent lg:pb-0" data-menu>
       <div class="kontener flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-2 lg:px-0">
         @if (has_nav_menu('glowne'))
           {!! wp_nav_menu([

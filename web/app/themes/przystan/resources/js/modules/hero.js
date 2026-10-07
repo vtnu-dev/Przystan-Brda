@@ -30,9 +30,9 @@ export function hero() {
       if (e.data === 'gotowe') canvas.classList.replace('opacity-0', 'opacity-100');
     };
 
+    // offsetWidth/Height: rozmiar bez transformacji (paralaksa przesuwa i lekko skaluje całą warstwę tła)
     const rozmiar = () => {
-      const r = canvas.getBoundingClientRect();
-      worker.postMessage({ typ: 'rozmiar', w: r.width, h: r.height, dpr: Math.min(window.devicePixelRatio || 1, 2) });
+      worker.postMessage({ typ: 'rozmiar', w: canvas.offsetWidth, h: canvas.offsetHeight, dpr: Math.min(window.devicePixelRatio || 1, 2) });
     };
     worker.postMessage({
       typ: 'start',
@@ -55,7 +55,8 @@ export function hero() {
       if (wstrzymane || e.timeStamp - ostatni < 120) return;
       ostatni = e.timeStamp;
       const r = canvas.getBoundingClientRect();
-      worker.postMessage({ typ: 'krag', x: e.clientX - r.left, y: e.clientY - r.top, sila: e.type === 'pointerdown' ? 1.6 : 0.7 });
+      const skala = canvas.offsetWidth / r.width;
+      worker.postMessage({ typ: 'krag', x: (e.clientX - r.left) * skala, y: (e.clientY - r.top) * skala, sila: e.type === 'pointerdown' ? 1.6 : 0.7 });
     };
     sekcja.addEventListener('pointermove', krag, { passive: true });
     sekcja.addEventListener('pointerdown', krag, { passive: true });

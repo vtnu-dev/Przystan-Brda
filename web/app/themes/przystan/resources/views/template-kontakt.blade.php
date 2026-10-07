@@ -5,7 +5,7 @@
 
 @php
   $pole = fn (string $n) => function_exists('get_field') ? get_field($n) : null;
-  $godziny = array_filter(array_map('trim', preg_split('/\R/', (string) $pole('godziny'))));
+  $godziny = array_filter(array_map('trim', preg_split('/\R/u', (string) $pole('godziny'))));
 @endphp
 
 @section('content')

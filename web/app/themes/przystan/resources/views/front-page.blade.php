@@ -3,6 +3,7 @@
 @section('content')
   {{-- Hero: zdjęcie budynku nad rzeką o zmierzchu --}}
   <section class="relative isolate overflow-hidden bg-granat text-tlo" aria-labelledby="hero-tytul" data-hero>
+    <div class="absolute inset-0 -z-10 origin-top will-change-transform" data-hero-tlo>
     @if ($hero['zdjecie'])
       {!! wp_get_attachment_image($hero['zdjecie'], 'hero', false, [
         'class' => 'absolute inset-0 -z-10 h-full w-full object-cover object-[60%_center]',
@@ -16,6 +17,7 @@
     <canvas class="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-0 transition-opacity duration-700" data-odbicie data-woda="0.69" data-pozycja="0.6" aria-hidden="true"></canvas>
     {{-- A: rysunek architekta, który zamienia się w zdjęcie (sam CSS, patrz .hero-szkic w app.css). --}}
     @include('partials.hero-szkic')
+    </div>
     <div class="absolute inset-0 -z-10 bg-gradient-to-r from-granat/90 via-granat/60 to-granat/0" aria-hidden="true"></div>
     <div class="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-granat/70 to-transparent" aria-hidden="true"></div>
 
@@ -24,7 +26,7 @@
         <p class="nadtytul !text-morze-jasne">{{ $hero['nadtytul'] }}</p>
       @endif
       <h1 id="hero-tytul" class="max-w-3xl text-tlo" style="font-size: var(--text-hero)">
-        @foreach (preg_split('/\R/', $hero['naglowek']) as $i => $linia)
+        @foreach (preg_split('/\R/u', $hero['naglowek']) as $i => $linia)
           @if ($i > 0)<br>@endif
           @if ($i === 1)<em class="font-normal text-piasek">{{ $linia }}</em>@else{{ $linia }}@endif
         @endforeach
@@ -109,7 +111,7 @@
         <h2 id="atuty-tytul" class="h2 max-w-2xl">{{ __('Spokojne mieszkania z widokiem, którego nikt nie zabuduje', 'przystan') }}</h2>
         <div class="mt-12 grid gap-10 md:grid-cols-3">
           @foreach ($atuty as $atut)
-            <article>
+            <article class="relative rounded-[1.25rem] p-3 -m-3" data-karta data-karta-bez-cienia style="--opoznienie: {{ $loop->index * 90 }}ms">
               @if ($atut['zdjecie'])
                 {!! wp_get_attachment_image($atut['zdjecie'], 'karta', false, [
                   'class' => 'aspect-[4/3] w-full object-cover ' . ($loop->first ? 'rounded-[var(--radius-fala)]' : 'rounded-lg'),
@@ -130,11 +132,14 @@
   <section class="bg-piasek py-16 md:py-24" aria-labelledby="okolica-tytul">
     <div class="kontener grid items-center gap-10 md:grid-cols-2 md:gap-16">
       @if ($okolica['zdjecie'])
+        <div class="overflow-hidden rounded-[var(--radius-fala)]">
         {!! wp_get_attachment_image($okolica['zdjecie'], 'karta', false, [
-          'class' => 'aspect-[4/3] w-full rounded-[var(--radius-fala)] object-cover',
+          'data-paralaksa' => '0.06',
+          'class' => 'aspect-[4/3] w-full scale-110 object-cover',
           'sizes' => '(min-width: 768px) 45vw, 100vw',
           'loading' => 'lazy',
         ]) !!}
+        </div>
       @endif
       <div>
         <p class="nadtytul">{{ __('Okolica', 'przystan') }}</p>

@@ -1,9 +1,9 @@
 {{-- Karta inwestycji na liście i na stronie głównej. --}}
 @php $poziom = $poziom ?? 'h3'; @endphp
-<article class="group relative flex flex-col overflow-hidden rounded-xl bg-white">
+<article class="group relative flex flex-col overflow-hidden rounded-xl bg-white" data-karta>
   @if ($i['zdjecie'])
     {!! wp_get_attachment_image($i['zdjecie'], 'karta', false, [
-      'class' => 'aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]',
+      'class' => 'aspect-[16/10] w-full object-cover',
       'sizes' => '(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw',
       'loading' => 'lazy',
       'alt' => '',
