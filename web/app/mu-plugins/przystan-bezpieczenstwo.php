@@ -50,15 +50,13 @@ add_filter('wp_sitemaps_add_provider', static fn($dostawca, string $nazwa) => $n
 // Ogólny komunikat przy błędnym logowaniu (bez podpowiedzi, czy istnieje login).
 add_filter('login_errors', static fn() => __('Nieprawidłowe dane logowania.', 'przystan'));
 
-// Nagłówki bezpieczeństwa na froncie. CSP tylko dla niezalogowanych na produkcji
-// (pasek admina i podgląd Vite w dev używają skryptów spoza tej listy).
+// Nagłówki bezpieczeństwa na froncie. X-Frame-Options, X-Content-Type-Options i Referrer-Policy
+// ustawia już nginx (szablon vhosta CloudPanel), więc tu tylko to, czego serwer nie daje.
+// CSP tylko dla niezalogowanych na produkcji (pasek admina i podgląd Vite w dev używają skryptów spoza tej listy).
 add_action('send_headers', static function (): void {
     if (is_admin()) {
         return;
     }
-    header('X-Content-Type-Options: nosniff');
-    header('X-Frame-Options: SAMEORIGIN');
-    header('Referrer-Policy: strict-origin-when-cross-origin');
     header('Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()');
 
     if (wp_get_environment_type() === 'production' && ! is_user_logged_in()) {
