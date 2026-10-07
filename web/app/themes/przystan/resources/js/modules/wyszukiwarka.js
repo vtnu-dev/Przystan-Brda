@@ -17,10 +17,11 @@ export function wyszukiwarka() {
   const etykietaZobacz = tabela?.dataset.zobacz ?? 'Zobacz';
   const szablonLicznika = licznik?.textContent.trim().replace(/\d+/, '{n}') ?? '{n}';
 
-  // Na telefonie filtry są zwinięte, żeby elewacja była widoczna od razu (bez JS zostają rozwinięte).
+  // Filtry przychodzą z serwera zwinięte (telefon: elewacja widoczna od razu, bez przesunięcia układu);
+  // na komputerze rozwijamy je, bo kolumna obok ma na nie miejsce.
   const filtry = form.querySelector('[data-filtry]');
-  if (filtry && window.matchMedia('(max-width: 1023px)').matches && !new URLSearchParams(window.location.search).toString()) {
-    filtry.open = false;
+  if (filtry && window.matchMedia('(min-width: 1024px)').matches) {
+    filtry.open = true;
   }
 
   let kontroler;

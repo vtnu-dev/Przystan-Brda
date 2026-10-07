@@ -21,10 +21,11 @@
     {{-- Filtry: zwykły formularz GET (działa bez JS); JS przejmuje go i pyta REST API bez przeładowania strony. --}}
     <form method="get" action="{{ get_permalink() }}" class="self-start rounded-xl bg-white p-5 lg:sticky lg:top-28 lg:p-6"
           data-wyszukiwarka data-rest="{{ $restUrl }}" data-jezyk="{{ $jezyk }}" aria-labelledby="filtry-tytul">
-      <details open data-filtry class="group">
-      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 lg:pointer-events-none [&::-webkit-details-marker]:hidden">
+      {{-- Na telefonie zwinięte od początku (bez przesunięcia układu); na komputerze rozwija je JS, bez JS da się je rozwinąć kliknięciem. --}}
+      <details @if ($filtryAktywne) open @endif data-filtry class="group">
+      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
         <h2 id="filtry-tytul" class="font-sans text-lg font-semibold">{{ __('Filtry', 'przystan') }}</h2>
-        <svg class="size-5 transition-transform group-open:rotate-180 lg:hidden" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="size-5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </summary>
 
       <fieldset class="pole mt-5">
