@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  php:
+    name: PHP (testy, styl)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+
+      - name: composer validate
+        run: composer validate --no-check-publish
+
+      - name: composer install
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Składnia PHP (wtyczka, motyw, mu-plugin, skrypty)
+        run: |
+          find web/app/plugins/przystan-core web/app/themes/przystan/app web/app/mu-plugins scripts \
+            -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l > /dev/null
+
+      - name: Pint (styl kodu)
+        run: vendor/bin/pint --test
+
+      - name: Pest (testy jednostkowe)
+        run: vendor/bin/pest
+
+  motyw:
+    name: Motyw (build Vite)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web/app/themes/przystan
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/app/themes/przystan/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
