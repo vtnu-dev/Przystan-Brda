@@ -19,9 +19,13 @@
 
   <div class="kontener grid gap-10 pb-20 lg:grid-cols-[19rem_1fr] lg:gap-14">
     {{-- Filtry: zwykły formularz GET (działa bez JS); JS przejmuje go i pyta REST API bez przeładowania strony. --}}
-    <form method="get" action="{{ get_permalink() }}" class="self-start rounded-xl bg-white p-6 lg:sticky lg:top-28"
+    <form method="get" action="{{ get_permalink() }}" class="self-start rounded-xl bg-white p-5 lg:sticky lg:top-28 lg:p-6"
           data-wyszukiwarka data-rest="{{ $restUrl }}" data-jezyk="{{ $jezyk }}" aria-labelledby="filtry-tytul">
-      <h2 id="filtry-tytul" class="font-sans text-lg font-semibold">{{ __('Filtry', 'przystan') }}</h2>
+      <details open data-filtry class="group">
+      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 lg:pointer-events-none [&::-webkit-details-marker]:hidden">
+        <h2 id="filtry-tytul" class="font-sans text-lg font-semibold">{{ __('Filtry', 'przystan') }}</h2>
+        <svg class="size-5 transition-transform group-open:rotate-180 lg:hidden" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </summary>
 
       <fieldset class="pole mt-5">
         <legend>{{ __('Pokoje', 'przystan') }}</legend>
@@ -84,6 +88,7 @@
         <button type="submit" class="przycisk" data-pokaz>{{ __('Pokaż mieszkania', 'przystan') }}</button>
         <a href="{{ get_permalink() }}" class="text-sm font-semibold" data-wyczysc>{{ __('Wyczyść filtry', 'przystan') }}</a>
       </div>
+      </details>
     </form>
 
     <div>

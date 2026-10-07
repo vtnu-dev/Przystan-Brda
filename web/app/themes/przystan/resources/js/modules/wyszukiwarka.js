@@ -17,6 +17,12 @@ export function wyszukiwarka() {
   const etykietaZobacz = tabela?.dataset.zobacz ?? 'Zobacz';
   const szablonLicznika = licznik?.textContent.trim().replace(/\d+/, '{n}') ?? '{n}';
 
+  // Na telefonie filtry są zwinięte, żeby elewacja była widoczna od razu (bez JS zostają rozwinięte).
+  const filtry = form.querySelector('[data-filtry]');
+  if (filtry && window.matchMedia('(max-width: 1023px)').matches && !new URLSearchParams(window.location.search).toString()) {
+    filtry.open = false;
+  }
+
   let kontroler;
   let opoznienie;
 

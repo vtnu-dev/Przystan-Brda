@@ -66,7 +66,7 @@
       <path d="M-40 {{ $dol + 64 }} C 200 {{ $dol + 54 }}, 420 {{ $dol + 76 }}, 640 {{ $dol + 64 }} S 1040 {{ $dol + 52 }}, 1260 {{ $dol + 64 }}" opacity=".6" />
       <path d="M-40 {{ $dol + 88 }} C 240 {{ $dol + 80 }}, 460 {{ $dol + 98 }}, 700 {{ $dol + 88 }} S 1080 {{ $dol + 78 }}, 1260 {{ $dol + 88 }}" opacity=".35" />
     </g>
-    <text x="{{ E::X1 }}" y="{{ $dol + 72 }}" text-anchor="end" fill="#1f6f78" font-size="22" font-style="italic" font-family="Newsreader Variable, serif" aria-hidden="true">{{ __('Brda', 'przystan') }}</text>
+    <text x="{{ E::X1 }}" y="{{ $dol + 72 }}" text-anchor="end" fill="#1b6670" font-size="22" font-style="italic" font-family="Newsreader Variable, serif" aria-hidden="true">{{ __('Brda', 'przystan') }}</text>
   </svg>
 
   <div class="elewacja-dymek" role="status" hidden data-dymek></div>
