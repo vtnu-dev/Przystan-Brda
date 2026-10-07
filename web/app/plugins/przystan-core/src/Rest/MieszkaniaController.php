@@ -43,7 +43,8 @@ final class MieszkaniaController
     public static function lista(\WP_REST_Request $zadanie): \WP_REST_Response
     {
         $filtry = Filtry::z($zadanie->get_params());
-        $jezyk = (string) $zadanie->get_param('lang');
+        $jezyk = Jezyk::z($zadanie->get_param('lang'));
+        Jezyk::przelacz($jezyk);
 
         $mieszkania = Wyszukiwarka::szukaj($filtry, $jezyk);
 

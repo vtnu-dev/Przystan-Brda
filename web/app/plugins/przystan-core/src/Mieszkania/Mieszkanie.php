@@ -92,7 +92,8 @@ final class Mieszkanie
      */
     public static function liczba(float|int $liczba, int $miejsca = 0): string
     {
-        $pl = \Przystan\Polylang\Integracja::jezyk() === 'pl';
+        // get_locale() uwzględnia język strony (Polylang) i switch_to_locale() w REST.
+        $pl = str_starts_with(get_locale(), 'pl');
 
         return number_format((float) $liczba, $miejsca, $pl ? ',' : '.', $pl ? "\u{00A0}" : ',');
     }
