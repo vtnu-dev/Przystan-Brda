@@ -240,7 +240,7 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.4s;
-    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(111 179 179 / 0.18), transparent 60%);
+    background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgb(111 179 179 / 0.07), transparent 65%);
   }
   [data-swiatlo]::before {
     z-index: -1;
@@ -249,6 +249,14 @@
   [data-karta]:hover::before,
   [data-swiatlo]:hover::before {
     opacity: 1;
+  }
+
+  /* Karty bez tła (np. atuty na stronie głównej): tylko uniesienie i przybliżenie zdjęcia, bez cienia i poświaty. */
+  [data-karta-bez-cienia]:hover {
+    box-shadow: none;
+  }
+  [data-karta-bez-cienia]::before {
+    content: none;
   }
 
   /* Lenis: płynne przewijanie kółkiem (klasy dodaje biblioteka). */
