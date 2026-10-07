@@ -42,6 +42,14 @@ it('zamienia filtry na warunki meta_query', function () {
     ]);
 });
 
+it('filtruje po inwestycji i po liście ID', function () {
+    $args = Wyszukiwarka::argumenty(['inwestycja' => 12, 'ids' => [5, 7], 'status' => 'wszystkie'], 'pl');
+
+    expect($args['post__in'])->toBe([5, 7])
+        ->and(array_values(array_filter($args['meta_query'], 'is_int', ARRAY_FILTER_USE_KEY)))
+        ->toBe([['key' => 'inwestycja', 'value' => 12, 'compare' => '=', 'type' => 'NUMERIC']]);
+});
+
 it('daje inny klucz pamięci podręcznej dla innych filtrów i języków', function () {
     $a = Wyszukiwarka::kluczCache(['status' => 'wolne'], 'pl');
     $b = Wyszukiwarka::kluczCache(['status' => 'wolne'], 'en');

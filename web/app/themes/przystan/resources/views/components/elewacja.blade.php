@@ -1,19 +1,21 @@
 {{--
   Rysowana elewacja budynku. Każde okno to link do karty mieszkania z pełnym opisem dla czytników ekranu.
-  Parametry: $mieszkania (lista z Mieszkanie::zPosta), $pasujace (ID pasujących do filtrów albo null = wszystkie).
+  Parametry: $mieszkania (lista z Mieszkanie::zPosta), $pasujace (ID pasujących do filtrów albo null = wszystkie),
+  $e (App\Elewacja: liczba kondygnacji i lokali na piętro z pól inwestycji), $nazwa (np. nazwa inwestycji).
 --}}
 @php
   use App\Elewacja as E;
+  $e = $e ?? new E();
   $pasujace = $pasujace ?? null;
   $id = $id ?? 'elewacja';
   $szer = E::SZEROKOSC;
-  $wys = E::wysokosc();
-  $dol = E::dol();
+  $wys = $e->wysokosc();
+  $dol = $e->dol();
 @endphp
 
-<div class="elewacja" data-elewacja id="{{ $id }}">
+<div class="elewacja" data-elewacja id="{{ $id }}" style="view-transition-name: {{ $id === 'elewacja-glowna' ? 'none' : 'elewacja' }}">
   <svg viewBox="0 0 {{ $szer }} {{ $wys }}" role="group" aria-labelledby="{{ $id }}-tytul" focusable="false">
-    <title id="{{ $id }}-tytul">{{ __('Elewacja budynku od strony rzeki. Wybierz mieszkanie, żeby zobaczyć szczegóły.', 'przystan') }}</title>
+    <title id="{{ $id }}-tytul">{{ isset($nazwa) ? sprintf(__('Elewacja: %s. Wybierz mieszkanie, żeby zobaczyć szczegóły.', 'przystan'), $nazwa) : __('Elewacja budynku od strony rzeki. Wybierz mieszkanie, żeby zobaczyć szczegóły.', 'przystan') }}</title>
     <defs>
       <pattern id="wzor-rezerwacja" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <rect width="14" height="14" fill="#e9c88f" />
@@ -28,8 +30,8 @@
     {{-- Bryła budynku --}}
     <rect x="{{ E::X0 - 14 }}" y="{{ E::DACH }}" width="{{ E::X1 - E::X0 + 28 }}" height="{{ E::GORA - E::DACH }}" fill="#d8cfb8" stroke="#0f2a3a" stroke-width="3" />
     <rect x="{{ E::X0 }}" y="{{ E::GORA }}" width="{{ E::X1 - E::X0 }}" height="{{ $dol - E::GORA }}" fill="#e8dfc9" stroke="#0f2a3a" stroke-width="3" />
-    @for ($p = 0; $p < E::PIETRA; $p++)
-      @php $y = E::yPietra($p); @endphp
+    @for ($p = 0; $p < $e->kondygnacje; $p++)
+      @php $y = $e->yPietra($p); @endphp
       <line x1="{{ E::X0 }}" x2="{{ E::X1 }}" y1="{{ $y + E::WYS_PIETRA }}" y2="{{ $y + E::WYS_PIETRA }}" stroke="#0f2a3a" stroke-opacity=".18" stroke-width="2" />
       <text x="{{ E::X0 - 40 }}" y="{{ $y + 52 }}" text-anchor="middle" class="pietro-etykieta" fill="#0f2a3a" font-size="24" font-family="Newsreader Variable, serif">{{ E::etykietaPietra($p) }}</text>
     @endfor
@@ -37,12 +39,13 @@
     {{-- Mieszkania --}}
     @foreach ($mieszkania as $m)
       @php
-        $o = E::okno($m);
+        $o = $e->okno($m);
         $przygaszony = is_array($pasujace) && ! in_array($m['id'], $pasujace, true);
       @endphp
       <a href="{{ $m['url'] }}"
          class="lokal lokal--{{ $m['status'] }} {{ $przygaszony ? 'przygaszony' : '' }}"
          aria-label="{{ $m['opis'] }}{{ $m['cena_tekst'] ? ', ' . $m['cena_tekst'] : '' }}"
+         style="--p: {{ $m['pietro'] }}; --k: {{ $m['pozycja'] }}"
          data-id="{{ $m['id'] }}"
          data-numer="{{ $m['numer'] }}"
          data-szczegoly="{{ $m['pokoje_tekst'] }} · {{ $m['metraz_tekst'] }} · {{ $m['pietro_tekst'] }}"
@@ -61,12 +64,16 @@
 
     {{-- Bulwar i rzeka --}}
     <rect x="0" y="{{ $dol }}" width="{{ $szer }}" height="18" fill="#d8cfb8" />
+    @if ($woda ?? true)
     <g class="linie-wody linie-wody--ruch" aria-hidden="true">
       <path d="M-40 {{ $dol + 40 }} C 160 {{ $dol + 28 }}, 360 {{ $dol + 52 }}, 600 {{ $dol + 40 }} S 1000 {{ $dol + 28 }}, 1260 {{ $dol + 40 }}" />
       <path d="M-40 {{ $dol + 64 }} C 200 {{ $dol + 54 }}, 420 {{ $dol + 76 }}, 640 {{ $dol + 64 }} S 1040 {{ $dol + 52 }}, 1260 {{ $dol + 64 }}" opacity=".6" />
       <path d="M-40 {{ $dol + 88 }} C 240 {{ $dol + 80 }}, 460 {{ $dol + 98 }}, 700 {{ $dol + 88 }} S 1080 {{ $dol + 78 }}, 1260 {{ $dol + 88 }}" opacity=".35" />
     </g>
-    <text x="{{ E::X1 }}" y="{{ $dol + 72 }}" text-anchor="end" fill="#1b6670" font-size="22" font-style="italic" font-family="Newsreader Variable, serif" aria-hidden="true">{{ __('Brda', 'przystan') }}</text>
+    <text x="{{ E::X1 }}" y="{{ $dol + 72 }}" text-anchor="end" fill="#1b6670" font-size="22" font-style="italic" font-family="Newsreader Variable, serif" aria-hidden="true">{{ $podpis ?? __('Brda', 'przystan') }}</text>
+    @else
+      <text x="{{ E::X1 }}" y="{{ $dol + 56 }}" text-anchor="end" fill="#1b6670" font-size="22" font-style="italic" font-family="Newsreader Variable, serif" aria-hidden="true">{{ $podpis ?? '' }}</text>
+    @endif
   </svg>
 
   <div class="elewacja-dymek" role="status" hidden data-dymek></div>

@@ -17,6 +17,9 @@ const PLIKI = {
   'budowa-2-stan-surowy': 'budowa-stan-surowy',
   'budowa-3-elewacja': 'budowa-elewacja',
   'budowa-4-bulwar': 'budowa-bulwar',
+  'lipowa-elewacja': 'lipowa',
+  'lipowa-wnetrze': 'lipowa-wnetrze',
+  'myslecinek-wizualizacja': 'myslecinek',
 };
 
 const sciezka = (url) => decodeURIComponent(url.pathname).replace(/^\/([A-Za-z]:)/, '$1');

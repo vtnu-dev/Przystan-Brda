@@ -62,7 +62,8 @@
     "autoload-dev": {
         "psr-4": {
             "Przystan\\": "web/app/plugins/przystan-core/src/",
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "App\\": "web/app/themes/przystan/app/"
         }
     }
 }

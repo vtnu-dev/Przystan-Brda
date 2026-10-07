@@ -1,11 +1,11 @@
 /*
 Theme Name:         Przystań Brda
 Theme URI:          https://przystan.sitebest.eu
-Description:        Motyw inwestycji mieszkaniowej (demo). Sage 11: Blade, Tailwind 4, Vite. Dane i logika we wtyczce przystan-core.
+Description:        Motyw dewelopera (demo). Sage 11: Blade, Tailwind 4, Vite. Dane, logika i tłumaczenia (domena „przystan”) we wtyczce przystan-core.
 Version:            1.0.0
 Author:             SiteBest
 Author URI:         https://sitebest.eu
-Text Domain:        przystan
+Text Domain:        przystan-motyw
 License:            MIT License
 License URI:        https://opensource.org/licenses/MIT
 Requires PHP:       8.3

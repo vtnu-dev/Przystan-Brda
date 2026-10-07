@@ -25,6 +25,7 @@ class App extends Composer
             'urlMieszkania' => Strony::url(Strony::MIESZKANIA),
             'urlKontakt' => Strony::url(Strony::KONTAKT),
             'urlOkolica' => Strony::url(Strony::OKOLICA),
+            'urlUlubione' => Strony::url(Strony::POROWNANIE),
         ];
     }
 

@@ -13,6 +13,8 @@
   $stare = $wynikForm['dane'] ?? [];
   $wartosc = fn (string $pole) => (string) ($stare[$pole] ?? '');
   $mieszkanieId = $mieszkanieId ?? 0;
+  $inwestycjaId = $inwestycjaId ?? 0;
+  $rodzaj = $rodzaj ?? 'zapytanie';
   $prywatnosc = get_privacy_policy_url();
   $pola = [
     'imie' => ['etykieta' => __('Imię i nazwisko', 'przystan'), 'typ' => 'text', 'autocomplete' => 'name', 'wymagane' => true],
@@ -26,6 +28,8 @@
   <input type="hidden" name="action" value="{{ FormularzBezJs::AKCJA }}">
   <input type="hidden" name="mieszkanie" value="{{ (int) $mieszkanieId }}">
   <input type="hidden" name="lang" value="{{ $jezyk }}">
+  <input type="hidden" name="inwestycja" value="{{ (int) $inwestycjaId }}">
+  <input type="hidden" name="rodzaj" value="{{ $rodzaj }}">
   <input type="hidden" name="{{ Antyspam::POLE_CZAS }}" value="{{ Antyspam::znacznik(time(), Ustawienia::kluczAntyspamu()) }}">
 
   {{-- Pułapka na boty: ukryta dla ludzi i czytników ekranu. --}}
@@ -72,6 +76,6 @@
   </div>
 
   <div class="md:col-span-2">
-    <button type="submit" class="przycisk" data-wyslij>{{ __('Wyślij zapytanie', 'przystan') }}</button>
+    <button type="submit" class="przycisk" data-wyslij>{{ $rodzaj === 'powiadomienie' ? __('Zapisz mnie', 'przystan') : __('Wyślij zapytanie', 'przystan') }}</button>
   </div>
 </form>

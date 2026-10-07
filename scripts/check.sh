@@ -26,8 +26,9 @@ zawiera() {
 echo "Strona: $BASE"
 
 echo "Adresy"
-for adres in / /mieszkania/ /mieszkania/m-35/ /okolica/ /kontakt/ /dziennik-budowy/ /polityka-prywatnosci/ \
-  /en/ /en/apartments/ /en/apartments/m35/ /en/neighbourhood/ /en/contact/ /en/construction-diary/; do
+for adres in / /inwestycje/ /inwestycje/przystan-brda/ /inwestycje/willa-lipowa/ /inwestycje/tarasy-myslecinek/ \
+  /mieszkania/ /mieszkania/m-35/ /mieszkania/l-21/ /okolica/ /kontakt/ /ulubione/ /dziennik-budowy/ /polityka-prywatnosci/ \
+  /en/ /en/developments/ /en/apartments/ /en/apartments/m35/ /en/neighbourhood/ /en/contact/ /en/favourites/ /en/construction-diary/; do
   sprawdz_kod "$adres" 200
 done
 # Mapa strony działa na produkcji; lokalnie (WP_ENV=development) Bedrock wyłącza indeksowanie i mapę.
@@ -43,6 +44,8 @@ zawiera /mieszkania/m-35/ '"@type":"Offer"' 'JSON-LD Offer'
 zawiera /mieszkania/m-35/ '<link rel="canonical"' 'canonical'
 zawiera /mieszkania/m-35/ 'property="og:image"' 'Open Graph'
 zawiera /en/ '<html lang="en-GB"' 'lang="en-GB" na wersji EN'
+zawiera /en/contact/ 'Sales office' 'tłumaczenia wtyczki i motywu na EN'
+zawiera /mieszkania/ '2 inwestycje' 'polskie formy liczby mnogiej'
 
 echo "REST API"
 zawiera '/wp-json/przystan/v1/mieszkania?status=wolne&pokoje[]=3' '"liczba":' 'wyszukiwarka zwraca JSON'

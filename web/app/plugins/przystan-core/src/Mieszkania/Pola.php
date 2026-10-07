@@ -32,6 +32,7 @@ final class Pola
             'style' => 'default',
             'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => TypTresci::TYP]]],
             'fields' => [
+                $pole('inwestycja', __('Inwestycja', 'przystan'), 'post_object', ['required' => 1, 'post_type' => [\Przystan\Inwestycje\TypTresci::TYP], 'return_format' => 'id', 'ui' => 1, 'wrapper' => ['width' => '100']]),
                 $pole('numer', __('Numer lokalu', 'przystan'), 'text', ['required' => 1, 'wrapper' => ['width' => '25'], 'placeholder' => 'M-31']),
                 $pole('pietro', __('Piętro', 'przystan'), 'number', ['required' => 1, 'min' => Filtry::PIETRO_MIN, 'max' => Filtry::PIETRO_MAX, 'wrapper' => ['width' => '25'], 'instructions' => __('0 = parter', 'przystan')]),
                 $pole('pozycja', __('Pozycja na elewacji', 'przystan'), 'number', ['required' => 1, 'min' => 1, 'max' => 6, 'wrapper' => ['width' => '25'], 'instructions' => __('1-6, od lewej', 'przystan')]),

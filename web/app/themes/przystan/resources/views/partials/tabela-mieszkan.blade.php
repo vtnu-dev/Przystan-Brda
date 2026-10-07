@@ -1,6 +1,7 @@
 {{-- Lista mieszkań. Wiersze odtwarza też JavaScript (modules/wyszukiwarka.js) z tych samych pól REST. --}}
 <div class="mt-5" data-wyniki>
-  <table class="tabela-mieszkan" data-zobacz="{{ __('Zobacz', 'przystan') }}">
+  <table class="tabela-mieszkan" data-zobacz="{{ __('Zobacz', 'przystan') }}"
+         data-ulub-dodaj="{{ __('Dodaj %s do ulubionych', 'przystan') }}" data-ulub-usun="{{ __('Usuń %s z ulubionych', 'przystan') }}">
     <caption class="sr-only">{{ __('Lista mieszkań spełniających filtry', 'przystan') }}</caption>
     <thead>
       <tr>
@@ -12,6 +13,7 @@
         <th scope="col">{{ __('Cena', 'przystan') }}</th>
         <th scope="col">{{ __('Status', 'przystan') }}</th>
         <th scope="col"><span class="sr-only">{{ __('Szczegóły', 'przystan') }}</span></th>
+        <th scope="col"><span class="sr-only">{{ __('Ulubione', 'przystan') }}</span></th>
       </tr>
     </thead>
     <tbody data-wiersze>
@@ -25,6 +27,7 @@
           <td data-etykieta="{{ __('Cena', 'przystan') }}">{{ $m['cena_tekst'] ?: '-' }}</td>
           <td data-etykieta="{{ __('Status', 'przystan') }}"><span class="status status--{{ $m['status'] }}">{{ $m['status_etykieta'] }}</span></td>
           <td class="td-link"><a href="{{ $m['url'] }}" class="font-semibold">{{ __('Zobacz', 'przystan') }}<span class="sr-only"> {{ $m['numer'] }}</span></a></td>
+          <td class="td-ulub">@include('partials.ulubione-przycisk', ['id' => $m['id_ulubione'], 'numer' => $m['numer'], 'klasa' => 'inline-flex size-11 items-center justify-center rounded-full text-morze hover:bg-white'])</td>
         </tr>
       @endforeach
     </tbody>

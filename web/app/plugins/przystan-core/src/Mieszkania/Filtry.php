@@ -17,6 +17,9 @@ final class Filtry
     public const METRAZ_MIN = 20;
     public const METRAZ_MAX = 120;
 
+    /** Ile mieszkań naraz można pobrać po ID (ulubione, porównanie). */
+    public const IDS_MAX = 12;
+
     /**
      * @param  array<string, mixed>  $raw
      * @return array<string, mixed>
@@ -45,6 +48,16 @@ final class Filtry
         }
         if ($max !== null) {
             $filtry['metraz_max'] = (float) $max;
+        }
+
+        $inwestycja = self::liczba($raw['inwestycja'] ?? null, 1, PHP_INT_MAX);
+        if ($inwestycja !== null) {
+            $filtry['inwestycja'] = (int) $inwestycja;
+        }
+
+        $ids = self::listaId($raw['ids'] ?? null);
+        if ($ids !== []) {
+            $filtry['ids'] = $ids;
         }
 
         $status = is_string($raw['status'] ?? null) ? $raw['status'] : '';
@@ -104,6 +117,20 @@ final class Filtry
         sort($pokoje);
 
         return $pokoje;
+    }
+
+    /** @return list<int> */
+    private static function listaId(mixed $wartosc): array
+    {
+        if (is_string($wartosc) || is_int($wartosc)) {
+            $wartosc = explode(',', (string) $wartosc);
+        }
+        if (! is_array($wartosc)) {
+            return [];
+        }
+        $ids = array_filter(array_map(fn($id) => is_numeric($id) ? (int) $id : 0, $wartosc), fn($id) => $id > 0);
+
+        return array_slice(array_values(array_unique($ids)), 0, self::IDS_MAX);
     }
 
     private static function liczba(mixed $wartosc, int $min, int $max): ?float

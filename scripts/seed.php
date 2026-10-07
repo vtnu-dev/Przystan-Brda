@@ -24,6 +24,7 @@ require_once ABSPATH . 'wp-admin/includes/file.php';
 require_once ABSPATH . 'wp-admin/includes/media.php';
 
 const SEED_MEDIA = __DIR__ . '/seed-media/';
+$akapityHtml = static fn(string ...$p) => implode("\n\n", array_map(static fn($a) => "<!-- wp:paragraph -->\n<p>{$a}</p>\n<!-- /wp:paragraph -->", $p));
 $tresci = require __DIR__ . '/seed-tresci.php';
 
 /* ------------------------------------------------------------------ pomocnicze */
@@ -129,7 +130,7 @@ PLL()->model->set_language_in_mass();
 /* ------------------------------------------------------------------ ustawienia */
 
 WP_CLI::log('Ustawienia…');
-update_option('blogname', 'Przystań Brda');
+update_option('blogname', 'Przystań');
 update_option('blogdescription', $tresci['opis_strony']['pl']);
 update_option('timezone_string', 'Europe/Warsaw');
 update_option('date_format', 'j F Y');
@@ -142,7 +143,7 @@ $ustawienia = Ustawienia::wszystkie();
 update_option(Ustawienia::OPCJA, array_merge($ustawienia, [
     'telefon' => '+48 52 000 00 00',
     'email' => 'sprzedaz@przystan.sitebest.eu',
-    'adres' => "Biuro sprzedaży Przystań Brda\nul. Przykładowa 4\n85-000 Bydgoszcz",
+    'adres' => "Biuro sprzedaży Przystań\nul. Przykładowa 4\n85-000 Bydgoszcz",
     'termin' => 'IV kwartał 2027',
     'webhook_klucz' => $ustawienia['webhook_klucz'] ?: Ustawienia::nowyKlucz(),
 ]), false);
@@ -151,7 +152,7 @@ update_option(Ustawienia::OPCJA, array_merge($ustawienia, [
 $mo = new PLL_MO();
 $en = PLL()->model->get_language('en');
 $mo->import_from_db($en);
-foreach ([$tresci['opis_strony']['pl'] => $tresci['opis_strony']['en'], 'IV kwartał 2027' => 'Q4 2027', "Biuro sprzedaży Przystań Brda\nul. Przykładowa 4\n85-000 Bydgoszcz" => "Przystań Brda sales office\nul. Przykładowa 4\n85-000 Bydgoszcz, Poland"] as $pl => $tlumaczenie) {
+foreach ([$tresci['opis_strony']['pl'] => $tresci['opis_strony']['en'], 'IV kwartał 2027' => 'Q4 2027', "Biuro sprzedaży Przystań\nul. Przykładowa 4\n85-000 Bydgoszcz" => "Przystań sales office\nul. Przykładowa 4\n85-000 Bydgoszcz, Poland"] as $pl => $tlumaczenie) {
     $mo->add_entry($mo->make_entry($pl, $tlumaczenie));
 }
 $mo->export_to_db($en);
@@ -168,6 +169,45 @@ foreach (['A', 'B', 'C', 'D', 'E', 'F'] as $typ) {
     foreach (['pl', 'en'] as $j) {
         $rzuty[$typ][$j] = seed_obraz("rzuty/rzut-{$typ}-{$j}.webp", sprintf($j === 'pl' ? 'Rzut mieszkania typu %s' : 'Floor plan, type %s', $typ));
     }
+}
+
+/* ------------------------------------------------------------------ inwestycje */
+
+WP_CLI::log('Inwestycje…');
+$inwestycje = [];
+foreach ($tresci['inwestycje'] as $klucz => $inw) {
+    $para = [];
+    foreach (['pl', 'en'] as $j) {
+        $id = seed_post("inwestycja-{$klucz}-{$j}", [
+            'post_type' => Przystan\Inwestycje\TypTresci::TYP,
+            'post_title' => $inw['nazwa'][$j],
+            'post_name' => $inw['slug'][$j],
+            'post_excerpt' => $inw['zajawka'][$j],
+            'post_content' => $akapityHtml(...$inw['tresc'][$j]),
+            'menu_order' => $inw['kolejnosc'],
+        ]);
+        set_post_thumbnail($id, $o[$inw['zdjecie']]);
+        pll_set_post_language($id, $j);
+        $pola = [
+            'status_inwestycji' => $inw['status'],
+            'lokalizacja' => $inw['lokalizacja'][$j],
+            'termin' => $inw['termin'][$j],
+            'kondygnacje' => $inw['kondygnacje'],
+            'lokali_na_pietro' => $inw['lokali'],
+            'nad_woda' => $inw['woda'] ? 1 : 0,
+            'podpis_elewacji' => $inw['podpis'][$j],
+        ];
+        for ($i = 1; $i <= Przystan\Inwestycje\Inwestycja::ETAPY; $i++) {
+            $etap = $inw['etapy'][$i - 1] ?? null;
+            $pola["etap_{$i}_nazwa"] = $etap ? $etap[0][$j === 'pl' ? 0 : 1] : '';
+            $pola["etap_{$i}_data"] = $etap ? $etap[1][$j === 'pl' ? 0 : 1] : '';
+            $pola["etap_{$i}_stan"] = $etap ? $etap[2] : 'planowane';
+        }
+        seed_pola($id, $pola);
+        $para[$j] = $id;
+    }
+    pll_save_post_translations($para);
+    $inwestycje[$klucz] = $para;
 }
 
 /* ------------------------------------------------------------------ strony */
@@ -297,7 +337,40 @@ for ($pietro = 0; $pietro <= 5; $pietro++) {
                 'menu_order' => $pietro * 10 + $pozycja,
             ]);
             pll_set_post_language($id, $j);
-            seed_pola($id, $wspolne + ['rzut' => $rzuty[$typ][$j]]);
+            seed_pola($id, $wspolne + ['rzut' => $rzuty[$typ][$j], 'inwestycja' => $inwestycje['przystan-brda'][$j]]);
+            $para[$j] = $id;
+        }
+        pll_save_post_translations($para);
+    }
+}
+$typyLipowa = ['D', 'B', 'A', 'C'];
+for ($pietro = 0; $pietro <= 3; $pietro++) {
+    for ($pozycja = 1; $pozycja <= 4; $pozycja++) {
+        $typ = $typyLipowa[$pozycja - 1];
+        $numer = sprintf('L-%d%d', $pietro, $pozycja);
+        $metraz = round($metraze[$typ] + (($pietro % 2) ? 0.4 : -0.2), 1);
+        $narozne = in_array($pozycja, [1, 4], true);
+        $balkon = $pietro === 0 ? 0.0 : ($narozne ? 6.0 : 4.5);
+        $cena = (int) (round($metraz * (8900 + $pietro * 180) / 1000) * 1000);
+        $los = crc32($numer) % 100;
+        $status = $los < 58 ? 'sprzedane' : ($los < 72 ? 'rezerwacja' : 'wolne');
+
+        $wspolne = [
+            'numer' => $numer, 'pietro' => $pietro, 'pozycja' => $pozycja, 'pokoje' => $pokoje[$typ],
+            'metraz' => $metraz, 'cena' => $cena, 'status' => $status, 'balkon_m2' => $balkon,
+            'ogrodek' => $pietro === 0 ? 1 : 0, 'widok_na_rzeke' => 0,
+        ];
+        $para = [];
+        foreach (['pl', 'en'] as $j) {
+            $id = seed_post("mieszkanie-{$numer}-{$j}", [
+                'post_type' => Mieszkania::TYP,
+                'post_title' => $numer,
+                'post_name' => $j === 'pl' ? strtolower($numer) : strtolower(str_replace('-', '', $numer)),
+                'post_content' => $opisyTypow[$typ][$j],
+                'menu_order' => 100 + $pietro * 10 + $pozycja,
+            ]);
+            pll_set_post_language($id, $j);
+            seed_pola($id, $wspolne + ['rzut' => $rzuty[$typ][$j], 'inwestycja' => $inwestycje['willa-lipowa'][$j]]);
             $para[$j] = $id;
         }
         pll_save_post_translations($para);
@@ -323,6 +396,7 @@ foreach ($tresci['wpisy'] as $klucz => $wpis) {
         ]);
         set_post_thumbnail($id, $o[$wpis['zdjecie']]);
         pll_set_post_language($id, $j);
+        update_field('inwestycja', $inwestycje['przystan-brda'][$j], $id);
         $para[$j] = $id;
     }
     pll_save_post_translations($para);
@@ -349,7 +423,7 @@ foreach ($tresci['wpisy'] as $klucz => $wpis) {
 WP_CLI::log('Menu…');
 $lokalizacje = [];
 foreach (['pl', 'en'] as $j) {
-    foreach (['glowne' => ['mieszkania', 'okolica', 'dziennik', 'kontakt'], 'stopka' => ['mieszkania', 'okolica', 'dziennik', 'kontakt', 'prywatnosc']] as $miejsce => $pozycje) {
+    foreach (['glowne' => ['inwestycje', 'mieszkania', 'dziennik', 'kontakt'], 'stopka' => ['inwestycje', 'mieszkania', 'okolica', 'dziennik', 'porownanie', 'kontakt', 'prywatnosc']] as $miejsce => $pozycje) {
         $nazwa = "Przystań {$miejsce} " . strtoupper($j);
         $menu = wp_get_nav_menu_object($nazwa);
         $menuId = $menu ? (int) $menu->term_id : (int) wp_create_nav_menu($nazwa);
@@ -357,6 +431,16 @@ foreach (['pl', 'en'] as $j) {
             wp_delete_post($stara->ID, true);
         }
         foreach ($pozycje as $i => $strona) {
+            if ($strona === 'inwestycje') {
+                wp_update_nav_menu_item($menuId, 0, [
+                    'menu-item-title' => $j === 'pl' ? 'Inwestycje' : 'Developments',
+                    'menu-item-url' => home_url($j === 'pl' ? '/inwestycje/' : '/en/developments/'),
+                    'menu-item-type' => 'custom',
+                    'menu-item-status' => 'publish',
+                    'menu-item-position' => $i + 1,
+                ]);
+                continue;
+            }
             wp_update_nav_menu_item($menuId, 0, [
                 'menu-item-object-id' => $strony[$strona][$j],
                 'menu-item-object' => 'page',
@@ -381,4 +465,4 @@ PLL()->model->clean_languages_cache();
 flush_rewrite_rules(true);
 WP_CLI::log('Pamiętaj: po seedzie uruchom osobno `wp rewrite flush` (reguły Polylang z nowymi ustawieniami).');
 
-WP_CLI::success(sprintf('Gotowe: %d stron, %d mieszkań, %d wpisów (na język).', count($strony), 36, count($tresci['wpisy'])));
+WP_CLI::success(sprintf('Gotowe: %d inwestycje, %d stron, %d mieszkań, %d wpisów (na język).', count($inwestycje), count($strony), 36 + 16, count($tresci['wpisy'])));

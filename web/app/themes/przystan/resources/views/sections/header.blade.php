@@ -38,6 +38,12 @@
           </ul>
         @endif
 
+        <a href="{{ $urlUlubione }}" class="relative inline-flex min-h-11 items-center gap-2 rounded-full px-4 font-semibold text-tlo no-underline hover:bg-granat-2 hover:text-tlo lg:ml-1" data-ulubione-link>
+          <svg class="size-5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span>{{ __('Ulubione', 'przystan') }}</span>
+          <span class="hidden min-w-6 rounded-full bg-morze-jasne px-1.5 text-center text-sm text-granat" data-ulubione-licznik></span>
+        </a>
+
         <a href="{{ $urlMieszkania }}" class="przycisk przycisk--jasny mt-4 lg:ml-3 lg:mt-0 lg:min-h-11 lg:px-5">{{ __('Znajdź mieszkanie', 'przystan') }}</a>
       </div>
     </nav>

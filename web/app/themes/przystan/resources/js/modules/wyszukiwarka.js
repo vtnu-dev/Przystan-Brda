@@ -36,6 +36,8 @@ export function wyszukiwarka() {
       const wartosc = String(dane.get(klucz) ?? '').trim();
       if (wartosc !== '') p.set(klucz, wartosc);
     }
+    const inwestycja = dane.get('inwestycja');
+    if (inwestycja) p.set('inwestycja', inwestycja);
     const status = dane.get('status');
     if (status && status !== 'wszystkie') p.set('status', status);
     if (dane.get('widok')) p.set('widok', '1');
@@ -71,13 +73,14 @@ export function wyszukiwarka() {
 
   const pokazWynik = (mieszkania, p) => {
     const ids = new Set(mieszkania.map((m) => String(m.id)));
-    const aktywne = [...p.keys()].length > 0;
+    const aktywne = [...p.keys()].some((k) => k !== 'inwestycja');
 
     elewacja?.querySelectorAll('.lokal').forEach((lokal) => {
       lokal.classList.toggle('przygaszony', aktywne && !ids.has(lokal.dataset.id));
     });
 
     if (wiersze) wiersze.replaceChildren(...mieszkania.map(wiersz));
+    document.dispatchEvent(new CustomEvent('przystan:ulubione-odswiez'));
     brak?.classList.toggle('hidden', mieszkania.length > 0);
     if (licznik) licznik.textContent = szablonLicznika.replace('{n}', String(mieszkania.length));
 
@@ -93,6 +96,18 @@ export function wyszukiwarka() {
     if (zawartosc instanceof Node) td.append(zawartosc);
     else td.textContent = zawartosc;
     return td;
+  };
+
+  // Ten sam przycisk co w szablonie Blade (partials/ulubione-przycisk); stan ustawia modules/ulubione.js.
+  const przyciskUlubionych = (m) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'inline-flex size-11 items-center justify-center rounded-full text-morze hover:bg-white group/ulub';
+    b.dataset.ulubione = m.id_ulubione;
+    b.dataset.dodaj = (tabela.dataset.ulubDodaj || '%s').replace('%s', m.numer);
+    b.dataset.usun = (tabela.dataset.ulubUsun || '%s').replace('%s', m.numer);
+    b.innerHTML = '<svg class="size-5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" class="group-aria-pressed/ulub:fill-current"/></svg>';
+    return b;
   };
 
   const wiersz = (m) => {
@@ -121,6 +136,7 @@ export function wyszukiwarka() {
       komorka(m.cena_tekst || '-', naglowki[5]),
       komorka(status, naglowki[6]),
       komorka(link, '', 'td-link'),
+      komorka(przyciskUlubionych(m), '', 'td-ulub'),
     );
     return tr;
   };
@@ -131,7 +147,14 @@ export function wyszukiwarka() {
   });
 
   // Zmiana filtra od razu odświeża wynik (pola liczbowe z krótkim opóźnieniem podczas pisania).
-  form.addEventListener('change', () => szukaj());
+  // Inny budynek = inna elewacja (rysowana na serwerze), więc zmiana inwestycji przeładowuje stronę.
+  form.addEventListener('change', (e) => {
+    if (e.target.matches('[data-inwestycja]')) {
+      form.submit();
+      return;
+    }
+    szukaj();
+  });
   form.addEventListener('input', (e) => {
     if (e.target.type !== 'number') return;
     clearTimeout(opoznienie);
@@ -142,8 +165,10 @@ export function wyszukiwarka() {
     e.preventDefault();
     form.reset();
     form.querySelectorAll('input[type=checkbox]').forEach((c) => { c.checked = false; });
+    const wybrana = form.querySelector('[data-inwestycja]:checked');
     form.querySelectorAll('input[type=number]').forEach((i) => { i.value = ''; });
     form.querySelectorAll('select').forEach((s) => { s.selectedIndex = 0; });
+    if (wybrana) wybrana.checked = true; // czyścimy filtry, nie wybór budynku
     szukaj();
   });
 }

@@ -3,15 +3,18 @@
 @section('content')
   <div class="kontener pb-20 pt-8">
     @include('partials.okruszki', ['sciezka' => [
-      ['nazwa' => __('Mieszkania', 'przystan'), 'url' => $urlMieszkania],
+      ['nazwa' => $inwestycja['nazwa'] ?? __('Mieszkania', 'przystan'), 'url' => $inwestycja ? add_query_arg('inwestycja', $inwestycja['id'], $urlMieszkania) : $urlMieszkania],
       ['nazwa' => $m['numer'], 'url' => ''],
     ]])
 
     <div class="mt-8 grid gap-12 lg:grid-cols-[1.25fr_1fr]">
       <div>
-        <p class="nadtytul">{{ $m['pietro_tekst'] }}</p>
-        <h1 class="h2">{{ sprintf(__('Mieszkanie %s', 'przystan'), $m['numer']) }}</h1>
-        <p class="mt-3"><span class="status status--{{ $m['status'] }} text-base">{{ $m['status_etykieta'] }}</span></p>
+        <p class="nadtytul">{{ $inwestycja ? $inwestycja['nazwa'] . ' · ' : '' }}{{ $m['pietro_tekst'] }}</p>
+        <h1 class="h2" style="view-transition-name: tytul-mieszkania">{{ sprintf(__('Mieszkanie %s', 'przystan'), $m['numer']) }}</h1>
+        <div class="mt-3 flex flex-wrap items-center gap-4">
+          <span class="status status--{{ $m['status'] }} text-base">{{ $m['status_etykieta'] }}</span>
+          @include('partials.ulubione-przycisk', ['id' => $m['id_ulubione'], 'numer' => $m['numer'], 'tekst' => true, 'klasa' => 'inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-morze px-4 text-sm font-semibold text-morze hover:bg-white aria-pressed:bg-morze aria-pressed:text-white'])
+        </div>
 
         @if ($m['rzut_id'])
           <figure class="mt-8 rounded-xl bg-white p-4 md:p-8">
@@ -51,6 +54,9 @@
               @endif
             </p>
           @endif
+          @if ($m['cena'] > 0)
+            @include('partials.kalkulator', ['cena' => $m['cena']])
+          @endif
           @if ($m['status'] !== 'sprzedane')
             <a href="#formularz" class="przycisk przycisk--jasny mt-6 w-full">{{ __('Zapytaj o to mieszkanie', 'przystan') }}</a>
           @endif
@@ -61,7 +67,10 @@
     <section class="mt-16" aria-labelledby="polozenie-tytul">
       <h2 id="polozenie-tytul" class="text-3xl">{{ __('Położenie w budynku', 'przystan') }}</h2>
       <div class="mt-6 rounded-xl bg-white p-4 md:p-8">
-        @include('components.elewacja', ['mieszkania' => $wszystkie, 'pasujace' => [$m['id']], 'id' => 'elewacja-karta'])
+        @include('components.elewacja', [
+          'mieszkania' => $wszystkie, 'pasujace' => [$m['id']], 'id' => 'elewacja-karta', 'e' => $elewacja,
+          'woda' => $inwestycja['nad_woda'] ?? true, 'podpis' => $inwestycja['podpis_elewacji'] ?? null, 'nazwa' => $inwestycja['nazwa'] ?? null,
+        ])
       </div>
     </section>
 

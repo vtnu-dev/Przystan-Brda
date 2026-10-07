@@ -50,6 +50,10 @@ final class Obsluga
 
         Wysylka::zaplanuj($id);
 
+        if ($sprawdzenie['dane']['rodzaj'] === 'powiadomienie') {
+            $sukces = __('Zapisane! Napiszemy, gdy ruszy sprzedaż. Wypisać się można jednym kliknięciem w każdej wiadomości.', 'przystan');
+        }
+
         return $wynik(true, 201, $sukces, [], [], $id);
     }
 
@@ -57,9 +61,17 @@ final class Obsluga
     private static function zapisz(array $dane, string $jezyk): int
     {
         $mieszkanie = $dane['mieszkanie'] > 0 && get_post_type($dane['mieszkanie']) === Mieszkania::TYP ? $dane['mieszkanie'] : 0;
-        $tytul = $mieszkanie
-            ? sprintf('%s - %s', get_post_meta($mieszkanie, 'numer', true) ?: get_the_title($mieszkanie), $dane['imie'])
-            : sprintf('%s - %s', __('Ogólne', 'przystan'), $dane['imie']);
+        $inwestycja = $mieszkanie ? (int) get_post_meta($mieszkanie, 'inwestycja', true) : $dane['inwestycja'];
+        if ($inwestycja && get_post_type($inwestycja) !== \Przystan\Inwestycje\TypTresci::TYP) {
+            $inwestycja = 0;
+        }
+        $czego = match (true) {
+            $mieszkanie > 0 => (string) (get_post_meta($mieszkanie, 'numer', true) ?: get_the_title($mieszkanie)),
+            $dane['rodzaj'] === 'powiadomienie' && $inwestycja > 0 => sprintf(__('Powiadomienie: %s', 'przystan'), get_the_title($inwestycja)),
+            $inwestycja > 0 => get_the_title($inwestycja),
+            default => __('Ogólne', 'przystan'),
+        };
+        $tytul = sprintf('%s - %s', $czego, $dane['imie']);
 
         $id = wp_insert_post([
             'post_type' => TypTresci::TYP,
@@ -71,6 +83,8 @@ final class Obsluga
                 'email' => $dane['email'],
                 'telefon' => $dane['telefon'],
                 'mieszkanie' => $mieszkanie,
+                'inwestycja' => $inwestycja,
+                'rodzaj' => $dane['rodzaj'],
                 'jezyk' => $jezyk,
                 'zgoda_czas' => gmdate('c'),
                 Wysylka::META_STAN => Wysylka::STAN_OCZEKUJE,
