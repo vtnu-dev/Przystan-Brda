@@ -30,6 +30,10 @@ final class Mieszkanie
 
         $m = [
             'id' => $post->ID,
+            // ID wersji w języku domyślnym: ulubione są wspólne dla PL i EN.
+            'id_ulubione' => function_exists('pll_get_post') && function_exists('pll_default_language') ? (int) (pll_get_post($post->ID, pll_default_language()) ?: $post->ID) : $post->ID,
+            'inwestycja' => (int) $meta('inwestycja'),
+            'inwestycja_nazwa' => $meta('inwestycja') ? get_the_title((int) $meta('inwestycja')) : '',
             'numer' => (string) ($meta('numer') ?: $post->post_title),
             'pietro' => (int) $meta('pietro'),
             'pozycja' => (int) $meta('pozycja'),

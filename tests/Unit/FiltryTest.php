@@ -48,6 +48,17 @@ it('zamienia metraże, gdy podano je w złej kolejności', function () {
     expect($f['metraz_min'])->toBe(40.0)->and($f['metraz_max'])->toBe(80.0);
 });
 
+it('przyjmuje inwestycję i listę mieszkań do porównania', function () {
+    $f = Filtry::z(['inwestycja' => '12', 'ids' => ['5', 'x', '7', '7', '0']]);
+    expect($f['inwestycja'])->toBe(12)->and($f['ids'])->toBe([5, 7]);
+
+    expect(Filtry::z(['inwestycja' => '-3', 'ids' => '9,10']))->toBe(['ids' => [9, 10], 'status' => 'wszystkie']);
+});
+
+it('ogranicza porównanie do kilku mieszkań', function () {
+    expect(Filtry::z(['ids' => range(1, 20)])['ids'])->toHaveCount(Filtry::IDS_MAX);
+});
+
 it('buduje parametry do adresu URL bez wartości domyślnych', function () {
     expect(Filtry::doUrl(['pokoje' => [2, 3], 'status' => 'wszystkie', 'widok' => true]))
         ->toBe(['pokoje' => '2,3', 'widok' => '1']);

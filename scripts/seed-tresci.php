@@ -8,8 +8,88 @@ $akapity = static fn(string ...$p) => implode("\n\n", array_map(static fn($a) =>
 
 return [
     'opis_strony' => [
-        'pl' => 'Mieszkania nad Brdą w Bydgoszczy',
-        'en' => 'Riverside apartments in Bydgoszcz',
+        'pl' => 'Mieszkania nad wodą i w zieleni, Bydgoszcz',
+        'en' => 'Homes by the water and among greenery, Bydgoszcz',
+    ],
+
+    'inwestycje' => [
+        'przystan-brda' => [
+            'kolejnosc' => 1,
+            'zdjecie' => 'hero',
+            'nazwa' => ['pl' => 'Przystań Brda', 'en' => 'Przystań Brda'],
+            'slug' => ['pl' => 'przystan-brda', 'en' => 'przystan-brda-river'],
+            'status' => 'w_budowie',
+            'lokalizacja' => ['pl' => 'Bydgoszcz, Okole', 'en' => 'Bydgoszcz, Okole'],
+            'termin' => ['pl' => 'IV kw. 2027', 'en' => 'Q4 2027'],
+            'kondygnacje' => 6, 'lokali' => 6, 'woda' => true, 'podpis' => ['pl' => 'Brda', 'en' => 'Brda river'],
+            'zajawka' => [
+                'pl' => '36 mieszkań nad rzeką, przy nowym bulwarze. Z okien widać wodę, a do Starego Rynku dojdziesz w kwadrans.',
+                'en' => '36 riverside apartments on a new boulevard. Water views from the windows and a 15-minute walk to the Old Market Square.',
+            ],
+            'tresc' => [
+                'pl' => ['Przystań Brda stoi frontem do rzeki, na Okolu, jednej z najstarszych części Bydgoszczy. Budynek ma sześć kondygnacji i 36 mieszkań od 32 do 84 m². Na parterze są ogródki, wyżej balkony, a na ostatnim piętrze tarasy z widokiem na park po drugiej stronie wody.', 'Przed wejściem powstaje 120 metrów nowego bulwaru z ławkami i lipami. Garaż jest pod budynkiem, a w nim komórki lokatorskie, rowerownia i stanowiska do ładowania aut.'],
+                'en' => ['Przystań Brda faces the river in Okole, one of the oldest parts of Bydgoszcz. The building has six storeys and 36 apartments from 32 to 84 m². Ground-floor units have gardens, upper floors have balconies and the top floor has terraces overlooking the park across the water.', 'A new 120-metre boulevard with benches and lime trees is being built at the entrance. The garage is underground, with storage rooms, a bike room and car charging points.'],
+            ],
+            'etapy' => [
+                [['Pozwolenie na budowę', 'Building permit'], ['III kw. 2025', 'Q3 2025'], 'zrobione'],
+                [['Fundamenty i garaż', 'Foundations and garage'], ['IV kw. 2025', 'Q4 2025'], 'zrobione'],
+                [['Stan surowy', 'Building shell'], ['II kw. 2026', 'Q2 2026'], 'zrobione'],
+                [['Elewacja i okna', 'Facade and windows'], ['III kw. 2026', 'Q3 2026'], 'w_toku'],
+                [['Bulwar i zieleń', 'Boulevard and greenery'], ['IV kw. 2026 - II kw. 2027', 'Q4 2026 - Q2 2027'], 'w_toku'],
+                [['Odbiór i przekazanie kluczy', 'Handover of keys'], ['IV kw. 2027', 'Q4 2027'], 'planowane'],
+            ],
+        ],
+        'willa-lipowa' => [
+            'kolejnosc' => 2,
+            'zdjecie' => 'lipowa',
+            'nazwa' => ['pl' => 'Willa Lipowa', 'en' => 'Willa Lipowa'],
+            'slug' => ['pl' => 'willa-lipowa', 'en' => 'willa-lipowa-villa'],
+            'status' => 'gotowe',
+            'lokalizacja' => ['pl' => 'Bydgoszcz, Bielawy', 'en' => 'Bydgoszcz, Bielawy'],
+            'termin' => ['pl' => 'gotowe, klucze od ręki', 'en' => 'ready, keys now'],
+            'kondygnacje' => 4, 'lokali' => 4, 'woda' => false, 'podpis' => ['pl' => 'ul. Lipowa', 'en' => 'Lipowa Street'],
+            'zajawka' => [
+                'pl' => '16 mieszkań w kameralnej willi wśród starych lip. Budynek jest gotowy: można obejrzeć mieszkanie i od razu się wprowadzić.',
+                'en' => '16 apartments in an intimate villa among old lime trees. The building is finished: view an apartment and move in straight away.',
+            ],
+            'tresc' => [
+                'pl' => ['Willa Lipowa to cztery kondygnacje i tylko 16 mieszkań, po cztery na piętrze. Elewacja z jasnego tynku i drewna, duże okna i balkony z widokiem na korony lip, które rosną tu od kilkudziesięciu lat.', 'Budynek ma pozwolenie na użytkowanie. Mieszkania można obejrzeć w każdy dzień roboczy, a większość jest gotowa do odbioru w ciągu miesiąca od podpisania umowy.'],
+                'en' => ['Willa Lipowa has four storeys and only 16 apartments, four per floor. A facade of light render and wood, large windows and balconies overlooking lime trees that have grown here for decades.', 'The building has its occupancy permit. Apartments can be viewed on any working day, and most can be handed over within a month of signing.'],
+            ],
+            'etapy' => [
+                [['Pozwolenie na budowę', 'Building permit'], ['2023', '2023'], 'zrobione'],
+                [['Stan surowy', 'Building shell'], ['III kw. 2024', 'Q3 2024'], 'zrobione'],
+                [['Wykończenie i zieleń', 'Finishing and greenery'], ['II kw. 2025', 'Q2 2025'], 'zrobione'],
+                [['Pozwolenie na użytkowanie', 'Occupancy permit'], ['IV kw. 2025', 'Q4 2025'], 'zrobione'],
+                [['Przekazywanie kluczy', 'Handing over keys'], ['od I kw. 2026', 'from Q1 2026'], 'w_toku'],
+            ],
+        ],
+        'tarasy-myslecinek' => [
+            'kolejnosc' => 3,
+            'zdjecie' => 'myslecinek',
+            'nazwa' => ['pl' => 'Tarasy Myślęcinek', 'en' => 'Tarasy Myślęcinek'],
+            'slug' => ['pl' => 'tarasy-myslecinek', 'en' => 'tarasy-myslecinek-terraces'],
+            'status' => 'planowana',
+            'lokalizacja' => ['pl' => 'Bydgoszcz, Myślęcinek', 'en' => 'Bydgoszcz, Myślęcinek'],
+            'termin' => ['pl' => 'II kw. 2027', 'en' => 'Q2 2027'],
+            'kondygnacje' => 5, 'lokali' => 5, 'woda' => false, 'podpis' => ['pl' => '', 'en' => ''],
+            'zajawka' => [
+                'pl' => 'Budynek z zielonymi tarasami na skraju leśnego parku. Projekt jest w przygotowaniu: zapisz się, a napiszemy przed startem sprzedaży.',
+                'en' => 'A building with green terraces on the edge of a forest park. The design is in progress: sign up and we will write before sales start.',
+            ],
+            'tresc' => [
+                'pl' => ['Tarasy Myślęcinek powstaną przy największym parku w Bydgoszczy. Każde piętro jest cofnięte względem niższego, więc prawie każde mieszkanie dostanie duży taras z zielenią. Za domem zaczynają się ścieżki leśne, a do centrum dojedziesz tramwajem w 20 minut.', 'Wizualizacja jest poglądowa. Rzuty i ceny pokażemy najpierw osobom zapisanym na powiadomienie.'],
+                'en' => ['Tarasy Myślęcinek will be built next to the largest park in Bydgoszcz. Each floor steps back from the one below, so almost every apartment gets a large planted terrace. Forest paths start behind the building, and the tram takes you to the centre in 20 minutes.', 'The visualisation is indicative. We will show floor plans and prices to people on the notification list first.'],
+            ],
+            'etapy' => [
+                [['Zakup działki', 'Land purchase'], ['2026', '2026'], 'zrobione'],
+                [['Projekt budynku', 'Building design'], ['IV kw. 2026', 'Q4 2026'], 'w_toku'],
+                [['Pozwolenie na budowę', 'Building permit'], ['I kw. 2027', 'Q1 2027'], 'planowane'],
+                [['Start sprzedaży', 'Sales start'], ['II kw. 2027', 'Q2 2027'], 'planowane'],
+                [['Rozpoczęcie budowy', 'Construction start'], ['III kw. 2027', 'Q3 2027'], 'planowane'],
+                [['Oddanie budynku', 'Completion'], ['2029', '2029'], 'planowane'],
+            ],
+        ],
     ],
 
     'obrazy' => [
@@ -23,6 +103,9 @@ return [
         'budowa3' => ['budowa-elewacja.jpg', 'Murarze układają jasną cegłę elewacyjną na rusztowaniu'],
         'budowa4' => ['budowa-bulwar.jpg', 'Sadzenie lip i układanie granitu na nowym bulwarze'],
         'og' => ['og.jpg', 'Przystań Brda, mieszkania nad rzeką w Bydgoszczy'],
+        'lipowa' => ['lipowa.jpg', 'Willa Lipowa: jasny budynek z drewnianymi wstawkami wśród lip'],
+        'lipowa_wnetrze' => ['lipowa-wnetrze.jpg', 'Jasny salon z jodełką i oknem na korony lip'],
+        'myslecinek' => ['myslecinek.jpg', 'Wizualizacja: Tarasy Myślęcinek, budynek z zielonymi tarasami przy lesie'],
     ],
 
     'strony' => [
@@ -61,6 +144,16 @@ return [
                 ),
             ],
         ],
+        'porownanie' => [
+            'tytul' => ['pl' => 'Ulubione', 'en' => 'Favourites'],
+            'slug' => ['pl' => 'ulubione', 'en' => 'favourites'],
+            'szablon' => 'template-porownanie.blade.php',
+            'kolejnosc' => 6,
+            'tresc' => [
+                'pl' => $akapity('Mieszkania, które oznaczysz sercem, porównasz tu obok siebie: metraż, piętro, balkon, cena za metr. Lista zostaje w tej przeglądarce, bez zakładania konta.'),
+                'en' => $akapity('Apartments you mark with a heart can be compared here side by side: area, floor, balcony, price per square metre. The list stays in this browser, no account needed.'),
+            ],
+        ],
         'dziennik' => [
             'tytul' => ['pl' => 'Dziennik budowy', 'en' => 'Construction diary'],
             'slug' => ['pl' => 'dziennik-budowy', 'en' => 'construction-diary'],
@@ -97,7 +190,7 @@ return [
 
     'glowna' => [
         'pl' => [
-            'nadtytul' => 'Bydgoszcz, Okole, nad Brdą',
+            'nadtytul' => 'Przystań Brda · Bydgoszcz, Okole',
             'naglowek' => "Mieszkania\ndwa kroki od rzeki",
             'wstep' => '36 mieszkań w spokojnym budynku przy nowym bulwarze. Z okien widać wodę, a do Starego Rynku dojdziesz w kwadrans.',
             'seo' => 'Przystań Brda: 36 mieszkań nad rzeką w Bydgoszczy, od 32 do 84 m². Balkony, ogródki, widok na Brdę. Oddanie w IV kwartale 2027.',
@@ -111,7 +204,7 @@ return [
             'okolica_wstep' => 'Przed domem ciągnie się nowy bulwar z ławkami i ścieżką rowerową. Do Wyspy Młyńskiej dojdziesz w 8 minut, do Starego Rynku w 12.',
         ],
         'en' => [
-            'nadtytul' => 'Bydgoszcz, Okole, by the Brda',
+            'nadtytul' => 'Przystań Brda · Bydgoszcz, Okole',
             'naglowek' => "Apartments\ntwo steps from the river",
             'wstep' => '36 apartments in a calm building on the new boulevard. You can see the water from your windows and walk to the Old Market Square in 15 minutes.',
             'seo' => 'Przystań Brda: 36 riverside apartments in Bydgoszcz, 32 to 84 m². Balconies, gardens, views of the Brda. Ready in Q4 2027.',

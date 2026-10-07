@@ -168,15 +168,16 @@
     stroke-linecap: round;
     stroke-width: 2;
   }
+  /* WCAG 2.2.2: ruch automatyczny kończy się w ciągu 5 s. */
   @media (prefers-reduced-motion: no-preference) {
     .linie-wody--ruch path {
-      animation: fala 9s ease-in-out infinite alternate;
+      animation: fala 2.4s ease-in-out 2 alternate;
     }
     .linie-wody--ruch path:nth-child(2) {
-      animation-duration: 11s;
+      animation-duration: 2.2s;
     }
     .linie-wody--ruch path:nth-child(3) {
-      animation-duration: 13s;
+      animation-duration: 2s;
     }
   }
   @keyframes fala {
@@ -386,5 +387,127 @@
   .elewacja a,
   .elewacja a:hover {
     text-decoration: none;
+  }
+}
+
+/* ------------------------------------------------------------------ ruch */
+
+@layer components {
+  /* Hero A: rysunek architekta → zdjęcie. Sam CSS; bez „ogranicz ruch”. */
+  .hero-szkic {
+    background: color-mix(in srgb, var(--color-granat) 94%, transparent);
+    animation: szkic-gasnie 0.9s ease 2.7s forwards;
+  }
+  .hero-szkic__kreska path,
+  .hero-szkic__woda path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: kreska 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation-delay: calc(0.1s + var(--k, 0) * 0.25s);
+  }
+  .hero-szkic__okna rect {
+    fill: transparent;
+    stroke: color-mix(in srgb, var(--color-morze-jasne) 45%, transparent);
+    stroke-width: 1.5;
+    animation: okno-swiatlo 0.4s ease-out forwards;
+    animation-delay: calc(1.05s + var(--p) * 0.22s + var(--k) * 0.035s);
+  }
+  .hero-szkic__okna rect:nth-child(4n + 2) {
+    animation-name: okno-swiatlo-slabe;
+  }
+  @keyframes kreska {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes okno-swiatlo {
+    0% { fill: transparent; }
+    40% { fill: #ffe2a8; }
+    100% { fill: #f3c97a; stroke: transparent; }
+  }
+  @keyframes okno-swiatlo-slabe {
+    to { fill: color-mix(in srgb, #f3c97a 35%, transparent); stroke: transparent; }
+  }
+  @keyframes szkic-gasnie {
+    to { opacity: 0; visibility: hidden; }
+  }
+
+  /* Elewacja zapala okna piętrami przy wejściu w widok (klasy dodaje modules/ruch.js). */
+  .elewacja.czeka .lokal rect.okno {
+    opacity: 0.12;
+  }
+  .elewacja.zapalona .lokal rect.okno {
+    animation: lokal-zapal 0.5s ease-out both;
+    animation-delay: calc(var(--p, 0) * 0.15s + var(--k, 0) * 0.045s);
+  }
+  @keyframes lokal-zapal {
+    from { opacity: 0.12; }
+    60% { opacity: 1; filter: brightness(1.25); }
+    to { opacity: 1; }
+  }
+
+  /* Odsłanianie sekcji przy przewijaniu (tylko transform i opacity, bez przesunięcia układu). */
+  [data-odslon] {
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--opoznienie, 0ms);
+  }
+  [data-odslon].czeka {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-szkic,
+    [data-odbicie] {
+      display: none;
+    }
+    .elewacja.czeka .lokal rect.okno {
+      opacity: 1;
+    }
+    [data-odslon].czeka {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 47.99rem) {
+    .tabela-mieszkan td.td-ulub {
+      @apply col-span-2 -mt-1 justify-self-start;
+    }
+    .tabela-mieszkan td.td-ulub::before {
+      content: none;
+    }
+  }
+}
+
+/* Przejścia między stronami (View Transitions API, bez JS). Nagłówek stoi, treść przenika się,
+   elewacja i tytuły przelatują na swoje miejsca na nowej stronie. */
+@view-transition {
+  navigation: auto;
+}
+header[data-naglowek] {
+  view-transition-name: naglowek;
+}
+::view-transition-old(root) {
+  animation: vt-wyjscie 0.22s ease-in both;
+}
+::view-transition-new(root) {
+  animation: vt-wejscie 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+::view-transition-group(elewacja),
+::view-transition-group(tytul-mieszkania),
+::view-transition-group(tytul-inwestycji) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@keyframes vt-wyjscie {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+@keyframes vt-wejscie {
+  from { opacity: 0; transform: translateY(12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
   }
 }

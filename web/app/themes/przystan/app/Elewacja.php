@@ -4,14 +4,12 @@ namespace App;
 
 /**
  * Geometria rysowanej elewacji: zamienia piętro i pozycję mieszkania na prostokąt w SVG.
- * Rysunek powstaje z danych WordPressa, więc zmiana statusu w panelu od razu zmienia kolor okna.
+ * Liczba kondygnacji i lokali na piętro pochodzi z pól inwestycji, więc ten sam komponent
+ * rysuje każdy budynek, a zmiana statusu w panelu od razu zmienia kolor okna.
  */
 final class Elewacja
 {
     public const SZEROKOSC = 1200;
-    public const KOLUMNY = 6;
-    public const PIETRA = 6; // parter + 5 pięter
-
     public const X0 = 92;
     public const X1 = 1150;
     public const DACH = 34;
@@ -20,37 +18,52 @@ final class Elewacja
     public const WYS_OKNA = 62;
     public const MARGINES_OKNA = 13;
 
-    public static function dol(): int
+    public function __construct(
+        public readonly int $kondygnacje = 6,
+        public readonly int $kolumny = 6,
+    ) {}
+
+    /** Elewacja według pól inwestycji (domyślnie parter + 5 pięter, 6 lokali). */
+    public static function dlaInwestycji(int $inwestycjaId): self
     {
-        return self::GORA + self::PIETRA * self::WYS_PIETRA;
+        $kondygnacje = (int) get_post_meta($inwestycjaId, 'kondygnacje', true);
+        $kolumny = (int) get_post_meta($inwestycjaId, 'lokali_na_pietro', true);
+
+        return new self(max(1, $kondygnacje ?: 6), max(1, $kolumny ?: 6));
     }
 
-    public static function wysokosc(): int
+    public function dol(): int
     {
-        return self::dol() + 104;
+        return self::GORA + $this->kondygnacje * self::WYS_PIETRA;
     }
 
-    public static function szerokoscKolumny(): float
+    public function wysokosc(): int
     {
-        return (self::X1 - self::X0) / self::KOLUMNY;
+        return $this->dol() + 104;
     }
 
-    /** Górna krawędź kondygnacji (piętro 5 na górze, parter na dole). */
-    public static function yPietra(int $pietro): int
+    public function szerokoscKolumny(): float
     {
-        return self::GORA + (self::PIETRA - 1 - $pietro) * self::WYS_PIETRA;
+        return (self::X1 - self::X0) / $this->kolumny;
+    }
+
+    /** Górna krawędź kondygnacji (najwyższe piętro na górze, parter na dole). */
+    public function yPietra(int $pietro): int
+    {
+        return self::GORA + ($this->kondygnacje - 1 - $pietro) * self::WYS_PIETRA;
     }
 
     /**
      * @param  array<string, mixed>  $m  mieszkanie z Mieszkanie::zPosta()
      * @return array{x: float, y: float, w: float, h: float, cx: float, cy: float}
      */
-    public static function okno(array $m): array
+    public function okno(array $m): array
     {
-        $kolumna = max(1, min(self::KOLUMNY, (int) $m['pozycja'])) - 1;
-        $x = self::X0 + $kolumna * self::szerokoscKolumny() + self::MARGINES_OKNA;
-        $w = self::szerokoscKolumny() - 2 * self::MARGINES_OKNA;
-        $y = self::yPietra((int) $m['pietro']) + 14;
+        $kolumna = max(1, min($this->kolumny, (int) $m['pozycja'])) - 1;
+        $pietro = max(0, min($this->kondygnacje - 1, (int) $m['pietro']));
+        $x = self::X0 + $kolumna * $this->szerokoscKolumny() + self::MARGINES_OKNA;
+        $w = $this->szerokoscKolumny() - 2 * self::MARGINES_OKNA;
+        $y = $this->yPietra($pietro) + 14;
 
         return [
             'x' => round($x, 1),

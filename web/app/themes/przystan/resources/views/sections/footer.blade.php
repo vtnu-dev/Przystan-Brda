@@ -7,9 +7,7 @@
         @include('partials.znak', ['klasa' => 'h-9 w-9 text-morze-jasne'])
         <span class="font-serif text-3xl leading-none">{!! $siteName !!}</span>
       </a>
-      @if ($kontakt['termin'])
-        <p class="mt-4 text-tlo/85">{{ __('Termin oddania:', 'przystan') }} <strong class="text-tlo">{{ $kontakt['termin'] }}</strong></p>
-      @endif
+      <p class="mt-4 max-w-sm text-tlo/85">{{ get_bloginfo('description') }}</p>
     </div>
 
     <div>
@@ -43,7 +41,7 @@
     <div class="kontener flex flex-col gap-2 py-5 text-sm text-tlo/80 md:flex-row md:items-center md:justify-between">
       <p>
         <strong class="font-semibold text-tlo">{{ __('Strona demonstracyjna.', 'przystan') }}</strong>
-        {{ __('Przystań Brda to fikcyjna inwestycja: mieszkania, ceny i dane kontaktowe są przykładowe.', 'przystan') }}
+        {{ __('Przystań to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe.', 'przystan') }}
       </p>
       <p>
         {{ __('Projekt i wdrożenie:', 'przystan') }}

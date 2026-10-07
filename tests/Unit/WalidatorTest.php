@@ -25,6 +25,8 @@ it('przepuszcza poprawne dane i je czyści', function () {
             'wiadomosc' => 'Czy mieszkanie ma komórkę lokatorską?',
             'mieszkanie' => 31,
             'zgoda' => true,
+            'inwestycja' => 0,
+            'rodzaj' => 'zapytanie',
         ]);
 });
 
@@ -65,6 +67,13 @@ it('usuwa znaczniki HTML z tekstu', function () {
 
     expect($wynik['dane']['imie'])->toBe('Jan')
         ->and($wynik['dane']['wiadomosc'])->toBe("Linia 1\nxLinia 2");
+});
+
+it('rozpoznaje zapis „powiadom mnie” o planowanej inwestycji', function () {
+    $wynik = Walidator::sprawdz(poprawne(['rodzaj' => 'powiadomienie', 'inwestycja' => '7', 'mieszkanie' => '']));
+    expect($wynik['dane']['rodzaj'])->toBe('powiadomienie')->and($wynik['dane']['inwestycja'])->toBe(7);
+
+    expect(Walidator::sprawdz(poprawne(['rodzaj' => 'cokolwiek']))['dane']['rodzaj'])->toBe('zapytanie');
 });
 
 it('odrzuca zbyt krótkie imię', function () {

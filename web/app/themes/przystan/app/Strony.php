@@ -11,6 +11,7 @@ final class Strony
     public const MIESZKANIA = 'template-mieszkania.blade.php';
     public const OKOLICA = 'template-okolica.blade.php';
     public const KONTAKT = 'template-kontakt.blade.php';
+    public const POROWNANIE = 'template-porownanie.blade.php';
 
     /** @var array<string, int> */
     private static array $cache = [];

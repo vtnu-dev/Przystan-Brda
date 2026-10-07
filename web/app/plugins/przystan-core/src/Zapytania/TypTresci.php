@@ -136,6 +136,8 @@ final class TypTresci
             __('Imię', 'przystan') => esc_html($meta('imie')),
             __('E-mail', 'przystan') => sprintf('<a href="mailto:%1$s">%2$s</a>', esc_attr($meta('email')), esc_html($meta('email'))),
             __('Telefon', 'przystan') => esc_html($meta('telefon') ?: '-'),
+            __('Rodzaj', 'przystan') => esc_html($meta('rodzaj') === 'powiadomienie' ? __('powiadomienie o starcie sprzedaży', 'przystan') : __('zapytanie', 'przystan')),
+            __('Inwestycja', 'przystan') => $meta('inwestycja') ? esc_html(get_the_title((int) $meta('inwestycja'))) : '-',
             __('Mieszkanie', 'przystan') => $mieszkanie ? sprintf('<a href="%1$s">%2$s</a>', esc_url((string) get_edit_post_link($mieszkanie)), esc_html(get_the_title($mieszkanie))) : '-',
             __('Język', 'przystan') => esc_html(strtoupper($meta('jezyk'))),
             __('Zgoda RODO', 'przystan') => esc_html($meta('zgoda_czas')),

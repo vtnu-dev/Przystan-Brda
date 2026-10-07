@@ -12,6 +12,9 @@ final class Walidator
     public const IMIE_MAX = 80;
     public const WIADOMOSC_MAX = 2000;
 
+    /** Zapytanie o mieszkanie albo zapis na powiadomienie o starcie sprzedaży planowanej inwestycji. */
+    public const RODZAJE = ['zapytanie', 'powiadomienie'];
+
     /**
      * @param  array<string, mixed>  $raw
      * @return array{dane: array<string, mixed>, bledy: array<string, string>}
@@ -25,6 +28,8 @@ final class Walidator
             'wiadomosc' => self::tekstWielowierszowy($raw['wiadomosc'] ?? ''),
             'mieszkanie' => max(0, (int) ($raw['mieszkanie'] ?? 0)),
             'zgoda' => in_array($raw['zgoda'] ?? null, [true, 1, '1', 'on', 'tak'], true),
+            'inwestycja' => max(0, (int) ($raw['inwestycja'] ?? 0)),
+            'rodzaj' => in_array($raw['rodzaj'] ?? null, self::RODZAJE, true) ? $raw['rodzaj'] : 'zapytanie',
         ];
 
         $bledy = [];

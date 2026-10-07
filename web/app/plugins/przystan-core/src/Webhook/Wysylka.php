@@ -14,6 +14,7 @@ final class Wysylka
 {
     public const HOOK = 'przystan_webhook';
     public const ZDARZENIE = 'zapytanie.utworzone';
+    public const ZDARZENIE_POWIADOMIENIE = 'powiadomienie.zapis';
 
     public const META_STAN = '_webhook_stan';
     public const META_PROBY = '_webhook_proby';
@@ -46,9 +47,11 @@ final class Wysylka
         $meta = static fn(string $k) => (string) get_post_meta($zapytanieId, $k, true);
         $mieszkanieId = (int) $meta('mieszkanie');
         $mieszkanie = $mieszkanieId ? Mieszkanie::zId($mieszkanieId) : null;
+        $inwestycjaId = (int) $meta('inwestycja');
 
         return [
-            'zdarzenie' => self::ZDARZENIE,
+            'zdarzenie' => self::zdarzenie($zapytanieId),
+            'inwestycja' => $inwestycjaId ? ['nazwa' => get_the_title($inwestycjaId), 'url' => (string) get_permalink($inwestycjaId)] : null,
             'id' => $zapytanieId,
             'utworzono' => $post ? get_post_time('c', true, $post) : gmdate('c'),
             'jezyk' => $meta('jezyk'),
@@ -70,6 +73,11 @@ final class Wysylka
             ] : null,
             'panel_url' => admin_url('post.php?post=' . $zapytanieId . '&action=edit'),
         ];
+    }
+
+    public static function zdarzenie(int $zapytanieId): string
+    {
+        return get_post_meta($zapytanieId, 'rodzaj', true) === 'powiadomienie' ? self::ZDARZENIE_POWIADOMIENIE : self::ZDARZENIE;
     }
 
     public static function wyslij(int $zapytanieId): void
@@ -94,7 +102,7 @@ final class Wysylka
             'headers' => [
                 'Content-Type' => 'application/json; charset=utf-8',
                 'User-Agent' => 'PrzystanBrda/' . PRZYSTAN_CORE_VERSION . '; ' . home_url(),
-                'X-Przystan-Event' => self::ZDARZENIE,
+                'X-Przystan-Event' => self::zdarzenie($zapytanieId),
                 'X-Przystan-Delivery' => $zapytanieId . '-' . $czas,
                 'X-Przystan-Timestamp' => (string) $czas,
                 'X-Przystan-Signature' => Podpis::podpisz($tresc, $czas, Ustawienia::pobierz('webhook_klucz')),

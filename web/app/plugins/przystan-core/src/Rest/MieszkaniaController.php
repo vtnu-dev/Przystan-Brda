@@ -24,6 +24,8 @@ final class MieszkaniaController
             'callback' => [self::class, 'lista'],
             'permission_callback' => '__return_true', // dane publiczne, takie same jak na stronie
             'args' => [
+                'inwestycja' => ['type' => 'integer', 'minimum' => 1],
+                'ids' => ['type' => 'array', 'items' => ['type' => 'integer', 'minimum' => 1], 'maxItems' => Filtry::IDS_MAX],
                 'pokoje' => [
                     'type' => 'array',
                     'items' => ['type' => 'integer', 'minimum' => Filtry::POKOJE_MIN, 'maximum' => Filtry::POKOJE_MAX],
@@ -45,6 +47,14 @@ final class MieszkaniaController
         $filtry = Filtry::z($zadanie->get_params());
         $jezyk = Jezyk::z($zadanie->get_param('lang'));
         Jezyk::przelacz($jezyk);
+
+        // Ulubione zapisane w innym języku: zamieniamy ID na odpowiedniki w języku odpowiedzi.
+        if (! empty($filtry['ids']) && function_exists('pll_get_post')) {
+            $filtry['ids'] = array_values(array_unique(array_map(fn($id) => (int) (pll_get_post($id, $jezyk) ?: $id), $filtry['ids'])));
+        }
+        if (isset($filtry['inwestycja']) && function_exists('pll_get_post')) {
+            $filtry['inwestycja'] = (int) (pll_get_post($filtry['inwestycja'], $jezyk) ?: $filtry['inwestycja']);
+        }
 
         $mieszkania = Wyszukiwarka::szukaj($filtry, $jezyk);
 

@@ -24,6 +24,9 @@ final class Wyszukiwarka
             'pozycja_sort' => ['key' => 'pozycja', 'type' => 'NUMERIC'],
         ];
 
+        if (isset($filtry['inwestycja'])) {
+            $meta[] = ['key' => 'inwestycja', 'value' => $filtry['inwestycja'], 'compare' => '=', 'type' => 'NUMERIC'];
+        }
         if (! empty($filtry['pokoje'])) {
             $meta[] = ['key' => 'pokoje', 'value' => $filtry['pokoje'], 'compare' => 'IN', 'type' => 'NUMERIC'];
         }
@@ -46,7 +49,7 @@ final class Wyszukiwarka
             $meta[] = ['key' => 'balkon_m2', 'value' => 0, 'compare' => '>', 'type' => 'DECIMAL(6,2)'];
         }
 
-        return [
+        $args = [
             'post_type' => 'mieszkanie',
             'post_status' => 'publish',
             'posts_per_page' => -1,
@@ -55,6 +58,11 @@ final class Wyszukiwarka
             'meta_query' => $meta,
             'orderby' => ['pietro_sort' => 'ASC', 'pozycja_sort' => 'ASC'],
         ];
+        if (! empty($filtry['ids'])) {
+            $args['post__in'] = $filtry['ids'];
+        }
+
+        return $args;
     }
 
     /** @param array<string, mixed> $filtry */

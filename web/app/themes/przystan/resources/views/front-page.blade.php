@@ -2,7 +2,7 @@
 
 @section('content')
   {{-- Hero: zdjęcie budynku nad rzeką o zmierzchu --}}
-  <section class="relative isolate overflow-hidden bg-granat text-tlo" aria-labelledby="hero-tytul">
+  <section class="relative isolate overflow-hidden bg-granat text-tlo" aria-labelledby="hero-tytul" data-hero>
     @if ($hero['zdjecie'])
       {!! wp_get_attachment_image($hero['zdjecie'], 'hero', false, [
         'class' => 'absolute inset-0 -z-10 h-full w-full object-cover object-[60%_center]',
@@ -12,6 +12,10 @@
         'decoding' => 'async',
       ]) !!}
     @endif
+    {{-- B: falujące odbicie w rzece (canvas liczony w Workerze, modules/hero.js); bez JS niewidoczny. --}}
+    <canvas class="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-0 transition-opacity duration-700" data-odbicie data-woda="0.69" data-pozycja="0.6" aria-hidden="true"></canvas>
+    {{-- A: rysunek architekta, który zamienia się w zdjęcie (sam CSS, patrz .hero-szkic w app.css). --}}
+    @include('partials.hero-szkic')
     <div class="absolute inset-0 -z-10 bg-gradient-to-r from-granat/90 via-granat/60 to-granat/0" aria-hidden="true"></div>
     <div class="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-granat/70 to-transparent" aria-hidden="true"></div>
 
@@ -39,6 +43,12 @@
         <p class="mt-10 text-sm text-tlo/80">{{ __('Termin oddania:', 'przystan') }} <strong class="text-tlo">{{ $kontakt['termin'] }}</strong></p>
       @endif
     </div>
+    <button type="button" hidden data-ruch-pauza aria-pressed="false"
+            data-pauza="{{ __('Zatrzymaj ruch wody', 'przystan') }}" data-wznow="{{ __('Wznów ruch wody', 'przystan') }}"
+            class="absolute bottom-4 right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-granat/60 px-4 text-sm font-semibold text-tlo backdrop-blur hover:bg-granat/80 md:bottom-6 md:right-8">
+      <svg class="size-4" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" data-ikona-pauza/><path d="M5 3l8 5-8 5z" fill="currentColor" hidden data-ikona-wznow/></svg>
+      <span>{{ __('Zatrzymaj ruch wody', 'przystan') }}</span>
+    </button>
   </section>
 
   {{-- Liczby --}}
@@ -64,9 +74,32 @@
         <p class="mt-5 text-lg text-granat/85">{{ __('Każdy prostokąt to jedno mieszkanie. Kolor pokazuje, czy jest wolne. Kliknij, żeby zobaczyć rzut, metraż i cenę.', 'przystan') }}</p>
         <a href="{{ $urlMieszkania }}" class="przycisk mt-8">{{ __('Wyszukiwarka z filtrami', 'przystan') }}</a>
       </div>
-      @include('components.elewacja', ['mieszkania' => $mieszkania, 'pasujace' => null, 'id' => 'elewacja-glowna'])
+      @include('components.elewacja', [
+        'mieszkania' => $mieszkania, 'pasujace' => null, 'id' => 'elewacja-glowna', 'e' => $elewacja,
+        'woda' => $flagowa['nad_woda'] ?? true, 'podpis' => $flagowa['podpis_elewacji'] ?? null, 'nazwa' => $flagowa['nazwa'] ?? null,
+      ])
     </div>
   </section>
+
+  {{-- Inwestycje --}}
+  @if (count($inwestycje) > 1)
+    <section class="bg-piasek py-16 md:py-24" aria-labelledby="inwestycje-tytul">
+      <div class="kontener">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="nadtytul">{{ __('Inwestycje', 'przystan') }}</p>
+            <h2 id="inwestycje-tytul" class="h2">{{ __('Trzy adresy, jeden sposób budowania', 'przystan') }}</h2>
+          </div>
+          <a href="{{ get_post_type_archive_link('inwestycja') }}" class="font-semibold">{{ __('Wszystkie inwestycje', 'przystan') }}</a>
+        </div>
+        <div class="mt-10 grid gap-8 md:grid-cols-3">
+          @foreach ($inwestycje as $i)
+            <div data-odslon style="--opoznienie: {{ $loop->index * 90 }}ms">@include('partials.karta-inwestycji', ['i' => $i])</div>
+          @endforeach
+        </div>
+      </div>
+    </section>
+  @endif
 
   {{-- Atuty --}}
   @if ($atuty)

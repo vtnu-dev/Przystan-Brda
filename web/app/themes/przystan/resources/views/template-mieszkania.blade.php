@@ -8,7 +8,7 @@
     @php(the_post())
     <section class="pb-6 pt-12 md:pt-16">
       <div class="kontener">
-        <p class="nadtytul">{{ sprintf(_n('%d mieszkanie', '%d mieszkań', count($wszystkie), 'przystan'), count($wszystkie)) }}</p>
+        <p class="nadtytul">{{ sprintf(_n('%d inwestycja', '%d inwestycje', count($inwestycje), 'przystan'), count($inwestycje)) }}</p>
         <h1 class="h2">{{ get_the_title() }}</h1>
         @if (get_the_content())
           <div class="tresc mt-4 max-w-2xl text-lg text-granat/85">@php(the_content())</div>
@@ -27,6 +27,22 @@
         <h2 id="filtry-tytul" class="font-sans text-lg font-semibold">{{ __('Filtry', 'przystan') }}</h2>
         <svg class="size-5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </summary>
+
+      @if (count($inwestycje) > 1)
+        <fieldset class="pole mt-5">
+          <legend>{{ __('Inwestycja', 'przystan') }}</legend>
+          <div class="flex flex-col gap-2">
+            @foreach ($inwestycje as $i)
+              <label class="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-granat/25 px-3 has-[:checked]:border-granat has-[:checked]:bg-tlo">
+                <input type="radio" name="inwestycja" value="{{ $i['id'] }}" class="size-5 accent-morze" @checked($filtry['inwestycja'] === $i['id']) data-inwestycja>
+                <span><span class="block font-semibold">{{ $i['nazwa'] }}</span><span class="block text-sm text-granat/75">{{ $i['lokalizacja'] }} · {{ sprintf(_n('%d wolne', '%d wolnych', $i['wolnych'], 'przystan'), $i['wolnych']) }}</span></span>
+              </label>
+            @endforeach
+          </div>
+        </fieldset>
+      @elseif ($wybrana)
+        <input type="hidden" name="inwestycja" value="{{ $wybrana['id'] }}">
+      @endif
 
       <fieldset class="pole mt-5">
         <legend>{{ __('Pokoje', 'przystan') }}</legend>
@@ -87,13 +103,19 @@
 
       <div class="mt-6 flex flex-wrap items-center gap-4">
         <button type="submit" class="przycisk" data-pokaz>{{ __('Pokaż mieszkania', 'przystan') }}</button>
-        <a href="{{ get_permalink() }}" class="text-sm font-semibold" data-wyczysc>{{ __('Wyczyść filtry', 'przystan') }}</a>
+        <a href="{{ add_query_arg('inwestycja', $filtry['inwestycja'], get_permalink()) }}" class="text-sm font-semibold" data-wyczysc>{{ __('Wyczyść filtry', 'przystan') }}</a>
       </div>
       </details>
     </form>
 
     <div>
-      @include('components.elewacja', ['mieszkania' => $wszystkie, 'pasujace' => $pasujace, 'id' => 'elewacja'])
+      @if ($wybrana)
+        <h2 class="mb-4 text-2xl">{{ $wybrana['nazwa'] }} <span class="font-sans text-base text-granat/75">· {{ $wybrana['lokalizacja'] }} · {{ $wybrana['status_etykieta'] }}</span></h2>
+      @endif
+      @include('components.elewacja', [
+        'mieszkania' => $wszystkie, 'pasujace' => $pasujace, 'id' => 'elewacja', 'e' => $elewacja,
+        'woda' => $wybrana['nad_woda'] ?? true, 'podpis' => $wybrana['podpis_elewacji'] ?? null, 'nazwa' => $wybrana['nazwa'] ?? null,
+      ])
 
       <h2 class="mt-12 font-sans text-xl font-semibold" aria-live="polite" data-licznik>
         {{-- translators: %d: liczba znalezionych mieszkań --}}

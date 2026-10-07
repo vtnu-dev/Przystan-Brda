@@ -8,6 +8,90 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: przystan\n"
 
+msgid "gotowe do odbioru"
+msgstr "ready to move in"
+
+msgid "w przygotowaniu"
+msgstr "coming soon"
+
+msgid "w budowie"
+msgstr "under construction"
+
+msgid "Dane"
+msgstr "Details"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Lokalizacja"
+msgstr "Location"
+
+msgid "Termin oddania / startu sprzedaży"
+msgstr "Completion / sales start"
+
+msgid "Kondygnacje (z parterem)"
+msgstr "Storeys (incl. ground floor)"
+
+msgid "Do rysunku elewacji."
+msgstr "Used to draw the facade."
+
+msgid "Lokali na piętro"
+msgstr "Units per floor"
+
+msgid "Budynek nad wodą"
+msgstr "Building by the water"
+
+msgid "Linie wody pod elewacją."
+msgstr "Water lines under the facade."
+
+msgid "Podpis pod elewacją"
+msgstr "Caption under the facade"
+
+msgid "Harmonogram"
+msgstr "Timeline"
+
+msgid "Etap %d: nazwa"
+msgstr "Stage %d: name"
+
+msgid "Etap %d: kiedy"
+msgstr "Stage %d: when"
+
+msgid "Etap %d: stan"
+msgstr "Stage %d: status"
+
+msgid "zrobione"
+msgstr "done"
+
+msgid "w toku"
+msgstr "in progress"
+
+msgid "planowane"
+msgstr "planned"
+
+msgid "Inwestycja"
+msgstr "Development"
+
+msgid "Dziennik budowy"
+msgstr "Construction diary"
+
+msgid "Której inwestycji dotyczy wpis"
+msgstr "Which development this post is about"
+
+msgid "Inwestycje"
+msgstr "Developments"
+
+msgid "Dodaj inwestycję"
+msgstr "Add development"
+
+msgid "Edytuj inwestycję"
+msgstr "Edit development"
+
+msgid "Wszystkie inwestycje"
+msgstr "All developments"
+
+msgid "Brak inwestycji"
+msgstr "No developments"
+
 msgid "%d pokój"
 msgid_plural "%d pokoje"
 msgstr[0] "%d room"
@@ -57,9 +141,6 @@ msgstr "Position on the facade"
 
 msgid "1-6, od lewej"
 msgstr "1-6, from the left"
-
-msgid "Status"
-msgstr "Status"
 
 msgid "Pokoje"
 msgstr "Rooms"
@@ -310,6 +391,12 @@ msgstr "Several enquiries have already been sent. Try again in a few minutes or 
 msgid "Nie udało się zapisać zapytania. Zadzwoń do nas, proszę."
 msgstr "We could not save your enquiry. Please give us a call."
 
+msgid "Zapisane! Napiszemy, gdy ruszy sprzedaż. Wypisać się można jednym kliknięciem w każdej wiadomości."
+msgstr "You are on the list! We will write when sales start. You can unsubscribe with one click in any message."
+
+msgid "Powiadomienie: %s"
+msgstr "Notification: %s"
+
 msgid "Ogólne"
 msgstr "General"
 
@@ -346,6 +433,15 @@ msgstr "Enquiry details"
 msgid "Imię"
 msgstr "Name"
 
+msgid "Rodzaj"
+msgstr "Type"
+
+msgid "powiadomienie o starcie sprzedaży"
+msgstr "sales start notification"
+
+msgid "zapytanie"
+msgstr "enquiry"
+
 msgid "Język"
 msgstr "Language"
 
@@ -358,6 +454,12 @@ msgstr "Message"
 msgctxt "skrót: parter na elewacji"
 msgid "P"
 msgstr "G"
+
+msgid "Mieszkanie %s"
+msgstr "Apartment %s"
+
+msgid "Postęp prac co kilka tygodni: zdjęcia z placu budowy i najważniejsze etapy."
+msgstr "Progress every few weeks: photos from the site and the key milestones."
 
 msgid "Menu główne"
 msgstr "Main menu"
@@ -376,6 +478,15 @@ msgstr "The address may have changed or the apartment was removed from the offer
 
 msgid "Znajdź mieszkanie"
 msgstr "Find an apartment"
+
+msgid "Przystań, deweloper z Bydgoszczy"
+msgstr "Przystań, a Bydgoszcz developer"
+
+msgid "Budujemy kameralnie: kilka budynków naraz, każdy w miejscu, w którym sami chcielibyśmy mieszkać. Nad wodą, w zieleni, blisko centrum."
+msgstr "We build on a small scale: a few buildings at a time, each in a place where we would like to live ourselves. By the water, among greenery, close to the centre."
+
+msgid "Elewacja: %s. Wybierz mieszkanie, żeby zobaczyć szczegóły."
+msgstr "Facade: %s. Choose an apartment to see the details."
 
 msgid "Elewacja budynku od strony rzeki. Wybierz mieszkanie, żeby zobaczyć szczegóły."
 msgstr "River-side facade of the building. Choose an apartment to see the details."
@@ -400,6 +511,12 @@ msgstr[1] "%d available"
 msgid "Termin oddania:"
 msgstr "Completion:"
 
+msgid "Zatrzymaj ruch wody"
+msgstr "Stop the water movement"
+
+msgid "Wznów ruch wody"
+msgstr "Resume the water movement"
+
 msgid "Inwestycja w liczbach"
 msgstr "The development in numbers"
 
@@ -412,6 +529,9 @@ msgstr "Each rectangle is one apartment. The colour shows whether it is availabl
 msgid "Wyszukiwarka z filtrami"
 msgstr "Search with filters"
 
+msgid "Trzy adresy, jeden sposób budowania"
+msgstr "Three addresses, one way of building"
+
 msgid "Dlaczego tutaj"
 msgstr "Why here"
 
@@ -421,9 +541,6 @@ msgstr "Calm apartments with a view no one can build over"
 msgid "Okolica i standard wykończenia"
 msgstr "Neighbourhood and finish"
 
-msgid "Dziennik budowy"
-msgstr "Construction diary"
-
 msgid "Co nowego na placu budowy"
 msgstr "News from the construction site"
 
@@ -432,9 +549,6 @@ msgstr "All posts"
 
 msgid "Na bieżąco"
 msgstr "Latest news"
-
-msgid "Postęp prac co kilka tygodni: zdjęcia z placu budowy i najważniejsze etapy."
-msgstr "Progress every few weeks: photos from the site and the key milestones."
 
 msgid "Starsze wpisy"
 msgstr "Older posts"
@@ -472,14 +586,44 @@ msgstr "I agree to the processing of my data in order to reply to my enquiry."
 msgid "Polityka prywatności"
 msgstr "Privacy policy"
 
+msgid "Zapisz mnie"
+msgstr "Sign me up"
+
 msgid "Wyślij zapytanie"
 msgstr "Send enquiry"
+
+msgid "Ile wyniesie rata?"
+msgstr "What would the instalment be?"
+
+msgid "Wkład własny"
+msgstr "Down payment"
+
+msgid "Okres kredytu"
+msgstr "Loan term"
+
+msgid "Oprocentowanie roczne"
+msgstr "Annual interest rate"
+
+msgid "Rata miesięczna (orientacyjnie)"
+msgstr "Monthly instalment (estimate)"
+
+msgid "Kwota kredytu:"
+msgstr "Loan amount:"
+
+msgid "Wyliczenie poglądowe, nie jest ofertą banku. Dokładną symulację przygotuje doradca."
+msgstr "An indicative calculation, not a bank offer. Your advisor will prepare an exact simulation."
 
 msgid "Jesteś tutaj"
 msgstr "You are here"
 
 msgid "Zobacz"
 msgstr "View"
+
+msgid "Dodaj %s do ulubionych"
+msgstr "Add %s to favourites"
+
+msgid "Usuń %s z ulubionych"
+msgstr "Remove %s from favourites"
 
 msgid "Lista mieszkań spełniających filtry"
 msgstr "Apartments matching the filters"
@@ -493,6 +637,9 @@ msgstr "Balcony"
 msgid "Szczegóły"
 msgstr "Details"
 
+msgid "Ulubione"
+msgstr "Favourites"
+
 msgid "Żadne mieszkanie nie spełnia tych warunków. Zmień filtry albo napisz do nas: często mamy lokale przed publikacją."
 msgstr "No apartment matches these filters. Change the filters or write to us: we often have units before they are published."
 
@@ -502,8 +649,8 @@ msgstr "On this site"
 msgid "Strona demonstracyjna."
 msgstr "Demo website."
 
-msgid "Przystań Brda to fikcyjna inwestycja: mieszkania, ceny i dane kontaktowe są przykładowe."
-msgstr "Przystań Brda is a fictional development: apartments, prices and contact details are examples."
+msgid "Przystań to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe."
+msgstr "Przystań is a fictional developer: developments, apartments, prices and contact details are examples."
 
 msgid "Projekt i wdrożenie:"
 msgstr "Design and build:"
@@ -511,8 +658,35 @@ msgstr "Design and build:"
 msgid "Menu"
 msgstr "Menu"
 
-msgid "Mieszkanie %s"
-msgstr "Apartment %s"
+msgid "Najważniejsze informacje"
+msgstr "Key facts"
+
+msgid "status"
+msgstr "status"
+
+msgid "mieszkań"
+msgstr "apartments"
+
+msgid "wolnych"
+msgstr "available"
+
+msgid "start sprzedaży"
+msgstr "sales start"
+
+msgid "termin oddania"
+msgstr "completion"
+
+msgid "Powiadom mnie o starcie sprzedaży"
+msgstr "Notify me when sales start"
+
+msgid "Zapisani dostają rzuty i ceny kilka dni przed publikacją. Jedna wiadomość na start sprzedaży, bez newslettera."
+msgstr "People on the list get floor plans and prices a few days before publication. One message when sales start, no newsletter."
+
+msgid "Z placu budowy"
+msgstr "From the construction site"
+
+msgid "Inne inwestycje"
+msgstr "Other developments"
 
 msgid "Rzut mieszkania %1$s: %2$s, %3$s"
 msgstr "Floor plan of apartment %1$s: %2$s, %3$s"
@@ -553,10 +727,10 @@ msgstr "An advisor will reply within one working day with the unit sheet, the pa
 msgid "Godziny otwarcia"
 msgstr "Opening hours"
 
-msgid "%d mieszkanie"
-msgid_plural "%d mieszkań"
-msgstr[0] "%d apartment"
-msgstr[1] "%d apartments"
+msgid "%d inwestycja"
+msgid_plural "%d inwestycje"
+msgstr[0] "%d development"
+msgstr[1] "%d developments"
 
 msgid "Filtry"
 msgstr "Filters"
@@ -598,4 +772,28 @@ msgstr "Travel time"
 
 msgid "min"
 msgstr "min"
+
+msgid "Bez logowania, zapisane w tej przeglądarce"
+msgstr "No login, saved in this browser"
+
+msgid "Cena za m²"
+msgstr "Price per m²"
+
+msgid "Zobacz kartę"
+msgstr "View details"
+
+msgid "Usuń z ulubionych"
+msgstr "Remove from favourites"
+
+msgid "Porównanie ulubionych mieszkań"
+msgstr "Comparison of favourite apartments"
+
+msgid "Nie masz jeszcze ulubionych mieszkań. Na karcie mieszkania kliknij „Ulubione”, a pojawi się tutaj."
+msgstr "You have no favourite apartments yet. Click \"Favourites\" on an apartment page and it will appear here."
+
+msgid "Przejdź do wyszukiwarki"
+msgstr "Go to the search"
+
+msgid "Ulubione działają po włączeniu JavaScriptu."
+msgstr "Favourites need JavaScript to be enabled."
 

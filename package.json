@@ -8,6 +8,7 @@
     "obrazy": "node scripts/obrazy.mjs"
   },
   "devDependencies": {
+    "playwright": "^1.63.0",
     "sharp": "^0.34.0"
   }
 }

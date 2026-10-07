@@ -12,12 +12,13 @@ use Przystan\Ustawienia\Ustawienia;
 final class Integracja
 {
     /** Pola wspólne dla wszystkich wersji językowych mieszkania. */
-    public const POLA_WSPOLNE = ['numer', 'pietro', 'pozycja', 'pokoje', 'metraz', 'cena', 'status', 'balkon_m2', 'ogrodek', 'widok_na_rzeke'];
+    public const POLA_WSPOLNE = ['inwestycja', 'numer', 'pietro', 'pozycja', 'pokoje', 'metraz', 'cena', 'status', 'balkon_m2', 'ogrodek', 'widok_na_rzeke'];
 
     public static function rejestruj(): void
     {
         add_filter('pll_get_post_types', [self::class, 'typy'], 10, 2);
         add_filter('pll_copy_post_metas', [self::class, 'metaDoKopii'], 10, 3);
+        add_filter('pll_translate_post_meta', [self::class, 'tlumaczRelacje'], 10, 3);
         add_action('init', [self::class, 'ciagi'], 30);
     }
 
@@ -25,6 +26,7 @@ final class Integracja
     public static function typy(array $typy, bool $ustawienia): array
     {
         $typy[TypTresci::TYP] = TypTresci::TYP;
+        $typy[\Przystan\Inwestycje\TypTresci::TYP] = \Przystan\Inwestycje\TypTresci::TYP;
 
         return $typy;
     }
@@ -50,6 +52,18 @@ final class Integracja
         }
 
         return $wspolne;
+    }
+
+    /**
+     * Przy synchronizacji mieszkania PL → EN pole „inwestycja” musi wskazywać angielską wersję inwestycji, nie polską.
+     */
+    public static function tlumaczRelacje(mixed $wartosc, string $klucz, string $jezyk): mixed
+    {
+        if ($klucz === 'inwestycja' && is_numeric($wartosc) && function_exists('pll_get_post')) {
+            return pll_get_post((int) $wartosc, $jezyk) ?: $wartosc;
+        }
+
+        return $wartosc;
     }
 
     /** Teksty z ustawień do przetłumaczenia w Języki → Tłumaczenia ciągów. */
