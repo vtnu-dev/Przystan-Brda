@@ -148,7 +148,7 @@ języki, cache widoków Blade, `rewrite flush`. WP-Cron uruchamia systemowy cron
 - **WCAG 2.2 AA:** kontrast sprawdzony dla każdej pary kolorów, skip link, widoczny fokus, etykiety i błędy pól
   powiązane przez `aria-describedby`, komunikaty w `aria-live`, status mieszkania kolorem i kształtem, cele dotykowe ≥ 24 px.
 - **Wydajność:** fonty lokalnie (bez Google Fonts), WebP w kilku rozmiarach (`srcset`), hero z `fetchpriority="high"`,
-  bez jQuery, emoji, oEmbed i stylów bloków poza wpisami, JS ~5 KB gzip, CSS ~14 KB gzip, zero zewnętrznych żądań.
+  bez jQuery, emoji, oEmbed i stylów bloków poza wpisami, JS ok. 12 KB gzip (razem z Lenisem), CSS ok. 16 KB gzip, zero zewnętrznych żądań.
 
 ## Moja rola
 
