@@ -214,7 +214,7 @@ add_action('wp_head', function () {
     }
 
     $dane = ['@context' => 'https://schema.org', '@graph' => array_values(array_map(fn($w) => array_filter($w, fn($v) => $v !== null && $v !== ''), $graf))];
-    echo '<script type="application/ld+json">' . wp_json_encode($dane, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "</script>\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($dane, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) . "</script>\n";
 }, 3);
 
 /** @param list<array{0: string, 1: string}> $sciezka */

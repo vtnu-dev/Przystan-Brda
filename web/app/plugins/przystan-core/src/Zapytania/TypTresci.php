@@ -40,8 +40,20 @@ final class TypTresci
             'menu_icon' => 'dashicons-email-alt',
             'menu_position' => 6,
             'supports' => ['title'],
+            // Zapytania to dane osobowe: widzi je tylko redaktor i administrator (edit_others_posts),
+            // a nie każdy z edit_posts (autor, współpracownik). Nowe powstają tylko z formularza.
             'capability_type' => 'post',
-            'capabilities' => ['create_posts' => 'do_not_allow'], // powstają tylko z formularza
+            'capabilities' => [
+                'create_posts' => 'do_not_allow',
+                'edit_posts' => 'edit_others_posts',
+                'edit_published_posts' => 'edit_others_posts',
+                'edit_private_posts' => 'edit_others_posts',
+                'publish_posts' => 'edit_others_posts',
+                'read_private_posts' => 'edit_others_posts',
+                'delete_posts' => 'delete_others_posts',
+                'delete_published_posts' => 'delete_others_posts',
+                'delete_private_posts' => 'delete_others_posts',
+            ],
             'map_meta_cap' => true,
         ]);
     }

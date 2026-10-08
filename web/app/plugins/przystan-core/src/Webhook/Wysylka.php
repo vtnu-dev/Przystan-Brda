@@ -103,7 +103,8 @@ final class Wysylka
                 'Content-Type' => 'application/json; charset=utf-8',
                 'User-Agent' => 'PrzystanBrda/' . PRZYSTAN_CORE_VERSION . '; ' . home_url(),
                 'X-Przystan-Event' => self::zdarzenie($zapytanieId),
-                'X-Przystan-Delivery' => $zapytanieId . '-' . $czas,
+                // Ten sam identyfikator przy każdej próbie: odbiorca odfiltruje duplikaty po timeoucie.
+                'X-Przystan-Delivery' => 'zapytanie-' . $zapytanieId,
                 'X-Przystan-Timestamp' => (string) $czas,
                 'X-Przystan-Signature' => Podpis::podpisz($tresc, $czas, Ustawienia::pobierz('webhook_klucz')),
             ],
