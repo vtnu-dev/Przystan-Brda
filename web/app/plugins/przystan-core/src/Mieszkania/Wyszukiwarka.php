@@ -74,7 +74,21 @@ final class Wyszukiwarka
     }
 
     /**
-     * Wykonuje wyszukiwanie. Wynik (tablice gotowe do JSON) trzymamy w cache,
+     * Czy wynik zapisać w cache. Tylko lista bez filtrów (cała albo jednej inwestycji): to najczęstsze
+     * zapytanie, a liczba takich kluczy jest ograniczona. Kombinacji filtrów z publicznego endpointu
+     * jest bardzo dużo (np. dowolny metraż), więc liczymy je na bieżąco, żeby nie zapychać wp_options.
+     *
+     * @param  array<string, mixed>  $filtry
+     */
+    public static function doCache(array $filtry): bool
+    {
+        unset($filtry['inwestycja']);
+
+        return $filtry === [] || $filtry === ['status' => 'wszystkie'];
+    }
+
+    /**
+     * Wykonuje wyszukiwanie. Listy bez filtrów (zob. doCache) trzymamy w cache,
      * który czyści zapis dowolnego mieszkania (Wyszukiwarka::wyczysc).
      *
      * @param  array<string, mixed>  $filtry
@@ -82,6 +96,14 @@ final class Wyszukiwarka
      */
     public static function szukaj(array $filtry, string $jezyk): array
     {
+        $cache = self::doCache($filtry)
+            && (! isset($filtry['inwestycja']) || get_post_type($filtry['inwestycja']) === 'inwestycja');
+        if (! $cache) {
+            $zapytanie = new \WP_Query(self::argumenty($filtry, $jezyk));
+
+            return array_map([Mieszkanie::class, 'zPosta'], $zapytanie->posts);
+        }
+
         $wersja = (int) get_option('przystan_mieszkania_wersja', 1);
         $klucz = self::kluczCache($filtry, $jezyk) . '_v' . $wersja;
 

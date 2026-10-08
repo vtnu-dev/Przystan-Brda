@@ -65,11 +65,14 @@ final class Strona
     {
         $klucz = Ustawienia::pobierz('webhook_klucz');
         echo '<p>' . esc_html__('Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Przystan-Signature zawiera HMAC-SHA256 z „X-Przystan-Timestamp.treść” liczony tym kluczem.', 'przystan') . '</p>';
+        // Strona jest tylko dla administratora (manage_options), a klucz trzeba przekazać odbiorcy webhooka,
+        // więc pokazujemy go w całości w polu tylko do odczytu (kliknięcie zaznacza całość).
         printf(
-            '<p><code>%1$s</code> <a class="button" href="%2$s">%3$s</a></p>',
-            esc_html($klucz !== '' ? substr($klucz, 0, 8) . '…' . substr($klucz, -4) : __('brak klucza', 'przystan')),
+            '<p><input class="regular-text code" type="text" readonly value="%1$s" aria-label="%4$s" onfocus="this.select()"> <a class="button" href="%2$s">%3$s</a></p>',
+            esc_attr($klucz !== '' ? $klucz : __('brak klucza', 'przystan')),
             esc_url(wp_nonce_url(admin_url('admin-post.php?action=przystan_nowy_klucz'), 'przystan_nowy_klucz')),
             esc_html__('Wygeneruj nowy klucz', 'przystan'),
+            esc_attr__('Klucz webhooka', 'przystan'),
         );
     }
 

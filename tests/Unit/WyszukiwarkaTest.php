@@ -58,3 +58,12 @@ it('daje inny klucz pamięci podręcznej dla innych filtrów i języków', funct
     expect($a)->not->toBe($b)->and($a)->not->toBe($c)
         ->and(strlen($a))->toBeLessThanOrEqual(172);
 });
+
+it('zapisuje w cache tylko listy bez filtrów, żeby publiczny endpoint nie zapychał bazy', function () {
+    expect(Wyszukiwarka::doCache([]))->toBeTrue()
+        ->and(Wyszukiwarka::doCache(['status' => 'wszystkie']))->toBeTrue()
+        ->and(Wyszukiwarka::doCache(['inwestycja' => 12, 'status' => 'wszystkie']))->toBeTrue()
+        ->and(Wyszukiwarka::doCache(['status' => 'wolne']))->toBeFalse()
+        ->and(Wyszukiwarka::doCache(['metraz_min' => 47.31, 'status' => 'wszystkie']))->toBeFalse()
+        ->and(Wyszukiwarka::doCache(['ids' => [3, 7], 'status' => 'wszystkie']))->toBeFalse();
+});
