@@ -60,7 +60,7 @@ web/app/themes/przystan/         MOTYW: tylko wygląd
   app/                           setup, SEO, composery widoków (dane dla Blade), geometria elewacji
   resources/views/               szablony Blade
   resources/js/modules/          menu, elewacja, wyszukiwarka, formularz, ulubione, kalkulator, ruch, hero + Worker
-                                 (czysty JS, bez bibliotek: ~5 KB gzip + Worker 1,7 KB)
+                                 (własny JS + Lenis do płynnego przewijania, Worker osobno)
   resources/css/app.css          system wizualny w Tailwind 4 (@theme)
 web/app/mu-plugins/              hardening bezpieczeństwa
 scripts/                         seed treści, wdrożenie, testy dymne, rzuty, tłumaczenia
@@ -136,7 +136,7 @@ języki, cache widoków Blade, `rewrite flush`. WP-Cron uruchamia systemowy cron
   integracja w jednej klasie. Darmowy Polylang nie tłumaczy sluga typu treści, więc `/en/apartments/` to własna reguła rewrite.
 - **Elewacja parametryczna.** Liczba kondygnacji i lokali na piętro to pola inwestycji, więc nowy budynek
   nie wymaga zmian w kodzie motywu.
-- **Animacje bez bibliotek i bez kosztu dla LCP.** Nagłówek jest widoczny od pierwszej klatki; rysunek w hero to CSS,
+- **Animacje bez ciężkich bibliotek i bez kosztu dla LCP.** Ruch to własny kod (CSS, IntersectionObserver, Web Worker); jedyna biblioteka to lekki Lenis do płynnego przewijania. Nagłówek jest widoczny od pierwszej klatki; rysunek w hero to CSS,
   a ciężka część (odbicie w wodzie) startuje po pierwszych sekundach w wątku roboczym. Ruch automatyczny ma pauzę
   i sam się zatrzymuje (WCAG 2.2.2), a przy „ogranicz ruch” strona od razu pokazuje stan końcowy.
 - **Formatowanie liczb we wtyczce.** Ceny i metraże formatuje wtyczka według języka strony (PL „670 000 zł”, EN „670,000 zł”).
@@ -166,7 +166,7 @@ work without page builders: **Bedrock + Sage 11 (Blade, Tailwind 4, Vite)**, a c
 in code, REST search endpoint using `WP_Query`, enquiry form with HMAC-signed webhook and retries via WP-Cron,
 Settings API page), **Polylang** (PL/EN), technical SEO without an SEO plugin (JSON-LD, Open Graph, hreflang,
 sitemap), WCAG 2.2 AA and security hardening. Developments, apartments and diary posts are linked custom post types;
-there are favourites with side-by-side comparison, a mortgage calculator, and motion without libraries (a CSS
+there are favourites with side-by-side comparison, a mortgage calculator, and motion written by hand, with Lenis only for smooth scrolling (a CSS
 line-drawing intro, a rippling river reflection rendered in a Web Worker on OffscreenCanvas, View Transitions). The interactive facade is an SVG generated in PHP from WordPress data:
 every window is a keyboard-accessible link to the apartment page. Built with Claude Code as a tool; I make the
 decisions, review and test every change, and deploy.
