@@ -34,6 +34,7 @@ done
 # Mapa strony działa na produkcji; lokalnie (WP_ENV=development) Bedrock wyłącza indeksowanie i mapę.
 [[ "$BASE" == https://* ]] && sprawdz_kod /wp-sitemap.xml 200
 sprawdz_kod /tej-strony-nie-ma/ 404
+sprawdz_kod /sample-page/ 404 # domyślna strona WordPressa usunięta
 sprawdz_kod /en/home/ 301
 
 echo "SEO"

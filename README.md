@@ -124,6 +124,7 @@ Odbiorcą może być n8n, Make, Zapier albo endpoint CRM. Bez adresu zapytania t
 `rsync --delete` do katalogu strony (bez `.env`, uploads i pakietów z Composera) → `composer install --no-dev`,
 języki, cache widoków Blade, `rewrite flush`. WP-Cron uruchamia systemowy cron co minutę (`DISABLE_WP_CRON=true`).
 
+
 ## Decyzje i kompromisy
 
 - **ACF bez wersji Pro.** Brak repeatera, więc powtarzalne elementy mają stałą liczbę miejsc (4 liczby, 3 atuty,

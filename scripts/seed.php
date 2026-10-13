@@ -382,6 +382,13 @@ Wyszukiwarka::wyczysc();
 
 WP_CLI::log('Dziennik budowy…');
 wp_delete_post(1, true); // „Witaj, świecie!”
+// Domyślne strony WordPressa („Sample Page” i szkic „Privacy Policy”); własna polityka prywatności jest w seedzie.
+foreach (get_posts(['post_type' => 'page', 'post_status' => 'any', 'name' => 'sample-page', 'lang' => '', 'fields' => 'ids']) as $stara) {
+    wp_delete_post((int) $stara, true);
+}
+foreach (get_posts(['post_type' => 'page', 'post_status' => 'draft', 'name' => 'privacy-policy', 'lang' => '', 'fields' => 'ids', 'meta_key' => '_przystan_seed', 'meta_compare' => 'NOT EXISTS']) as $stara) {
+    wp_delete_post((int) $stara, true);
+}
 foreach ($tresci['wpisy'] as $klucz => $wpis) {
     $para = [];
     foreach (['pl', 'en'] as $j) {
