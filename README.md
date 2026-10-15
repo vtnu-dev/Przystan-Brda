@@ -120,10 +120,16 @@ Odbiorcą może być n8n, Make, Zapier albo endpoint CRM. Bez adresu zapytania t
 
 ## Wdrożenie
 
-`scripts/deploy.sh`: build motywu lokalnie (serwer nie potrzebuje Node) → archiwum z `HEAD` + zbudowane zasoby →
-`rsync --delete` do katalogu strony (bez `.env`, uploads i pakietów z Composera) → `composer install --no-dev`,
-języki, cache widoków Blade, `rewrite flush`. WP-Cron uruchamia systemowy cron co minutę (`DISABLE_WP_CRON=true`).
+Każdy push przechodzi przez **GitHub Actions**: testy Pest, styl kodu (Pint) i build motywu. Wdrożenie robi jeden
+skrypt, [`scripts/deploy.sh`](scripts/deploy.sh):
 
+1. buduje motyw lokalnie (serwer nie potrzebuje Node),
+2. pakuje dokładnie to, co jest w zatwierdzonym `HEAD`, razem ze zbudowanymi zasobami,
+3. synchronizuje pliki na serwerze, instaluje zależności Composera bez pakietów deweloperskich, aktualizuje
+   tłumaczenia, odświeża cache widoków Blade i reguły adresów.
+
+Dane dostępu do serwera są w pliku poza repozytorium. Produkcja to serwer Linux z CloudPanel (nginx, PHP-FPM, MySQL);
+WP-Cron uruchamia systemowy cron, a nie ruch na stronie.
 
 ## Decyzje i kompromisy
 
