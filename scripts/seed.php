@@ -298,7 +298,7 @@ for ($pietro = 0; $pietro <= 5; $pietro++) {
     for ($pozycja = 1; $pozycja <= 6; $pozycja++) {
         $typ = $typy[$pozycja - 1];
         $numer = sprintf('M-%d%d', $pietro, $pozycja);
-        $metraz = round($metraze[$typ] + (($pietro % 3) - 1) * 0.3, 1);
+        $metraz = round($metraze[$typ], 1); // dokładnie suma pokoi z rzutu
         $narozne = in_array($pozycja, [1, 2, 5, 6], true);
         $widok = $narozne || $pietro >= 2;
         $balkon = match (true) {
@@ -348,7 +348,7 @@ for ($pietro = 0; $pietro <= 3; $pietro++) {
     for ($pozycja = 1; $pozycja <= 4; $pozycja++) {
         $typ = $typyLipowa[$pozycja - 1];
         $numer = sprintf('L-%d%d', $pietro, $pozycja);
-        $metraz = round($metraze[$typ] + (($pietro % 2) ? 0.4 : -0.2), 1);
+        $metraz = round($metraze[$typ], 1); // dokładnie suma pokoi z rzutu
         $narozne = in_array($pozycja, [1, 4], true);
         $balkon = $pietro === 0 ? 0.0 : ($narozne ? 6.0 : 4.5);
         $cena = (int) (round($metraz * (8900 + $pietro * 180) / 1000) * 1000);

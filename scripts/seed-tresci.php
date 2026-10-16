@@ -225,14 +225,14 @@ return [
             'seo' => 'Okolica inwestycji Delta: bulwar, Wyspa Młyńska, Stary Rynek, szkoła i tramwaj w zasięgu spaceru. Standard wykończenia budynku.',
             'punkty' => [['Bulwar nad Brdą', 1, 'pieszo'], ['Przystanek tramwajowy', 3, 'pieszo'], ['Szkoła podstawowa', 6, 'pieszo'], ['Wyspa Młyńska', 8, 'pieszo'], ['Stary Rynek', 12, 'pieszo'], ['Dworzec Bydgoszcz Główna', 9, 'tramwajem']],
             'standard_naglowek' => 'Standard, który widać od progu',
-            'standard' => ['Pomieszczenia o wysokości 2,75 m', 'Okna trzyszybowe z podwyższoną izolacją akustyczną', 'Ogrzewanie podłogowe z miejskiej sieci', 'Balkony i tarasy z balustradą ze szkła i stali', 'Winda z garażu na każde piętro', 'Komórki lokatorskie i rowerownia', 'Stanowiska do ładowania aut elektrycznych', 'Monitoring części wspólnych'],
+            'standard' => ['Pomieszczenia o wysokości 2,75 m', 'Okna trzyszybowe z podwyższoną izolacją akustyczną', 'Ogrzewanie podłogowe z miejskiej sieci', 'Balkony i tarasy z balustradą ze stali', 'Winda z garażu na każde piętro', 'Komórki lokatorskie i rowerownia', 'Stanowiska do ładowania aut elektrycznych', 'Monitoring części wspólnych'],
         ],
         'en' => [
             'wstep' => 'A quiet part of town by the water, yet only minutes from the centre. See how long it takes to get to the places you go most often.',
             'seo' => 'Around Delta: the boulevard, Mill Island, the Old Market Square, a school and trams within walking distance. Building finish standard.',
             'punkty' => [['Brda boulevard', 1, 'pieszo'], ['Tram stop', 3, 'pieszo'], ['Primary school', 6, 'pieszo'], ['Mill Island', 8, 'pieszo'], ['Old Market Square', 12, 'pieszo'], ['Bydgoszcz Główna station', 9, 'tramwajem']],
             'standard_naglowek' => 'Quality you notice at the door',
-            'standard' => ['Ceilings 2.75 m high', 'Triple-glazed windows with extra sound insulation', 'Underfloor heating from the city network', 'Balconies and terraces with glass and steel railings', 'Lift from the garage to every floor', 'Storage rooms and a bike room', 'Charging points for electric cars', 'CCTV in common areas'],
+            'standard' => ['Ceilings 2.75 m high', 'Triple-glazed windows with extra sound insulation', 'Underfloor heating from the city network', 'Balconies and terraces with steel railings', 'Lift from the garage to every floor', 'Storage rooms and a bike room', 'Charging points for electric cars', 'CCTV in common areas'],
         ],
     ],
 
@@ -267,8 +267,8 @@ return [
             'en' => $akapity('Three rooms for a family. The living room and main bedroom face the river, with a smaller room for a child or a home office.'),
         ],
         'E' => [
-            'pl' => $akapity('Narożne trzy pokoje z oknami na dwie strony. Duża sypialnia, osobny pokój i salon z aneksem, w którym zmieści się stół dla sześciu osób.'),
-            'en' => $akapity('A corner three-room apartment with windows on two sides. A large bedroom, a separate room and a living room with space for a table for six.'),
+            'pl' => $akapity('Trzy pokoje z oknami od strony rzeki. Duża sypialnia, osobny pokój i salon z aneksem, w którym zmieści się stół dla sześciu osób.'),
+            'en' => $akapity('A three-room apartment with windows facing the river. A large bedroom, a separate room and a living room with space for a table for six.'),
         ],
         'F' => [
             'pl' => $akapity('Największe mieszkanie w budynku: cztery pokoje, garderoba i duży salon. Na ostatnim piętrze z tarasem z widokiem na rzekę i park.'),
