@@ -47,7 +47,7 @@
     </div>
     <button type="button" hidden data-ruch-pauza aria-pressed="false"
             data-pauza="{{ __('Zatrzymaj ruch wody', 'przystan') }}" data-wznow="{{ __('Wznów ruch wody', 'przystan') }}"
-            class="absolute bottom-4 right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-granat/60 px-4 text-sm font-semibold text-tlo backdrop-blur hover:bg-granat/80 md:bottom-6 md:right-8">
+            class="absolute bottom-4 right-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-granat/80 px-4 text-sm font-semibold text-tlo hover:bg-granat md:bottom-6 md:right-8">
       <svg class="size-4" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" data-ikona-pauza/><path d="M5 3l8 5-8 5z" fill="currentColor" hidden data-ikona-wznow/></svg>
       <span>{{ __('Zatrzymaj ruch wody', 'przystan') }}</span>
     </button>
