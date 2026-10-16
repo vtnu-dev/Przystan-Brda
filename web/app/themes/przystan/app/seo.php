@@ -22,7 +22,9 @@ add_filter('document_title_parts', function (array $czesci) {
         $czesci['title'] = sprintf('%s, %s, %s', sprintf(__('Mieszkanie %s', 'przystan'), $m['numer']), $m['pokoje_tekst'], $m['metraz_tekst']);
     }
     if (is_front_page()) {
-        $czesci['title'] = get_bloginfo('name') . ': ' . get_bloginfo('description');
+        $nazwa = get_bloginfo('name');
+        $opis = get_bloginfo('description');
+        $czesci['title'] = str_starts_with($opis, $nazwa) ? $opis : $nazwa . ': ' . $opis;
         unset($czesci['tagline'], $czesci['site']);
     }
 
