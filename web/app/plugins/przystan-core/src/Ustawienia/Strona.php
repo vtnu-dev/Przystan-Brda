@@ -3,7 +3,7 @@
 namespace Przystan\Ustawienia;
 
 /**
- * Ustawienia → Przystań Brda (Settings API). Bez ACF Pro: zwykła strona opcji WordPressa.
+ * Ustawienia → Delta (Settings API). Bez ACF Pro: zwykła strona opcji WordPressa.
  */
 final class Strona
 {
@@ -19,8 +19,8 @@ final class Strona
     public static function menu(): void
     {
         add_options_page(
-            __('Przystań Brda', 'przystan'),
-            __('Przystań Brda', 'przystan'),
+            __('Delta', 'przystan'),
+            __('Delta', 'przystan'),
             'manage_options',
             self::SLUG,
             [self::class, 'widok'],
@@ -64,7 +64,7 @@ final class Strona
     public static function opisWebhooka(): void
     {
         $klucz = Ustawienia::pobierz('webhook_klucz');
-        echo '<p>' . esc_html__('Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Przystan-Signature zawiera HMAC-SHA256 z „X-Przystan-Timestamp.treść” liczony tym kluczem.', 'przystan') . '</p>';
+        echo '<p>' . esc_html__('Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Delta-Signature zawiera HMAC-SHA256 z „X-Delta-Timestamp.treść” liczony tym kluczem.', 'przystan') . '</p>';
         // Strona jest tylko dla administratora (manage_options), a klucz trzeba przekazać odbiorcy webhooka,
         // więc pokazujemy go w całości w polu tylko do odczytu (kliknięcie zaznacza całość).
         printf(

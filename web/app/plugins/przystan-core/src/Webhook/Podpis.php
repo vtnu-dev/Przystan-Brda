@@ -4,7 +4,7 @@ namespace Przystan\Webhook;
 
 /**
  * Podpis webhooka: HMAC-SHA256 z "znacznik_czasu.treść". Odbiorca liczy to samo swoim kluczem
- * i porównuje z nagłówkiem X-Przystan-Signature; znacznik czasu chroni przed powtórką starej wiadomości.
+ * i porównuje z nagłówkiem X-Delta-Signature; znacznik czasu chroni przed powtórką starej wiadomości.
  */
 final class Podpis
 {

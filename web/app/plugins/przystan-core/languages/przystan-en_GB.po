@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Przystań Brda\n"
+"Project-Id-Version: Delta\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -286,8 +286,8 @@ msgstr "Contact"
 msgid "Godziny biura sprzedaży (jedna pozycja w wierszu)"
 msgstr "Sales office hours (one item per line)"
 
-msgid "Przystań Brda"
-msgstr "Przystań Brda"
+msgid "Delta"
+msgstr "Delta"
 
 msgid "Biuro sprzedaży"
 msgstr "Sales office"
@@ -316,8 +316,8 @@ msgstr "Receiver URL"
 msgid "Puste = zapytania tylko zapisują się w panelu."
 msgstr "Empty = enquiries are only saved in the admin."
 
-msgid "Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Przystan-Signature zawiera HMAC-SHA256 z „X-Przystan-Timestamp.treść” liczony tym kluczem."
-msgstr "Every new enquiry is sent as JSON (event zapytanie.utworzone). The X-Przystan-Signature header holds an HMAC-SHA256 of \"X-Przystan-Timestamp.body\" computed with this key."
+msgid "Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Delta-Signature zawiera HMAC-SHA256 z „X-Delta-Timestamp.treść” liczony tym kluczem."
+msgstr "Every new enquiry is sent as JSON (event zapytanie.utworzone). The X-Delta-Signature header holds an HMAC-SHA256 of \"X-Delta-Timestamp.body\" computed with this key."
 
 msgid "brak klucza"
 msgstr "no key"
@@ -479,8 +479,8 @@ msgstr "The address may have changed or the apartment was removed from the offer
 msgid "Znajdź mieszkanie"
 msgstr "Find an apartment"
 
-msgid "Przystań, deweloper z Bydgoszczy"
-msgstr "Przystań, a Bydgoszcz developer"
+msgid "Delta, deweloper z Bydgoszczy"
+msgstr "Delta, a Bydgoszcz developer"
 
 msgid "Budujemy kameralnie: kilka budynków naraz, każdy w miejscu, w którym sami chcielibyśmy mieszkać. Nad wodą, w zieleni, blisko centrum."
 msgstr "We build on a small scale: a few buildings at a time, each in a place where we would like to live ourselves. By the water, among greenery, close to the centre."
@@ -649,8 +649,8 @@ msgstr "On this site"
 msgid "Strona demonstracyjna."
 msgstr "Demo website."
 
-msgid "Przystań to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe."
-msgstr "Przystań is a fictional developer: developments, apartments, prices and contact details are examples."
+msgid "Delta to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe."
+msgstr "Delta is a fictional developer: developments, apartments, prices and contact details are examples."
 
 msgid "Projekt i wdrożenie:"
 msgstr "Design and build:"

@@ -2,8 +2,8 @@
   "name": "sitebest/przystan-motyw",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "Motyw Przystań Brda na bazie Sage 11 (Blade, Tailwind 4, Vite)",
-  "homepage": "https://przystan.sitebest.eu",
+  "description": "Motyw Delta na bazie Sage 11 (Blade, Tailwind 4, Vite)",
+  "homepage": "https://delta.sitebest.eu",
   "authors": [
     {
       "name": "SiteBest",

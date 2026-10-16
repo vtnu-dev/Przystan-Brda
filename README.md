@@ -1,6 +1,6 @@
-# Przystań: strona dewelopera mieszkaniowego na WordPressie
+# Delta: strona dewelopera mieszkaniowego na WordPressie
 
-**Demo:** https://przystan.sitebest.eu (PL) · https://przystan.sitebest.eu/en/ (EN)
+**Demo:** https://delta.sitebest.eu (PL) · https://delta.sitebest.eu/en/ (EN)
 
 Strona fikcyjnego dewelopera z Bydgoszczy: trzy inwestycje (w budowie, gotowa, planowana), 52 mieszkania,
 PL i EN. Zbudowana jako projekt do portfolio, żeby pokazać, jak robię strony na WordPressie bez page buildera:
@@ -78,7 +78,7 @@ git clone https://github.com/vtnu-dev/Przystan-Brda.git && cd Przystan-Brda
 composer install
 cp .env.example .env            # uzupełnij klucze: https://roots.io/salts.html
 cd web/app/themes/przystan && composer install && npm ci && npm run build && cd -
-wp core install --url=http://localhost:8810 --title="Przystań Brda" --admin_user=admin --admin_email=admin@przystan.test --prompt=admin_password
+wp core install --url=http://localhost:8810 --title="Delta" --admin_user=admin --admin_email=admin@delta.test --prompt=admin_password
 wp language core install pl_PL en_GB
 wp plugin activate advanced-custom-fields polylang przystan-core && wp theme activate przystan
 npm install && npm run rzuty     # rzuty mieszkań (SVG → WebP); zdjęcia są już w scripts/seed-media
@@ -95,7 +95,7 @@ vendor/bin/pint --test          # styl kodu
 scripts/check.sh                # testy dymne działającej strony (adresy, SEO, REST, nagłówki)
 ```
 
-Test webhooka lokalnie: `PRZYSTAN_KLUCZ=<klucz z Ustawienia → Przystań Brda> php -S localhost:8899 scripts/odbiornik-webhooka.php`,
+Test webhooka lokalnie: `DELTA_KLUCZ=<klucz z Ustawienia → Delta> php -S localhost:8899 scripts/odbiornik-webhooka.php`,
 w ustawieniach adres `http://localhost:8899/`, potem `wp cron event run --due-now`. Odbiornik sprawdza podpis.
 
 ## Webhook: format
@@ -103,9 +103,9 @@ w ustawieniach adres `http://localhost:8899/`, potem `wp cron event run --due-no
 ```http
 POST <adres z ustawień>
 Content-Type: application/json
-X-Przystan-Event: zapytanie.utworzone
-X-Przystan-Timestamp: 1791400000
-X-Przystan-Signature: sha256=<HMAC-SHA256("timestamp.treść", klucz)>
+X-Delta-Event: zapytanie.utworzone
+X-Delta-Timestamp: 1791400000
+X-Delta-Signature: sha256=<HMAC-SHA256("timestamp.treść", klucz)>
 ```
 
 ```json

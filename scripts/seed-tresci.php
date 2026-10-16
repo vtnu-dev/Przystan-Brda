@@ -8,16 +8,16 @@ $akapity = static fn(string ...$p) => implode("\n\n", array_map(static fn($a) =>
 
 return [
     'opis_strony' => [
-        'pl' => 'Mieszkania nad wodą i w zieleni, Bydgoszcz',
-        'en' => 'Homes by the water and among greenery, Bydgoszcz',
+        'pl' => 'Delta. Mieszkania tam, gdzie rzeka zwalnia.',
+        'en' => 'Delta. Homes where the river slows down.',
     ],
 
     'inwestycje' => [
         'przystan-brda' => [
             'kolejnosc' => 1,
             'zdjecie' => 'hero',
-            'nazwa' => ['pl' => 'Przystań Brda', 'en' => 'Przystań Brda'],
-            'slug' => ['pl' => 'przystan-brda', 'en' => 'przystan-brda-river'],
+            'nazwa' => ['pl' => 'Delta', 'en' => 'Delta'],
+            'slug' => ['pl' => 'delta', 'en' => 'delta-river'],
             'status' => 'w_budowie',
             'lokalizacja' => ['pl' => 'Bydgoszcz, Okole', 'en' => 'Bydgoszcz, Okole'],
             'termin' => ['pl' => 'IV kw. 2027', 'en' => 'Q4 2027'],
@@ -27,8 +27,8 @@ return [
                 'en' => '36 riverside apartments on a new boulevard. Water views from the windows and a 15-minute walk to the Old Market Square.',
             ],
             'tresc' => [
-                'pl' => ['Przystań Brda stoi frontem do rzeki, na Okolu, jednej z najstarszych części Bydgoszczy. Budynek ma sześć kondygnacji i 36 mieszkań od 32 do 84 m². Na parterze są ogródki, wyżej balkony, a na ostatnim piętrze tarasy z widokiem na park po drugiej stronie wody.', 'Przed wejściem powstaje 120 metrów nowego bulwaru z ławkami i lipami. Garaż jest pod budynkiem, a w nim komórki lokatorskie, rowerownia i stanowiska do ładowania aut.'],
-                'en' => ['Przystań Brda faces the river in Okole, one of the oldest parts of Bydgoszcz. The building has six storeys and 36 apartments from 32 to 84 m². Ground-floor units have gardens, upper floors have balconies and the top floor has terraces overlooking the park across the water.', 'A new 120-metre boulevard with benches and lime trees is being built at the entrance. The garage is underground, with storage rooms, a bike room and car charging points.'],
+                'pl' => ['Delta stoi frontem do rzeki, na Okolu, jednej z najstarszych części Bydgoszczy. Budynek ma sześć kondygnacji i 36 mieszkań od 32 do 84 m². Na parterze są ogródki, wyżej balkony, a na ostatnim piętrze tarasy z widokiem na park po drugiej stronie wody.', 'Przed wejściem powstaje 120 metrów nowego bulwaru z ławkami i lipami. Garaż jest pod budynkiem, a w nim komórki lokatorskie, rowerownia i stanowiska do ładowania aut.'],
+                'en' => ['Delta faces the river in Okole, one of the oldest parts of Bydgoszcz. The building has six storeys and 36 apartments from 32 to 84 m². Ground-floor units have gardens, upper floors have balconies and the top floor has terraces overlooking the park across the water.', 'A new 120-metre boulevard with benches and lime trees is being built at the entrance. The garage is underground, with storage rooms, a bike room and car charging points.'],
             ],
             'etapy' => [
                 [['Pozwolenie na budowę', 'Building permit'], ['III kw. 2025', 'Q3 2025'], 'zrobione'],
@@ -93,7 +93,7 @@ return [
     ],
 
     'obrazy' => [
-        'hero' => ['hero-zmierzch.jpg', 'Budynek Przystań Brda o zmierzchu, odbity w rzece'],
+        'hero' => ['hero-zmierzch.jpg', 'Budynek Delta o zmierzchu, odbity w rzece'],
         'bulwar' => ['bulwar.jpg', 'Bulwar nad Brdą przed budynkiem, młode lipy i ławki'],
         'salon' => ['salon.jpg', 'Jasny salon z oknem na rzekę'],
         'kuchnia' => ['kuchnia.jpg', 'Kuchnia z granatowymi szafkami i stołem przy oknie'],
@@ -102,7 +102,7 @@ return [
         'budowa2' => ['budowa-stan-surowy.jpg', 'Budynek w stanie surowym z rusztowaniem od strony rzeki'],
         'budowa3' => ['budowa-elewacja.jpg', 'Murarze układają jasną cegłę elewacyjną na rusztowaniu'],
         'budowa4' => ['budowa-bulwar.jpg', 'Sadzenie lip i układanie granitu na nowym bulwarze'],
-        'og' => ['og.jpg', 'Przystań Brda, mieszkania nad rzeką w Bydgoszczy'],
+        'og' => ['og.jpg', 'Delta, mieszkania nad rzeką w Bydgoszczy'],
         'lipowa' => ['lipowa.jpg', 'Willa Lipowa: jasny budynek z drewnianymi wstawkami wśród lip'],
         'lipowa_wnetrze' => ['lipowa-wnetrze.jpg', 'Jasny salon z jodełką i oknem na korony lip'],
         'myslecinek' => ['myslecinek.jpg', 'Wizualizacja: Tarasy Myślęcinek, budynek z zielonymi tarasami przy lesie'],
@@ -173,13 +173,13 @@ return [
             'kolejnosc' => 5,
             'tresc' => [
                 'pl' => $akapity(
-                    '<strong>To jest strona demonstracyjna.</strong> Przystań Brda to fikcyjna inwestycja, a formularz służy do pokazania działania strony. Nie wpisuj w nim prawdziwych danych.',
+                    '<strong>To jest strona demonstracyjna.</strong> Delta to fikcyjna inwestycja, a formularz służy do pokazania działania strony. Nie wpisuj w nim prawdziwych danych.',
                     'Dane z formularza (imię, e-mail, telefon, treść wiadomości) zapisujemy w panelu strony, żeby odpowiedzieć na zapytanie. Mogą też trafić do systemu obsługi klienta przez zabezpieczone połączenie (webhook). Przechowujemy je do 12 miesięcy od ostatniego kontaktu.',
                     'Strona nie używa ciasteczek reklamowych ani narzędzi śledzących. Nie wczytuje czcionek ani skryptów z zewnętrznych serwerów.',
                     'Masz prawo wglądu do swoich danych, ich poprawienia i usunięcia. W sprawach danych napisz na adres podany na stronie Kontakt.',
                 ),
                 'en' => $akapity(
-                    '<strong>This is a demo website.</strong> Przystań Brda is a fictional development and the form is here to show how the site works. Please do not enter real data.',
+                    '<strong>This is a demo website.</strong> Delta is a fictional development and the form is here to show how the site works. Please do not enter real data.',
                     'Form data (name, e-mail, phone, message) is stored in the site admin so we can reply. It may also be sent to a customer service system over a secured connection (webhook). We keep it for up to 12 months after the last contact.',
                     'The site uses no advertising cookies or tracking tools. It does not load fonts or scripts from external servers.',
                     'You have the right to access, correct and delete your data. For data questions, write to the address on the Contact page.',
@@ -190,10 +190,10 @@ return [
 
     'glowna' => [
         'pl' => [
-            'nadtytul' => 'Przystań Brda · Bydgoszcz, Okole',
+            'nadtytul' => 'Delta · Bydgoszcz, Okole',
             'naglowek' => "Mieszkania\ndwa kroki od rzeki",
             'wstep' => '36 mieszkań w spokojnym budynku przy nowym bulwarze. Z okien widać wodę, a do Starego Rynku dojdziesz w kwadrans.',
-            'seo' => 'Przystań Brda: 36 mieszkań nad rzeką w Bydgoszczy, od 32 do 84 m². Balkony, ogródki, widok na Brdę. Oddanie w IV kwartale 2027.',
+            'seo' => 'Delta: 36 mieszkań nad rzeką w Bydgoszczy, od 32 do 84 m². Balkony, ogródki, widok na Brdę. Oddanie w IV kwartale 2027.',
             'liczby' => [['36', 'mieszkań od 32 do 84 m²'], ['6', 'kondygnacji, na parterze ogródki'], ['120 m', 'bulwaru przed wejściem'], ['12 min', 'pieszo do Starego Rynku']],
             'atuty' => [
                 ['Widok, którego nikt nie zabuduje', 'Budynek stoi frontem do rzeki, a po drugiej stronie jest park. Większość mieszkań ma okna na wodę.', 'salon'],
@@ -204,10 +204,10 @@ return [
             'okolica_wstep' => 'Przed domem ciągnie się nowy bulwar z ławkami i ścieżką rowerową. Do Wyspy Młyńskiej dojdziesz w 8 minut, do Starego Rynku w 12.',
         ],
         'en' => [
-            'nadtytul' => 'Przystań Brda · Bydgoszcz, Okole',
+            'nadtytul' => 'Delta · Bydgoszcz, Okole',
             'naglowek' => "Apartments\ntwo steps from the river",
             'wstep' => '36 apartments in a calm building on the new boulevard. You can see the water from your windows and walk to the Old Market Square in 15 minutes.',
-            'seo' => 'Przystań Brda: 36 riverside apartments in Bydgoszcz, 32 to 84 m². Balconies, gardens, views of the Brda. Ready in Q4 2027.',
+            'seo' => 'Delta: 36 riverside apartments in Bydgoszcz, 32 to 84 m². Balconies, gardens, views of the Brda. Ready in Q4 2027.',
             'liczby' => [['36', 'apartments, 32 to 84 m²'], ['6', 'storeys, gardens on the ground floor'], ['120 m', 'of boulevard by the entrance'], ['12 min', 'walk to the Old Market Square']],
             'atuty' => [
                 ['A view no one can build over', 'The building faces the river with a park on the other bank. Most apartments have windows onto the water.', 'salon'],
@@ -222,14 +222,14 @@ return [
     'okolica' => [
         'pl' => [
             'wstep' => 'Spokojna część miasta nad wodą, a jednocześnie kilka minut od centrum. Sprawdź, ile zajmie Ci droga tam, gdzie chodzisz najczęściej.',
-            'seo' => 'Okolica inwestycji Przystań Brda: bulwar, Wyspa Młyńska, Stary Rynek, szkoła i tramwaj w zasięgu spaceru. Standard wykończenia budynku.',
+            'seo' => 'Okolica inwestycji Delta: bulwar, Wyspa Młyńska, Stary Rynek, szkoła i tramwaj w zasięgu spaceru. Standard wykończenia budynku.',
             'punkty' => [['Bulwar nad Brdą', 1, 'pieszo'], ['Przystanek tramwajowy', 3, 'pieszo'], ['Szkoła podstawowa', 6, 'pieszo'], ['Wyspa Młyńska', 8, 'pieszo'], ['Stary Rynek', 12, 'pieszo'], ['Dworzec Bydgoszcz Główna', 9, 'tramwajem']],
             'standard_naglowek' => 'Standard, który widać od progu',
             'standard' => ['Pomieszczenia o wysokości 2,75 m', 'Okna trzyszybowe z podwyższoną izolacją akustyczną', 'Ogrzewanie podłogowe z miejskiej sieci', 'Balkony i tarasy z balustradą ze szkła i stali', 'Winda z garażu na każde piętro', 'Komórki lokatorskie i rowerownia', 'Stanowiska do ładowania aut elektrycznych', 'Monitoring części wspólnych'],
         ],
         'en' => [
             'wstep' => 'A quiet part of town by the water, yet only minutes from the centre. See how long it takes to get to the places you go most often.',
-            'seo' => 'Around Przystań Brda: the boulevard, Mill Island, the Old Market Square, a school and trams within walking distance. Building finish standard.',
+            'seo' => 'Around Delta: the boulevard, Mill Island, the Old Market Square, a school and trams within walking distance. Building finish standard.',
             'punkty' => [['Brda boulevard', 1, 'pieszo'], ['Tram stop', 3, 'pieszo'], ['Primary school', 6, 'pieszo'], ['Mill Island', 8, 'pieszo'], ['Old Market Square', 12, 'pieszo'], ['Bydgoszcz Główna station', 9, 'tramwajem']],
             'standard_naglowek' => 'Quality you notice at the door',
             'standard' => ['Ceilings 2.75 m high', 'Triple-glazed windows with extra sound insulation', 'Underfloor heating from the city network', 'Balconies and terraces with glass and steel railings', 'Lift from the garage to every floor', 'Storage rooms and a bike room', 'Charging points for electric cars', 'CCTV in common areas'],
@@ -240,12 +240,12 @@ return [
         'pl' => [
             'wstep' => 'Biuro sprzedaży jest na parterze budynku obok placu budowy. Najlepiej umówić się wcześniej: pokażemy rzuty i przejdziemy się bulwarem.',
             'godziny' => ['poniedziałek-piątek: 9:00-17:00', 'sobota: 10:00-14:00'],
-            'seo' => 'Biuro sprzedaży Przystań Brda w Bydgoszczy: telefon, e-mail, godziny otwarcia i formularz zapytania o mieszkanie.',
+            'seo' => 'Biuro sprzedaży Delta w Bydgoszczy: telefon, e-mail, godziny otwarcia i formularz zapytania o mieszkanie.',
         ],
         'en' => [
             'wstep' => 'The sales office is on the ground floor next to the construction site. Please book a visit: we will show you the floor plans and take a walk along the boulevard.',
             'godziny' => ['Monday-Friday: 9:00-17:00', 'Saturday: 10:00-14:00'],
-            'seo' => 'Przystań Brda sales office in Bydgoszcz: phone, e-mail, opening hours and an apartment enquiry form.',
+            'seo' => 'Delta sales office in Bydgoszcz: phone, e-mail, opening hours and an apartment enquiry form.',
         ],
     ],
 

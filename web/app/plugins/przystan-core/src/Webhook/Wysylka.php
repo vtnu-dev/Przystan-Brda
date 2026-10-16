@@ -101,12 +101,12 @@ final class Wysylka
             'redirection' => 0,
             'headers' => [
                 'Content-Type' => 'application/json; charset=utf-8',
-                'User-Agent' => 'PrzystanBrda/' . PRZYSTAN_CORE_VERSION . '; ' . home_url(),
-                'X-Przystan-Event' => self::zdarzenie($zapytanieId),
+                'User-Agent' => 'Delta/' . PRZYSTAN_CORE_VERSION . '; ' . home_url(),
+                'X-Delta-Event' => self::zdarzenie($zapytanieId),
                 // Ten sam identyfikator przy każdej próbie: odbiorca odfiltruje duplikaty po timeoucie.
-                'X-Przystan-Delivery' => 'zapytanie-' . $zapytanieId,
-                'X-Przystan-Timestamp' => (string) $czas,
-                'X-Przystan-Signature' => Podpis::podpisz($tresc, $czas, Ustawienia::pobierz('webhook_klucz')),
+                'X-Delta-Delivery' => 'zapytanie-' . $zapytanieId,
+                'X-Delta-Timestamp' => (string) $czas,
+                'X-Delta-Signature' => Podpis::podpisz($tresc, $czas, Ustawienia::pobierz('webhook_klucz')),
             ],
             'body' => $tresc,
         ]);

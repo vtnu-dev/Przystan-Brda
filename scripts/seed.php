@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Seed treści „Przystań Brda”: języki, strony PL/EN, 36 mieszkań w każdym języku, dziennik budowy,
+ * Seed treści „Delta”: języki, strony PL/EN, 36 mieszkań w każdym języku, dziennik budowy,
  * menu, ustawienia i obrazy. Idempotentny: każdy obiekt ma meta _przystan_seed i przy ponownym
  * uruchomieniu jest aktualizowany, a nie dublowany.
  *
@@ -130,7 +130,7 @@ PLL()->model->set_language_in_mass();
 /* ------------------------------------------------------------------ ustawienia */
 
 WP_CLI::log('Ustawienia…');
-update_option('blogname', 'Przystań');
+update_option('blogname', 'Delta');
 update_option('blogdescription', $tresci['opis_strony']['pl']);
 update_option('timezone_string', 'Europe/Warsaw');
 update_option('date_format', 'j F Y');
@@ -142,8 +142,8 @@ update_option('uploads_use_yearmonth_folders', 0);
 $ustawienia = Ustawienia::wszystkie();
 update_option(Ustawienia::OPCJA, array_merge($ustawienia, [
     'telefon' => '+48 52 000 00 00',
-    'email' => 'sprzedaz@przystan.sitebest.eu',
-    'adres' => "Biuro sprzedaży Przystań\nul. Przykładowa 4\n85-000 Bydgoszcz",
+    'email' => 'sprzedaz@delta.sitebest.eu',
+    'adres' => "Biuro sprzedaży Delta\nul. Przykładowa 4\n85-000 Bydgoszcz",
     'termin' => 'IV kwartał 2027',
     'webhook_klucz' => $ustawienia['webhook_klucz'] ?: Ustawienia::nowyKlucz(),
 ]), false);
@@ -152,7 +152,7 @@ update_option(Ustawienia::OPCJA, array_merge($ustawienia, [
 $mo = new PLL_MO();
 $en = PLL()->model->get_language('en');
 $mo->import_from_db($en);
-foreach ([$tresci['opis_strony']['pl'] => $tresci['opis_strony']['en'], 'IV kwartał 2027' => 'Q4 2027', "Biuro sprzedaży Przystań\nul. Przykładowa 4\n85-000 Bydgoszcz" => "Przystań sales office\nul. Przykładowa 4\n85-000 Bydgoszcz, Poland"] as $pl => $tlumaczenie) {
+foreach ([$tresci['opis_strony']['pl'] => $tresci['opis_strony']['en'], 'IV kwartał 2027' => 'Q4 2027', "Biuro sprzedaży Delta\nul. Przykładowa 4\n85-000 Bydgoszcz" => "Delta sales office\nul. Przykładowa 4\n85-000 Bydgoszcz, Poland"] as $pl => $tlumaczenie) {
     $mo->add_entry($mo->make_entry($pl, $tlumaczenie));
 }
 $mo->export_to_db($en);
@@ -431,7 +431,7 @@ WP_CLI::log('Menu…');
 $lokalizacje = [];
 foreach (['pl', 'en'] as $j) {
     foreach (['glowne' => ['inwestycje', 'mieszkania', 'dziennik', 'kontakt'], 'stopka' => ['inwestycje', 'mieszkania', 'okolica', 'dziennik', 'porownanie', 'kontakt', 'prywatnosc']] as $miejsce => $pozycje) {
-        $nazwa = "Przystań {$miejsce} " . strtoupper($j);
+        $nazwa = "Delta {$miejsce} " . strtoupper($j);
         $menu = wp_get_nav_menu_object($nazwa);
         $menuId = $menu ? (int) $menu->term_id : (int) wp_create_nav_menu($nazwa);
         foreach (wp_get_nav_menu_items($menuId) ?: [] as $stara) {

@@ -41,7 +41,7 @@
     <div class="kontener flex flex-col gap-2 py-5 text-sm text-tlo/80 md:flex-row md:items-center md:justify-between">
       <p>
         <strong class="font-semibold text-tlo">{{ __('Strona demonstracyjna.', 'przystan') }}</strong>
-        {{ __('Przystań to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe.', 'przystan') }}
+        {{ __('Delta to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe.', 'przystan') }}
       </p>
       <p>
         {{ __('Projekt i wdrożenie:', 'przystan') }}

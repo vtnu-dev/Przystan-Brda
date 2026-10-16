@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Przystań Brda\n"
+"Project-Id-Version: Delta\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -481,7 +481,7 @@ msgstr ""
 
 #: plugins/przystan-core/src/Ustawienia/Strona.php:22
 #: plugins/przystan-core/src/Ustawienia/Strona.php:23
-msgid "Przystań Brda"
+msgid "Delta"
 msgstr ""
 
 #: plugins/przystan-core/src/Ustawienia/Strona.php:38
@@ -532,7 +532,7 @@ msgid "Puste = zapytania tylko zapisują się w panelu."
 msgstr ""
 
 #: plugins/przystan-core/src/Ustawienia/Strona.php:67
-msgid "Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Przystan-Signature zawiera HMAC-SHA256 z „X-Przystan-Timestamp.treść” liczony tym kluczem."
+msgid "Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Delta-Signature zawiera HMAC-SHA256 z „X-Delta-Timestamp.treść” liczony tym kluczem."
 msgstr ""
 
 #: plugins/przystan-core/src/Ustawienia/Strona.php:70
@@ -766,7 +766,7 @@ msgid "Znajdź mieszkanie"
 msgstr ""
 
 #: themes/przystan/resources/views/archive-inwestycja.blade.php:6
-msgid "Przystań, deweloper z Bydgoszczy"
+msgid "Delta, deweloper z Bydgoszczy"
 msgstr ""
 
 #: themes/przystan/resources/views/archive-inwestycja.blade.php:8
@@ -1013,7 +1013,7 @@ msgid "Strona demonstracyjna."
 msgstr ""
 
 #: themes/przystan/resources/views/sections/footer.blade.php:45
-msgid "Przystań to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe."
+msgid "Delta to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe."
 msgstr ""
 
 #: themes/przystan/resources/views/sections/footer.blade.php:49

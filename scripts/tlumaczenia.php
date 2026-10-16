@@ -31,11 +31,11 @@ $en = [
     'Punkt %d: minuty' => 'Place %d: minutes', 'Punkt %d: jak' => 'Place %d: how', 'pieszo' => 'on foot', 'rowerem' => 'by bike', 'tramwajem' => 'by tram',
     'Standard' => 'Finish', 'Lista (jedna pozycja w wierszu)' => 'List (one item per line)', 'Zdjęcie %d' => 'Photo %d',
     'Okolica i standard' => 'Neighbourhood and finish', 'Kontakt' => 'Contact',
-    'Godziny biura sprzedaży (jedna pozycja w wierszu)' => 'Sales office hours (one item per line)', 'Przystań Brda' => 'Przystań Brda',
+    'Godziny biura sprzedaży (jedna pozycja w wierszu)' => 'Sales office hours (one item per line)', 'Delta' => 'Delta',
     'Biuro sprzedaży' => 'Sales office', 'Telefon' => 'Phone', 'E-mail' => 'E-mail', 'Adres' => 'Address', 'Termin oddania' => 'Completion date',
     'Np. „IV kwartał 2027”. Tłumaczenie: Języki → Tłumaczenia ciągów.' => 'E.g. "Q4 2027". Translation: Languages → Translations.',
     'Webhook zapytań' => 'Enquiry webhook', 'Adres odbiorcy' => 'Receiver URL', 'Puste = zapytania tylko zapisują się w panelu.' => 'Empty = enquiries are only saved in the admin.',
-    'Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Przystan-Signature zawiera HMAC-SHA256 z „X-Przystan-Timestamp.treść” liczony tym kluczem.' => 'Every new enquiry is sent as JSON (event zapytanie.utworzone). The X-Przystan-Signature header holds an HMAC-SHA256 of "X-Przystan-Timestamp.body" computed with this key.',
+    'Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Delta-Signature zawiera HMAC-SHA256 z „X-Delta-Timestamp.treść” liczony tym kluczem.' => 'Every new enquiry is sent as JSON (event zapytanie.utworzone). The X-Delta-Signature header holds an HMAC-SHA256 of "X-Delta-Timestamp.body" computed with this key.',
     'brak klucza' => 'no key', 'Wygeneruj nowy klucz' => 'Generate a new key', 'Adres webhooka musi zaczynać się od https://.' => 'The webhook URL must start with https://.',
     'Brak uprawnień.' => 'You are not allowed to do this.', 'Wygenerowano nowy klucz. Przekaż go odbiorcy webhooka.' => 'A new key has been generated. Pass it on to the webhook receiver.',
     'wysłano' => 'sent', 'ponowienie zaplanowane' => 'retry scheduled', 'błąd' => 'failed', 'webhook wyłączony' => 'webhook disabled', 'oczekuje' => 'pending',
@@ -71,7 +71,7 @@ $en = [
     'Lista mieszkań spełniających filtry' => 'Apartments matching the filters', 'Lokal' => 'Unit', 'Balkon' => 'Balcony', 'Szczegóły' => 'Details',
     'Żadne mieszkanie nie spełnia tych warunków. Zmień filtry albo napisz do nas: często mamy lokale przed publikacją.' => 'No apartment matches these filters. Change the filters or write to us: we often have units before they are published.',
     'Na stronie' => 'On this site', 'Strona demonstracyjna.' => 'Demo website.',
-    'Przystań Brda to fikcyjna inwestycja: mieszkania, ceny i dane kontaktowe są przykładowe.' => 'Przystań Brda is a fictional development: apartments, prices and contact details are examples.',
+    'Delta to fikcyjna inwestycja: mieszkania, ceny i dane kontaktowe są przykładowe.' => 'Delta is a fictional development: apartments, prices and contact details are examples.',
     'Projekt i wdrożenie:' => 'Design and build:', 'Menu' => 'Menu', 'Mieszkanie %s' => 'Apartment %s', 'Rzut mieszkania %1$s: %2$s, %3$s' => 'Floor plan of apartment %1$s: %2$s, %3$s',
     'Rzut poglądowy. Dokładne wymiary w karcie lokalu od doradcy.' => 'Indicative plan. Exact dimensions in the unit sheet from your advisor.',
     'Parametry' => 'Details', 'Balkon / taras' => 'Balcony / terrace', 'tak' => 'yes', 'nie' => 'no', '%s zł/m²' => 'PLN %s/m²',
@@ -112,7 +112,7 @@ $en = [
     'Rodzaj' => 'Type',
     'powiadomienie o starcie sprzedaży' => 'sales start notification',
     'zapytanie' => 'enquiry',
-    'Przystań, deweloper z Bydgoszczy' => 'Przystań, a Bydgoszcz developer',
+    'Delta, deweloper z Bydgoszczy' => 'Delta, a Bydgoszcz developer',
     'Budujemy kameralnie: kilka budynków naraz, każdy w miejscu, w którym sami chcielibyśmy mieszkać. Nad wodą, w zieleni, blisko centrum.' => 'We build on a small scale: a few buildings at a time, each in a place where we would like to live ourselves. By the water, among greenery, close to the centre.',
     'Elewacja: %s. Wybierz mieszkanie, żeby zobaczyć szczegóły.' => 'Facade: %s. Choose an apartment to see the details.',
     'Zatrzymaj ruch wody' => 'Stop the water movement',
@@ -129,7 +129,7 @@ $en = [
     'Dodaj %s do ulubionych' => 'Add %s to favourites',
     'Usuń %s z ulubionych' => 'Remove %s from favourites',
     'Ulubione' => 'Favourites',
-    'Przystań to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe.' => 'Przystań is a fictional developer: developments, apartments, prices and contact details are examples.',
+    'Delta to fikcyjny deweloper: inwestycje, mieszkania, ceny i dane kontaktowe są przykładowe.' => 'Delta is a fictional developer: developments, apartments, prices and contact details are examples.',
     'Najważniejsze informacje' => 'Key facts',
     'status' => 'status',
     'mieszkań' => 'apartments',
@@ -169,7 +169,7 @@ $plMnoga = [
 preg_match_all('/^(?:msgctxt "(.*)"\n)?msgid "(.*)"\n(?:msgid_plural "(.*)"\n)?msgstr/m', $pot, $wpisy, PREG_SET_ORDER);
 
 $esc = static fn(string $s) => addcslashes($s, "\"\\\n");
-$naglowek = static fn(string $jezyk, string $formy) => "msgid \"\"\nmsgstr \"\"\n\"Project-Id-Version: Przystań Brda\\n\"\n\"Language: {$jezyk}\\n\"\n\"MIME-Version: 1.0\\n\"\n\"Content-Type: text/plain; charset=UTF-8\\n\"\n\"Content-Transfer-Encoding: 8bit\\n\"\n\"Plural-Forms: {$formy};\\n\"\n\"X-Domain: przystan\\n\"\n\n";
+$naglowek = static fn(string $jezyk, string $formy) => "msgid \"\"\nmsgstr \"\"\n\"Project-Id-Version: Delta\\n\"\n\"Language: {$jezyk}\\n\"\n\"MIME-Version: 1.0\\n\"\n\"Content-Type: text/plain; charset=UTF-8\\n\"\n\"Content-Transfer-Encoding: 8bit\\n\"\n\"Plural-Forms: {$formy};\\n\"\n\"X-Domain: przystan\\n\"\n\n";
 
 $poEn = $naglowek('en_GB', 'nplurals=2; plural=(n != 1)');
 $poPl = $naglowek('pl_PL', 'nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)');

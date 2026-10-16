@@ -2,8 +2,8 @@
     "name": "vtnu-dev/przystan-brda",
     "type": "project",
     "license": "proprietary",
-    "description": "Przystań Brda - demo WordPress (Bedrock + Sage + własna wtyczka)",
-    "homepage": "https://przystan.sitebest.eu",
+    "description": "Delta - demo WordPress (Bedrock + Sage + własna wtyczka)",
+    "homepage": "https://delta.sitebest.eu",
     "repositories": [
         {
             "name": "wp-packages",

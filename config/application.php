@@ -154,7 +154,7 @@ Config::define('DISALLOW_FILE_MODS', true);
 Config::define('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?? true);
 
 /**
- * Przystań Brda: strona demonstracyjna nie trafia do wyszukiwarek (meta robots noindex).
+ * Delta: strona demonstracyjna nie trafia do wyszukiwarek (meta robots noindex).
  */
 Config::define('PRZYSTAN_NOINDEX', (bool) (env('PRZYSTAN_NOINDEX') ?? true));
 

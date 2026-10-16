@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       Przystań Brda - rdzeń
+ * Plugin Name:       Delta - rdzeń
  * Description:       Dane i logika inwestycji: mieszkania, wyszukiwarka (REST), zapytania z webhookiem, ustawienia.
  * Version:           1.0.0
  * Requires at least: 6.6

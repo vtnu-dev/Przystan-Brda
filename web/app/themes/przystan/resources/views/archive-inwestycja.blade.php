@@ -3,7 +3,7 @@
 @section('content')
   <section class="pb-10 pt-12 md:pt-16">
     <div class="kontener">
-      <p class="nadtytul">{{ __('Przystań, deweloper z Bydgoszczy', 'przystan') }}</p>
+      <p class="nadtytul">{{ __('Delta, deweloper z Bydgoszczy', 'przystan') }}</p>
       <h1 class="h2">{{ __('Inwestycje', 'przystan') }}</h1>
       <p class="mt-4 max-w-2xl text-lg text-granat/85">{{ __('Budujemy kameralnie: kilka budynków naraz, każdy w miejscu, w którym sami chcielibyśmy mieszkać. Nad wodą, w zieleni, blisko centrum.', 'przystan') }}</p>
     </div>

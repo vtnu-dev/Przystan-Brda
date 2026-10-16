@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Przystań Brda - bezpieczeństwo
+ * Plugin Name: Delta - bezpieczeństwo
  * Description: Hardening: bez XML-RPC, bez listy użytkowników w REST, bez wyliczania autorów, nagłówki bezpieczeństwa.
  * Version:     1.0.0
  * Author:      SiteBest

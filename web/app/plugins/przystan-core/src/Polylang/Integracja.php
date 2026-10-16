@@ -73,8 +73,8 @@ final class Integracja
             return;
         }
         $u = Ustawienia::wszystkie();
-        pll_register_string('przystan_termin', $u['termin'], 'Przystań Brda');
-        pll_register_string('przystan_adres', $u['adres'], 'Przystań Brda', true);
+        pll_register_string('przystan_termin', $u['termin'], 'Delta');
+        pll_register_string('przystan_adres', $u['adres'], 'Delta', true);
     }
 
     public static function tlumacz(string $tekst): string

@@ -26,7 +26,7 @@ zawiera() {
 echo "Strona: $BASE"
 
 echo "Adresy"
-for adres in / /inwestycje/ /inwestycje/przystan-brda/ /inwestycje/willa-lipowa/ /inwestycje/tarasy-myslecinek/ \
+for adres in / /inwestycje/ /inwestycje/delta/ /inwestycje/willa-lipowa/ /inwestycje/tarasy-myslecinek/ \
   /mieszkania/ /mieszkania/m-35/ /mieszkania/l-21/ /okolica/ /kontakt/ /ulubione/ /dziennik-budowy/ /polityka-prywatnosci/ \
   /en/ /en/developments/ /en/apartments/ /en/apartments/m35/ /en/neighbourhood/ /en/contact/ /en/favourites/ /en/construction-diary/; do
   sprawdz_kod "$adres" 200
