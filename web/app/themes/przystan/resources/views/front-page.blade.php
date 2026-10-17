@@ -6,7 +6,7 @@
     <div class="absolute inset-0 -z-10 origin-top will-change-transform" data-hero-tlo>
     @if ($hero['zdjecie'])
       {!! wp_get_attachment_image($hero['zdjecie'], 'hero', false, [
-        'class' => 'absolute inset-0 -z-10 h-full w-full object-cover object-[60%_center]',
+        'class' => 'absolute inset-0 -z-10 h-full w-full object-cover object-center',
         'sizes' => '100vw',
         'loading' => 'eager',
         'fetchpriority' => 'high',
@@ -14,7 +14,7 @@
       ]) !!}
     @endif
     {{-- B: falujące odbicie w rzece (canvas liczony w Workerze, modules/hero.js); bez JS niewidoczny. --}}
-    <canvas class="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-0 transition-opacity duration-700" data-odbicie data-woda="0.69" data-pozycja="0.6" aria-hidden="true"></canvas>
+    <canvas class="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-0 transition-opacity duration-700" data-odbicie data-woda="0.72" data-pozycja="0.5" aria-hidden="true"></canvas>
     {{-- A: rysunek architekta, który zamienia się w zdjęcie (sam CSS, patrz .hero-szkic w app.css). --}}
     @include('partials.hero-szkic')
     </div>

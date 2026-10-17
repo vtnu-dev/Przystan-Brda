@@ -5,9 +5,11 @@
   działa bez JavaScriptu, przy „ogranicz ruch” nakładki nie ma wcale.
 --}}
 @php
-  $x0 = 309; $x1 = 1075; $y0 = 59; $y1 = 493; $pietra = 5; $kolumny = 9;
+  // kadr delta-hero-7-3: bryła 308-1076, 6 kondygnacji od gzymsu (y 8) do chodnika (y 496), 8 osi okien
+  $x0 = 308; $x1 = 1076; $y0 = 8; $y1 = 496; $pietra = 6; $kolumny = 8;
+  $ox0 = 322; $ox1 = 1062;
   $hp = ($y1 - $y0) / $pietra;
-  $wk = ($x1 - $x0) / $kolumny;
+  $wk = ($ox1 - $ox0) / $kolumny;
 @endphp
 <div class="hero-szkic pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
   <svg class="h-full w-full" viewBox="0 0 1376 768" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -22,7 +24,7 @@
     <g class="hero-szkic__okna">
       @for ($p = 0; $p < $pietra; $p++)
         @for ($k = 0; $k < $kolumny; $k++)
-          <rect x="{{ round($x0 + $k * $wk + $wk * 0.24) }}" y="{{ round($y1 - ($p + 1) * $hp + $hp * 0.2) }}"
+          <rect x="{{ round($ox0 + $k * $wk + $wk * 0.24) }}" y="{{ round($y1 - ($p + 1) * $hp + $hp * 0.2) }}"
                 width="{{ round($wk * 0.52) }}" height="{{ round($hp * 0.6) }}" rx="2"
                 style="--p: {{ $p }}; --k: {{ ($k * 37 + $p * 11) % 9 }}" />
         @endfor
