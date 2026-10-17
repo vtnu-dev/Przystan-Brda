@@ -342,7 +342,7 @@
     .karta-lokalu {
       position: absolute;
       z-index: 10;
-      width: 21rem;
+      width: 22.5rem;
       margin: 0;
       animation: karta-lokalu 0.18s ease-out;
     }
@@ -410,6 +410,7 @@
     min-height: 2.75rem;
     padding-block: 0.5rem;
     font-size: 0.9375rem;
+    white-space: nowrap;
   }
 
   /* Dziennik na stronie głównej: pozioma oś postępu (zrobione etapy z wpisów, odbiór planowany) */
