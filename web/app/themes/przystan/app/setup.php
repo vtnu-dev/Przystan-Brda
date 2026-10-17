@@ -115,3 +115,19 @@ add_action('wp_enqueue_scripts', function () {
 add_filter('wp_resource_hints', function (array $adresy, string $typ) {
     return $typ === 'dns-prefetch' ? array_filter($adresy, fn($a) => ! str_contains((string) (is_array($a) ? ($a['href'] ?? '') : $a), 's.w.org')) : $adresy;
 }, 10, 2);
+
+/** Zdjęcie hero (LCP) pobierane od razu, z tym samym srcset/sizes co <img>, żeby przeglądarka nie brała dwóch rozmiarów. */
+add_action('wp_head', function () {
+    if (! is_front_page() || ! function_exists('get_field')) {
+        return;
+    }
+    $id = (int) get_field('hero_zdjecie', get_queried_object_id());
+    if (! $id) {
+        return;
+    }
+    printf(
+        '<link rel="preload" as="image" href="%s" imagesrcset="%s" imagesizes="100vw" fetchpriority="high">' . "\n",
+        esc_url((string) wp_get_attachment_image_url($id, 'hero')),
+        esc_attr((string) wp_get_attachment_image_srcset($id, 'hero'))
+    );
+}, 1);
