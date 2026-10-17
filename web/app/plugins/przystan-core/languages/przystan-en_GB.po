@@ -325,6 +325,9 @@ msgstr "no key"
 msgid "Wygeneruj nowy klucz"
 msgstr "Generate a new key"
 
+msgid "Klucz webhooka"
+msgstr "Webhook key"
+
 msgid "Adres webhooka musi zaczynać się od https://."
 msgstr "The webhook URL must start with https://."
 
@@ -491,17 +494,23 @@ msgstr "Facade: %s. Choose an apartment to see the details."
 msgid "Elewacja budynku od strony rzeki. Wybierz mieszkanie, żeby zobaczyć szczegóły."
 msgstr "River-side facade of the building. Choose an apartment to see the details."
 
+msgid "ogródek"
+msgstr "garden"
+
+msgid "balkon %s"
+msgstr "balcony %s"
+
 msgid "Brda"
 msgstr "Brda"
+
+msgid "Zobacz mieszkanie"
+msgstr "View apartment"
 
 msgid "Legenda"
 msgstr "Legend"
 
 msgid "balkon lub taras"
 msgstr "balcony or terrace"
-
-msgid "ogródek"
-msgstr "garden"
 
 msgid "%d wolne"
 msgid_plural "%d wolnych"
@@ -529,23 +538,32 @@ msgstr "Each rectangle is one apartment. The colour shows whether it is availabl
 msgid "Wyszukiwarka z filtrami"
 msgstr "Search with filters"
 
-msgid "Trzy adresy, jeden sposób budowania"
-msgstr "Three addresses, one way of building"
-
 msgid "Dlaczego tutaj"
 msgstr "Why here"
 
-msgid "Spokojne mieszkania z widokiem, którego nikt nie zabuduje"
-msgstr "Calm apartments with a view no one can build over"
+msgid "Spokojne mieszkania, przed oknami rzeka i bulwar"
+msgstr "Calm apartments with the river and the boulevard outside"
 
 msgid "Okolica i standard wykończenia"
 msgstr "Neighbourhood and finish"
 
-msgid "Co nowego na placu budowy"
-msgstr "News from the construction site"
+msgid "Budujemy, nie obiecujemy"
+msgstr "Building, not promising"
 
-msgid "Wszystkie wpisy"
-msgstr "All posts"
+msgid "Co kilka tygodni pokazujemy zdjęcia z placu budowy. Tak wyglądają kolejne etapy."
+msgstr "Every few weeks we post photos from the construction site. These are the stages so far."
+
+msgid "Postęp budowy"
+msgstr "Construction progress"
+
+msgid "Odbiór mieszkań"
+msgstr "Apartment handover"
+
+msgid "Zobacz postępy z budowy"
+msgstr "See construction progress"
+
+msgid "Trzy adresy, jeden sposób budowania"
+msgstr "Three addresses, one way of building"
 
 msgid "Na bieżąco"
 msgstr "Latest news"

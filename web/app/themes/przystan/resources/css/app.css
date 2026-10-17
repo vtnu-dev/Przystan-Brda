@@ -290,7 +290,8 @@
   }
   .elewacja .lokal:hover rect.okno,
   .elewacja .lokal:focus-visible rect.okno,
-  .elewacja .lokal.aktywny rect.okno {
+  .elewacja .lokal.aktywny rect.okno,
+  .elewacja .lokal.wybrany rect.okno {
     stroke: var(--color-granat);
     stroke-width: 5;
   }
@@ -317,6 +318,181 @@
   .elewacja-dymek::after {
     content: "";
     @apply absolute left-1/2 top-full -translate-x-1/2 border-8 border-transparent border-t-granat;
+  }
+
+  /* Karta mieszkania przy elewacji: obok okna na komputerze, pod schematem na telefonie (modules/elewacja.js) */
+  .elewacja {
+    position: relative;
+  }
+  .karta-lokalu {
+    display: none;
+    gap: 0.9rem;
+    align-items: flex-start;
+    margin-top: 1rem;
+    padding: 0.9rem;
+    border-radius: 0.75rem;
+    background: #fff;
+    color: var(--color-granat);
+    box-shadow: 0 8px 16px -6px rgb(15 42 58 / 0.35), 0 0 0 1px rgb(15 42 58 / 0.08);
+  }
+  .karta-lokalu.widoczna {
+    display: flex;
+  }
+  @media (min-width: 768px) {
+    .karta-lokalu {
+      position: absolute;
+      z-index: 10;
+      width: 21rem;
+      margin: 0;
+      animation: karta-lokalu 0.18s ease-out;
+    }
+  }
+  @keyframes karta-lokalu {
+    from { opacity: 0; transform: translateY(6px); }
+  }
+  .karta-lokalu__rzut {
+    flex: none;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 0.5rem;
+    background: var(--color-tlo);
+    object-fit: contain;
+  }
+  .karta-lokalu__rzut[hidden] {
+    display: none;
+  }
+  .karta-lokalu__tresc {
+    min-width: 0;
+    flex: 1;
+  }
+  .karta-lokalu p {
+    margin: 0;
+  }
+  .karta-lokalu__glowa {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .karta-lokalu__numer {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 400;
+  }
+  .karta-lokalu__status {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-morze);
+  }
+  .karta-lokalu__status[data-stan="rezerwacja"] {
+    color: var(--color-bursztyn);
+  }
+  .karta-lokalu__status[data-stan="sprzedane"] {
+    color: rgb(15 42 58 / 0.7);
+  }
+  .karta-lokalu__metraz {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  .karta-lokalu__dane {
+    font-size: 0.9375rem;
+    color: rgb(15 42 58 / 0.8);
+  }
+  .karta-lokalu__cena {
+    margin-top: 0.35rem !important;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .karta-lokalu__przycisk {
+    width: 100%;
+    margin-top: 0.75rem;
+    min-height: 2.75rem;
+    padding-block: 0.5rem;
+    font-size: 0.9375rem;
+  }
+
+  /* Dziennik na stronie głównej: pozioma oś postępu (zrobione etapy z wpisów, odbiór planowany) */
+  .os-postepu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-auto-flow: column;
+    gap: 0.75rem;
+    list-style: none;
+    margin-left: 0;
+    padding: 0;
+  }
+  .os-postepu__punkt {
+    position: relative;
+    padding-top: 2rem;
+  }
+  .os-postepu__punkt::before {
+    content: "";
+    position: absolute;
+    top: 0.55rem;
+    left: 0;
+    right: -0.75rem;
+    height: 2px;
+    background: var(--color-piasek-ciemny);
+  }
+  .os-postepu__punkt:last-child::before {
+    right: 0;
+    width: 1rem;
+  }
+  .os-postepu__punkt::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid rgb(15 42 58 / 0.45);
+    border-radius: 50%;
+    background: var(--color-tlo);
+  }
+  .os-postepu__punkt--zrobione::before {
+    background: var(--color-morze);
+  }
+  .os-postepu__punkt--zrobione::after {
+    border-color: var(--color-morze);
+    background: var(--color-morze);
+  }
+  .os-postepu__data {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-granat);
+  }
+  .os-postepu__nazwa {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.9375rem;
+    line-height: 1.3;
+    color: rgb(15 42 58 / 0.8);
+  }
+  a.os-postepu__nazwa {
+    text-decoration: underline;
+    text-decoration-color: rgb(15 42 58 / 0.25);
+    text-underline-offset: 3px;
+  }
+
+  /* Telefon: stały pasek „Znajdź mieszkanie” na stronie głównej; miejsce pod nim w body (klasa z JS) */
+  .pasek-telefon {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom));
+    background: var(--color-tlo);
+    box-shadow: 0 -6px 14px -8px rgb(15 42 58 / 0.4);
+    transition: transform 0.25s ease;
+  }
+  .pasek-telefon.schowany {
+    transform: translateY(110%);
+  }
+  @media (max-width: 767px) {
+    body.z-paskiem {
+      padding-bottom: 4.5rem;
+    }
   }
 
   /* Tabela mieszkań: na telefonie wiersze jako karty */

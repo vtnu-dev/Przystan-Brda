@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Delta\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-07T12:12:42+00:00\n"
+"POT-Creation-Date: 2026-10-17T12:30:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: przystan\n"
@@ -111,14 +111,14 @@ msgstr ""
 #: plugins/przystan-core/src/Inwestycje/Pola.php:55
 #: plugins/przystan-core/src/Inwestycje/TypTresci.php:32
 #: plugins/przystan-core/src/Mieszkania/Pola.php:35
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:140
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:152
 #: themes/przystan/resources/views/template-mieszkania.blade.php:33
 #: themes/przystan/resources/views/template-porownanie.blade.php:17
 msgid "Inwestycja"
 msgstr ""
 
 #: plugins/przystan-core/src/Inwestycje/Pola.php:63
-#: themes/przystan/resources/views/front-page.blade.php:162
+#: themes/przystan/resources/views/front-page.blade.php:164
 msgid "Dziennik budowy"
 msgstr ""
 
@@ -127,8 +127,9 @@ msgid "Której inwestycji dotyczy wpis"
 msgstr ""
 
 #: plugins/przystan-core/src/Inwestycje/TypTresci.php:31
+#: themes/przystan/app/seo.php:171
 #: themes/przystan/resources/views/archive-inwestycja.blade.php:7
-#: themes/przystan/resources/views/front-page.blade.php:94
+#: themes/przystan/resources/views/front-page.blade.php:196
 #: themes/przystan/resources/views/single-inwestycja.blade.php:22
 msgid "Inwestycje"
 msgstr ""
@@ -142,7 +143,7 @@ msgid "Edytuj inwestycję"
 msgstr ""
 
 #: plugins/przystan-core/src/Inwestycje/TypTresci.php:35
-#: themes/przystan/resources/views/front-page.blade.php:97
+#: themes/przystan/resources/views/front-page.blade.php:199
 msgid "Wszystkie inwestycje"
 msgstr ""
 
@@ -151,60 +152,61 @@ msgid "Brak inwestycji"
 msgstr ""
 
 #. translators: %d: liczba pokoi
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:57
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:118
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:59
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:120
 #, php-format
 msgid "%d pokój"
 msgid_plural "%d pokoje"
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:66
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:68
 #: plugins/przystan-core/src/Mieszkania/Pola.php:41
-#: themes/przystan/resources/views/components/elewacja.blade.php:84
+#: themes/przystan/resources/views/components/elewacja.blade.php:104
 msgid "rezerwacja"
 msgstr ""
 
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:67
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:69
 #: plugins/przystan-core/src/Mieszkania/Pola.php:42
-#: themes/przystan/resources/views/components/elewacja.blade.php:85
+#: themes/przystan/resources/views/components/elewacja.blade.php:105
 msgid "sprzedane"
 msgstr ""
 
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:68
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:70
 #: plugins/przystan-core/src/Mieszkania/Pola.php:40
-#: themes/przystan/resources/views/components/elewacja.blade.php:83
+#: themes/przystan/resources/views/components/elewacja.blade.php:103
 msgid "wolne"
 msgstr ""
 
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:78
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:80
 msgid "cena na zapytanie"
 msgstr ""
 
 #. translators: %s: cena w złotych, np. 612 000
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:82
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:84
 #, php-format
 msgid "%s zł"
 msgstr ""
 
 #. translators: %s: powierzchnia, np. 62,4
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:88
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:90
+#: themes/przystan/resources/views/components/elewacja.blade.php:56
 #, php-format
 msgid "%s m²"
 msgstr ""
 
 #. translators: %d: numer piętra
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:106
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:108
 msgid "parter"
 msgstr ""
 
 #. translators: %d: numer piętra
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:106
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:108
 #, php-format
 msgid "piętro %d"
 msgstr ""
 
-#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:116
+#: plugins/przystan-core/src/Mieszkania/Mieszkanie.php:118
 #, php-format
 msgid "Mieszkanie %1$s, %2$s, %3$s, %4$s, %5$s"
 msgstr ""
@@ -283,14 +285,14 @@ msgid "Rzut mieszkania"
 msgstr ""
 
 #: plugins/przystan-core/src/Mieszkania/TypTresci.php:35
-#: themes/przystan/app/seo.php:191
-#: themes/przystan/resources/views/front-page.blade.php:76
+#: themes/przystan/app/seo.php:199
+#: themes/przystan/resources/views/front-page.blade.php:78
 #: themes/przystan/resources/views/single-mieszkanie.blade.php:6
 msgid "Mieszkania"
 msgstr ""
 
 #: plugins/przystan-core/src/Mieszkania/TypTresci.php:36
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:141
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:153
 msgid "Mieszkanie"
 msgstr ""
 
@@ -406,12 +408,12 @@ msgid "Atut %d: zdjęcie"
 msgstr ""
 
 #: plugins/przystan-core/src/Strony/Pola.php:94
-#: themes/przystan/resources/views/front-page.blade.php:148
+#: themes/przystan/resources/views/front-page.blade.php:134
 msgid "Okolica"
 msgstr ""
 
 #: plugins/przystan-core/src/Strony/Pola.php:101
-#: themes/przystan/app/seo.php:217
+#: themes/przystan/app/seo.php:225
 #: themes/przystan/resources/views/404.blade.php:10
 #: themes/przystan/resources/views/partials/okruszki.blade.php:4
 #: themes/przystan/resources/views/single-inwestycja.blade.php:20
@@ -467,7 +469,7 @@ msgid "Zdjęcie %d"
 msgstr ""
 
 #: plugins/przystan-core/src/Strony/Pola.php:133
-#: themes/przystan/resources/views/front-page.blade.php:43
+#: themes/przystan/resources/views/front-page.blade.php:45
 msgid "Okolica i standard"
 msgstr ""
 
@@ -491,16 +493,16 @@ msgid "Biuro sprzedaży"
 msgstr ""
 
 #: plugins/przystan-core/src/Ustawienia/Strona.php:39
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:56
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:138
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:68
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:150
 #: themes/przystan/resources/views/partials/formularz.blade.php:22
 #: themes/przystan/resources/views/template-kontakt.blade.php:24
 msgid "Telefon"
 msgstr ""
 
 #: plugins/przystan-core/src/Ustawienia/Strona.php:40
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:55
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:137
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:67
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:149
 #: themes/przystan/resources/views/partials/formularz.blade.php:21
 #: themes/przystan/resources/views/template-kontakt.blade.php:28
 msgid "E-mail"
@@ -535,44 +537,48 @@ msgstr ""
 msgid "Każde nowe zapytanie wysyłamy jako JSON (zdarzenie zapytanie.utworzone). Nagłówek X-Delta-Signature zawiera HMAC-SHA256 z „X-Delta-Timestamp.treść” liczony tym kluczem."
 msgstr ""
 
-#: plugins/przystan-core/src/Ustawienia/Strona.php:70
+#: plugins/przystan-core/src/Ustawienia/Strona.php:72
 msgid "brak klucza"
 msgstr ""
 
-#: plugins/przystan-core/src/Ustawienia/Strona.php:72
+#: plugins/przystan-core/src/Ustawienia/Strona.php:74
 msgid "Wygeneruj nowy klucz"
 msgstr ""
 
-#: plugins/przystan-core/src/Ustawienia/Strona.php:88
+#: plugins/przystan-core/src/Ustawienia/Strona.php:75
+msgid "Klucz webhooka"
+msgstr ""
+
+#: plugins/przystan-core/src/Ustawienia/Strona.php:91
 msgid "Adres webhooka musi zaczynać się od https://."
 msgstr ""
 
-#: plugins/przystan-core/src/Ustawienia/Strona.php:106
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:109
+#: plugins/przystan-core/src/Ustawienia/Strona.php:109
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:121
 msgid "Brak uprawnień."
 msgstr ""
 
-#: plugins/przystan-core/src/Ustawienia/Strona.php:125
+#: plugins/przystan-core/src/Ustawienia/Strona.php:128
 msgid "Wygenerowano nowy klucz. Przekaż go odbiorcy webhooka."
 msgstr ""
 
-#: plugins/przystan-core/src/Webhook/Wysylka.php:149
+#: plugins/przystan-core/src/Webhook/Wysylka.php:150
 msgid "wysłano"
 msgstr ""
 
-#: plugins/przystan-core/src/Webhook/Wysylka.php:150
+#: plugins/przystan-core/src/Webhook/Wysylka.php:151
 msgid "ponowienie zaplanowane"
 msgstr ""
 
-#: plugins/przystan-core/src/Webhook/Wysylka.php:151
+#: plugins/przystan-core/src/Webhook/Wysylka.php:152
 msgid "błąd"
 msgstr ""
 
-#: plugins/przystan-core/src/Webhook/Wysylka.php:152
+#: plugins/przystan-core/src/Webhook/Wysylka.php:153
 msgid "webhook wyłączony"
 msgstr ""
 
-#: plugins/przystan-core/src/Webhook/Wysylka.php:153
+#: plugins/przystan-core/src/Webhook/Wysylka.php:154
 msgid "oczekuje"
 msgstr ""
 
@@ -651,7 +657,7 @@ msgstr ""
 
 #: plugins/przystan-core/src/Zapytania/TypTresci.php:32
 #: plugins/przystan-core/src/Zapytania/TypTresci.php:33
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:54
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:66
 msgid "Zapytanie"
 msgstr ""
 
@@ -663,59 +669,59 @@ msgstr ""
 msgid "Brak zapytań"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:57
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:145
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:69
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:157
 msgid "Webhook"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:58
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:70
 msgid "Data"
 msgstr ""
 
 #. translators: 1: liczba prób, 2: kod HTTP
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:79
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:91
 #, php-format
 msgid "prób: %1$d, ostatni kod: %2$s"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:98
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:110
 msgid "Wyślij ponownie"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:122
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:134
 msgid "Webhook zaplanowany do ponownej wysyłki."
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:128
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:140
 msgid "Treść zapytania"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:136
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:148
 msgid "Imię"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:139
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:151
 msgid "Rodzaj"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:139
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:151
 msgid "powiadomienie o starcie sprzedaży"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:139
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:151
 msgid "zapytanie"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:142
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:154
 #: themes/przystan/resources/views/sections/header.blade.php:30
 msgid "Język"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:143
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:155
 msgid "Zgoda RODO"
 msgstr ""
 
-#: plugins/przystan-core/src/Zapytania/TypTresci.php:144
+#: plugins/przystan-core/src/Zapytania/TypTresci.php:156
 #: themes/przystan/resources/views/partials/formularz.blade.php:59
 msgid "Wiadomość"
 msgstr ""
@@ -725,14 +731,14 @@ msgctxt "skrót: parter na elewacji"
 msgid "P"
 msgstr ""
 
-#: themes/przystan/app/seo.php:21
-#: themes/przystan/app/seo.php:171
+#: themes/przystan/app/seo.php:22
+#: themes/przystan/app/seo.php:179
 #: themes/przystan/resources/views/single-mieszkanie.blade.php:13
 #, php-format
 msgid "Mieszkanie %s"
 msgstr ""
 
-#: themes/przystan/app/seo.php:55
+#: themes/przystan/app/seo.php:58
 #: themes/przystan/resources/views/index.blade.php:9
 msgid "Postęp prac co kilka tygodni: zdjęcia z placu budowy i najważniejsze etapy."
 msgstr ""
@@ -760,7 +766,8 @@ msgid "Adres mógł się zmienić albo mieszkanie zostało usunięte z oferty. Z
 msgstr ""
 
 #: themes/przystan/resources/views/404.blade.php:9
-#: themes/przystan/resources/views/front-page.blade.php:39
+#: themes/przystan/resources/views/front-page.blade.php:41
+#: themes/przystan/resources/views/front-page.blade.php:215
 #: themes/przystan/resources/views/sections/header.blade.php:49
 msgid "Znajdź mieszkanie"
 msgstr ""
@@ -782,24 +789,35 @@ msgstr ""
 msgid "Elewacja budynku od strony rzeki. Wybierz mieszkanie, żeby zobaczyć szczegóły."
 msgstr ""
 
-#: themes/przystan/resources/views/components/elewacja.blade.php:74
+#: themes/przystan/resources/views/components/elewacja.blade.php:56
+#: themes/przystan/resources/views/components/elewacja.blade.php:107
+msgid "ogródek"
+msgstr ""
+
+#: themes/przystan/resources/views/components/elewacja.blade.php:56
+#, php-format
+msgid "balkon %s"
+msgstr ""
+
+#: themes/przystan/resources/views/components/elewacja.blade.php:80
 msgid "Brda"
 msgstr ""
 
-#: themes/przystan/resources/views/components/elewacja.blade.php:82
+#: themes/przystan/resources/views/components/elewacja.blade.php:97
+msgid "Zobacz mieszkanie"
+msgstr ""
+
+#: themes/przystan/resources/views/components/elewacja.blade.php:102
 msgid "Legenda"
 msgstr ""
 
-#: themes/przystan/resources/views/components/elewacja.blade.php:86
+#: themes/przystan/resources/views/components/elewacja.blade.php:106
 #: themes/przystan/resources/views/template-mieszkania.blade.php:104
 msgid "balkon lub taras"
 msgstr ""
 
-#: themes/przystan/resources/views/components/elewacja.blade.php:87
-msgid "ogródek"
-msgstr ""
-
-#: themes/przystan/resources/views/front-page.blade.php:41
+#: themes/przystan/resources/views/front-page.blade.php:43
+#: themes/przystan/resources/views/front-page.blade.php:215
 #: themes/przystan/resources/views/partials/karta-inwestycji.blade.php:22
 #: themes/przystan/resources/views/template-mieszkania.blade.php:39
 #, php-format
@@ -808,59 +826,71 @@ msgid_plural "%d wolnych"
 msgstr[0] ""
 msgstr[1] ""
 
-#: themes/przystan/resources/views/front-page.blade.php:46
+#: themes/przystan/resources/views/front-page.blade.php:48
 msgid "Termin oddania:"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:50
-#: themes/przystan/resources/views/front-page.blade.php:53
+#: themes/przystan/resources/views/front-page.blade.php:52
+#: themes/przystan/resources/views/front-page.blade.php:55
 msgid "Zatrzymaj ruch wody"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:50
+#: themes/przystan/resources/views/front-page.blade.php:52
 msgid "Wznów ruch wody"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:59
+#: themes/przystan/resources/views/front-page.blade.php:61
 msgid "Inwestycja w liczbach"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:77
+#: themes/przystan/resources/views/front-page.blade.php:79
 #: themes/przystan/resources/views/single-inwestycja.blade.php:63
 msgid "Wskaż okno, które Ci się podoba"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:78
+#: themes/przystan/resources/views/front-page.blade.php:80
 msgid "Każdy prostokąt to jedno mieszkanie. Kolor pokazuje, czy jest wolne. Kliknij, żeby zobaczyć rzut, metraż i cenę."
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:79
+#: themes/przystan/resources/views/front-page.blade.php:81
 #: themes/przystan/resources/views/single-inwestycja.blade.php:64
 msgid "Wyszukiwarka z filtrami"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:95
-msgid "Trzy adresy, jeden sposób budowania"
-msgstr ""
-
-#: themes/przystan/resources/views/front-page.blade.php:113
+#: themes/przystan/resources/views/front-page.blade.php:94
 msgid "Dlaczego tutaj"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:114
-msgid "Spokojne mieszkania z widokiem, którego nikt nie zabuduje"
+#: themes/przystan/resources/views/front-page.blade.php:95
+msgid "Spokojne mieszkania, przed oknami rzeka i bulwar"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:151
+#: themes/przystan/resources/views/front-page.blade.php:137
 msgid "Okolica i standard wykończenia"
 msgstr ""
 
-#: themes/przystan/resources/views/front-page.blade.php:163
-msgid "Co nowego na placu budowy"
+#: themes/przystan/resources/views/front-page.blade.php:165
+msgid "Budujemy, nie obiecujemy"
 msgstr ""
 
 #: themes/przystan/resources/views/front-page.blade.php:166
-msgid "Wszystkie wpisy"
+msgid "Co kilka tygodni pokazujemy zdjęcia z placu budowy. Tak wyglądają kolejne etapy."
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:167
+msgid "Postęp budowy"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:178
+msgid "Odbiór mieszkań"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:183
+msgid "Zobacz postępy z budowy"
+msgstr ""
+
+#: themes/przystan/resources/views/front-page.blade.php:197
+msgid "Trzy adresy, jeden sposób budowania"
 msgstr ""
 
 #: themes/przystan/resources/views/index.blade.php:7
@@ -1099,7 +1129,7 @@ msgstr ""
 msgid "%s zł/m²"
 msgstr ""
 
-#: themes/przystan/resources/views/single-mieszkanie.blade.php:62
+#: themes/przystan/resources/views/single-mieszkanie.blade.php:59
 msgid "Zapytaj o to mieszkanie"
 msgstr ""
 

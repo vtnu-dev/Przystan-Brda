@@ -83,32 +83,12 @@
     </div>
   </section>
 
-  {{-- Inwestycje --}}
-  @if (count($inwestycje) > 1)
-    <section class="bg-piasek py-16 md:py-24" aria-labelledby="inwestycje-tytul">
-      <div class="kontener">
-        <div class="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p class="nadtytul">{{ __('Inwestycje', 'przystan') }}</p>
-            <h2 id="inwestycje-tytul" class="h2">{{ __('Trzy adresy, jeden sposób budowania', 'przystan') }}</h2>
-          </div>
-          <a href="{{ get_post_type_archive_link('inwestycja') }}" class="font-semibold">{{ __('Wszystkie inwestycje', 'przystan') }}</a>
-        </div>
-        <div class="mt-10 grid gap-8 md:grid-cols-3">
-          @foreach ($inwestycje as $i)
-            <div data-odslon style="--opoznienie: {{ $loop->index * 90 }}ms">@include('partials.karta-inwestycji', ['i' => $i])</div>
-          @endforeach
-        </div>
-      </div>
-    </section>
-  @endif
-
   {{-- Atuty --}}
   @if ($atuty)
     <section class="py-16 md:py-24" aria-labelledby="atuty-tytul">
       <div class="kontener">
         <p class="nadtytul">{{ __('Dlaczego tutaj', 'przystan') }}</p>
-        <h2 id="atuty-tytul" class="h2 max-w-2xl">{{ __('Spokojne mieszkania z widokiem, którego nikt nie zabuduje', 'przystan') }}</h2>
+        <h2 id="atuty-tytul" class="h2 max-w-2xl">{{ __('Spokojne mieszkania, przed oknami rzeka i bulwar', 'przystan') }}</h2>
         <div class="mt-12 grid gap-10 md:grid-cols-3">
           @foreach ($atuty as $atut)
             <article class="relative" data-karta data-karta-bez-cienia style="--opoznienie: {{ $loop->index * 90 }}ms">
@@ -152,22 +132,66 @@
     </div>
   </section>
 
-  {{-- Dziennik budowy --}}
+  {{-- Dziennik budowy: jedno duże zdjęcie z ostatniego wpisu i pozioma oś postępu (daty z wpisów, odbiór z terminu inwestycji) --}}
   @if ($wpisy)
+    @php
+      $najnowszy = $wpisy[0];
+      $os = array_reverse($wpisy);
+      $termin = $flagowa['termin'] ?? '';
+    @endphp
     <section class="py-16 md:py-24" aria-labelledby="dziennik-tytul">
+      <div class="kontener grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+        @if (has_post_thumbnail($najnowszy))
+          <figure class="overflow-hidden rounded-[var(--radius-fala)]">
+            {!! get_the_post_thumbnail($najnowszy, 'large', [
+              'class' => 'aspect-[4/3] w-full object-cover',
+              'sizes' => '(min-width: 1024px) 50vw, 100vw',
+              'loading' => 'lazy',
+              'alt' => '',
+            ]) !!}
+            <figcaption class="sr-only">{{ get_the_title($najnowszy) }}</figcaption>
+          </figure>
+        @endif
+        <div>
+          <p class="nadtytul">{{ __('Dziennik budowy', 'przystan') }}</p>
+          <h2 id="dziennik-tytul" class="h2">{{ __('Budujemy, nie obiecujemy', 'przystan') }}</h2>
+          <p class="mt-5 text-lg text-granat/85">{{ __('Co kilka tygodni pokazujemy zdjęcia z placu budowy. Tak wyglądają kolejne etapy.', 'przystan') }}</p>
+          <ol class="os-postepu mt-10" aria-label="{{ __('Postęp budowy', 'przystan') }}">
+            @foreach ($os as $wpis)
+              <li class="os-postepu__punkt os-postepu__punkt--zrobione">
+                <time class="os-postepu__data" datetime="{{ get_post_time('Y-m-d', false, $wpis) }}">{{ get_the_date('d.m.Y', $wpis) }}</time>
+                <a href="{{ get_permalink($wpis) }}" class="os-postepu__nazwa">{{ get_the_title($wpis) }}</a>
+              </li>
+            @endforeach
+            @if ($termin)
+              <li class="os-postepu__punkt">
+                <span class="os-postepu__data">{{ $termin }}</span>
+                <span class="os-postepu__nazwa">{{ __('Odbiór mieszkań', 'przystan') }}</span>
+              </li>
+            @endif
+          </ol>
+          @if (get_option('page_for_posts'))
+            <a href="{{ get_permalink((int) get_option('page_for_posts')) }}" class="przycisk mt-10">{{ __('Zobacz postępy z budowy', 'przystan') }}</a>
+          @endif
+        </div>
+      </div>
+    </section>
+  @endif
+
+  {{-- Inwestycje --}}
+  @if (count($inwestycje) > 1)
+    <section class="bg-piasek py-16 md:py-24" aria-labelledby="inwestycje-tytul">
       <div class="kontener">
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p class="nadtytul">{{ __('Dziennik budowy', 'przystan') }}</p>
-            <h2 id="dziennik-tytul" class="h2">{{ __('Co nowego na placu budowy', 'przystan') }}</h2>
+            <p class="nadtytul">{{ __('Inwestycje', 'przystan') }}</p>
+            <h2 id="inwestycje-tytul" class="h2">{{ __('Trzy adresy, jeden sposób budowania', 'przystan') }}</h2>
           </div>
-          @if (get_option('page_for_posts'))
-            <a href="{{ get_permalink((int) get_option('page_for_posts')) }}" class="font-semibold">{{ __('Wszystkie wpisy', 'przystan') }}</a>
-          @endif
+          <a href="{{ get_post_type_archive_link('inwestycja') }}" class="font-semibold">{{ __('Wszystkie inwestycje', 'przystan') }}</a>
         </div>
         <div class="mt-10 grid gap-8 md:grid-cols-3">
-          @foreach ($wpisy as $wpis)
-            @include('partials.karta-wpisu', ['wpis' => $wpis, 'poziom' => 'h3'])
+          @foreach ($inwestycje as $i)
+            <div data-odslon style="--opoznienie: {{ $loop->index * 90 }}ms">@include('partials.karta-inwestycji', ['i' => $i])</div>
           @endforeach
         </div>
       </div>
@@ -175,4 +199,9 @@
   @endif
 
   @include('partials.cta-kontakt')
+
+  {{-- Telefon: stały pasek do wyszukiwarki; chowa się przy hero, przy kontakcie i w stopce (modules/ruch.js), nie zasłania treści (padding w app.css) --}}
+  <div class="pasek-telefon md:hidden" data-pasek-telefon hidden>
+    <a href="{{ $urlMieszkania }}" class="przycisk w-full justify-center">{{ __('Znajdź mieszkanie', 'przystan') }}<span class="font-normal opacity-80"> · {{ sprintf(_n('%d wolne', '%d wolnych', $wolnych, 'przystan'), $wolnych) }}</span></a>
+  </div>
 @endsection

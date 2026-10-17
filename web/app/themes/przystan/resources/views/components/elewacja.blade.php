@@ -49,6 +49,12 @@
          data-id="{{ $m['id'] }}"
          data-numer="{{ $m['numer'] }}"
          data-szczegoly="{{ $m['pokoje_tekst'] }} · {{ $m['metraz_tekst'] }} · {{ $m['pietro_tekst'] }}"
+         data-metraz="{{ $m['metraz_tekst'] }}"
+         data-pokoje="{{ $m['pokoje_tekst'] }}"
+         data-pietro="{{ $m['pietro_tekst'] }}"
+         data-dodatek="{{ $m['ogrodek'] ? __('ogródek', 'przystan') : ($m['balkon_m2'] > 0 ? sprintf(__('balkon %s', 'przystan'), sprintf(__('%s m²', 'przystan'), number_format_i18n($m['balkon_m2'], 1))) : '') }}"
+         data-rzut="{{ $m['rzut'] }}"
+         data-stan="{{ $m['status'] }}"
          data-cena="{{ $m['cena_tekst'] }}"
          data-status="{{ $m['status_etykieta'] }}">
         <rect class="okno" x="{{ $o['x'] }}" y="{{ $o['y'] }}" width="{{ $o['w'] }}" height="{{ $o['h'] }}" rx="3" />
@@ -77,6 +83,20 @@
   </svg>
 
   <div class="elewacja-dymek" role="status" hidden data-dymek></div>
+  {{-- Karta mieszkania (JS, modules/elewacja.js): obok okna na komputerze, pod schematem na telefonie.
+       Wzór i teksty w szablonie, dane z atrybutów okna (te same co karta lokalu i rzut). --}}
+  <template data-karta-wzor>
+    <div class="karta-lokalu" data-karta-lokalu>
+      <img class="karta-lokalu__rzut" alt="" width="96" height="96" loading="lazy" data-k="rzut" />
+      <div class="karta-lokalu__tresc">
+        <p class="karta-lokalu__glowa"><strong class="karta-lokalu__numer" data-k="numer"></strong> <span class="karta-lokalu__status" data-k="status"></span></p>
+        <p class="karta-lokalu__metraz" data-k="metraz"></p>
+        <p class="karta-lokalu__dane"><span data-k="pokoje"></span> · <span data-k="pietro"></span><span data-k="dodatek"></span></p>
+        <p class="karta-lokalu__cena" data-k="cena"></p>
+        <a class="przycisk karta-lokalu__przycisk" data-k="url">{{ __('Zobacz mieszkanie', 'przystan') }} <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </template>
 
   <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="{{ __('Legenda', 'przystan') }}">
     <li class="flex items-center gap-2"><span class="inline-block h-4 w-6 rounded-sm bg-morze" aria-hidden="true"></span>{{ __('wolne', 'przystan') }}</li>

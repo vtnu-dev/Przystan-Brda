@@ -9,6 +9,7 @@ import { kalkulatory } from './modules/kalkulator.js';
 import { porownanie } from './modules/porownanie.js';
 import { ruch, przejscia } from './modules/ruch.js';
 import { hero } from './modules/hero.js';
+import { pasekTelefon } from './modules/pasek.js';
 
 menu();
 elewacje();
@@ -20,3 +21,4 @@ porownanie();
 ruch();
 przejscia();
 hero();
+pasekTelefon();

@@ -23,8 +23,8 @@ return [
             'termin' => ['pl' => 'IV kw. 2027', 'en' => 'Q4 2027'],
             'kondygnacje' => 6, 'lokali' => 6, 'woda' => true, 'podpis' => ['pl' => 'Brda', 'en' => 'Brda river'],
             'zajawka' => [
-                'pl' => '36 mieszkań nad rzeką, przy nowym bulwarze. Z okien widać wodę, a do Starego Rynku dojdziesz w kwadrans.',
-                'en' => '36 riverside apartments on a new boulevard. Water views from the windows and a 15-minute walk to the Old Market Square.',
+                'pl' => '36 mieszkań nad rzeką, przy nowym bulwarze. Z okien widać wodę, a do Starego Rynku dojdziesz w 12 minut.',
+                'en' => '36 riverside apartments on a new boulevard. Water views from the windows and a 12-minute walk to the Old Market Square.',
             ],
             'tresc' => [
                 'pl' => ['Delta stoi frontem do rzeki, na Okolu, jednej z najstarszych części Bydgoszczy. Budynek ma sześć kondygnacji i 36 mieszkań od 32 do 84 m². Na parterze są ogródki, wyżej balkony, a na ostatnim piętrze tarasy z widokiem na park po drugiej stronie wody.', 'Przed wejściem powstaje 120 metrów nowego bulwaru z ławkami i lipami. Garaż jest pod budynkiem, a w nim komórki lokatorskie, rowerownia i stanowiska do ładowania aut.'],
@@ -192,11 +192,11 @@ return [
         'pl' => [
             'nadtytul' => 'Delta · Bydgoszcz, Okole',
             'naglowek' => "Mieszkania\ndwa kroki od rzeki",
-            'wstep' => '36 mieszkań w spokojnym budynku przy nowym bulwarze. Z okien widać wodę, a do Starego Rynku dojdziesz w kwadrans.',
+            'wstep' => '36 mieszkań w spokojnym budynku przy nowym bulwarze. Z okien widać wodę, a do Starego Rynku dojdziesz w 12 minut.',
             'seo' => 'Delta: 36 mieszkań nad rzeką w Bydgoszczy, od 32 do 84 m². Balkony, ogródki, widok na Brdę. Oddanie w IV kwartale 2027.',
             'liczby' => [['36', 'mieszkań od 32 do 84 m²'], ['6', 'kondygnacji, na parterze ogródki'], ['120 m', 'bulwaru przed wejściem'], ['12 min', 'pieszo do Starego Rynku']],
             'atuty' => [
-                ['Widok, którego nikt nie zabuduje', 'Budynek stoi frontem do rzeki, a po drugiej stronie jest park. Większość mieszkań ma okna na wodę.', 'salon'],
+                ['Przed oknami rzeka i bulwar', 'Budynek stoi frontem do rzeki, a po drugiej stronie jest park. Większość mieszkań ma okna na wodę.', 'salon'],
                 ['Kuchnia z dziennym światłem', 'Każdy aneks ma okno. Pomieszczenia mają 2,75 m wysokości, a okna sięgają od podłogi.', 'kuchnia'],
                 ['Sypialnie w ciszy', 'Za oknem korony drzew i rzeka, a nie parking. Okna mają podwyższoną izolację akustyczną.', 'sypialnia'],
             ],
@@ -206,11 +206,11 @@ return [
         'en' => [
             'nadtytul' => 'Delta · Bydgoszcz, Okole',
             'naglowek' => "Apartments\ntwo steps from the river",
-            'wstep' => '36 apartments in a calm building on the new boulevard. You can see the water from your windows and walk to the Old Market Square in 15 minutes.',
+            'wstep' => '36 apartments in a calm building on the new boulevard. You can see the water from your windows and walk to the Old Market Square in 12 minutes.',
             'seo' => 'Delta: 36 riverside apartments in Bydgoszcz, 32 to 84 m². Balconies, gardens, views of the Brda. Ready in Q4 2027.',
             'liczby' => [['36', 'apartments, 32 to 84 m²'], ['6', 'storeys, gardens on the ground floor'], ['120 m', 'of boulevard by the entrance'], ['12 min', 'walk to the Old Market Square']],
             'atuty' => [
-                ['A view no one can build over', 'The building faces the river with a park on the other bank. Most apartments have windows onto the water.', 'salon'],
+                ['The river and the boulevard outside', 'The building faces the river with a park on the other bank. Most apartments have windows onto the water.', 'salon'],
                 ['Kitchens with daylight', 'Every kitchen area has a window. Ceilings are 2.75 m high and windows reach down to the floor.', 'kuchnia'],
                 ['Quiet bedrooms', 'Treetops and the river outside, not a car park. Windows have extra sound insulation.', 'sypialnia'],
             ],
